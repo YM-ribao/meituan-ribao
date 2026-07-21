@@ -37,6 +37,10 @@ a{text-decoration:none;color:inherit}
 .review{border-left:3px solid #e5484d;background:#fff5f5;border-radius:0 10px 10px 0;padding:10px 14px;margin:10px 0;font-size:14px}
 .review .meta{font-size:12px;color:#8a93a6;margin-bottom:4px}
 .daylinks a{display:inline-block;margin:4px 8px 0 0;padding:6px 12px;background:#eef2ff;border-radius:999px;font-size:13px;color:#2a5298}
+.cmpt{width:100%;border-collapse:collapse;font-size:14px;margin-top:8px}
+.cmpt th,.cmpt td{padding:8px 10px;border-bottom:1px solid #edf0f7;text-align:left}
+.cmpt th{color:#8a93a6;font-weight:500;font-size:12px}
+.cmpt .me{background:#eef2ff;font-weight:600}
 /* 门口令 */
 #gate{position:fixed;inset:0;background:linear-gradient(135deg,#1e3c72,#2a5298);display:flex;align-items:center;justify-content:center;z-index:9999}
 #gate .box{background:#fff;border-radius:18px;padding:36px 32px;text-align:center;width:300px;box-shadow:0 12px 40px rgba(0,0,0,.25)}
@@ -64,10 +68,11 @@ a{text-decoration:none;color:inherit}
     <div class="kpi"><div class="lb">差评条数</div><div class="vl">0</div></div>
   </div>
   <div class="sec"><h2>📈 营收 & 订单量走势</h2><div id="c1" class="chart"></div></div>
-  <div class="sec"><h2>🔄 双转率走势</h2><div id="c2" class="chart"></div></div>
+  <div class="sec"><h2>🔄 双转率走势（本店 vs 同行）</h2><div id="c2" class="chart"></div></div>
   <div class="sec"><h2>💰 推广花费走势</h2><div id="c3" class="chart"></div></div>
   <div class="sec"><h2>🏆 行业概况（07-20）</h2>
-    <p style="font-size:14px;line-height:2">商圈：玉林商圈 ｜ 排名：23 / 95 ｜ 超越同行：75.8% ｜ 评分：4.5</p></div>
+    <p style="font-size:14px;line-height:2">商圈：玉林商圈 ｜ 排名：23 / 95 ｜ 超越同行：75.8% ｜ 评分：4.5</p>
+    <table class="cmpt"><tr><th>对比对象</th><th>有效订单数</th><th>评分</th></tr><tr class="me"><td>本店</td><td>51</td><td>4.5</td></tr><tr><td>竞店1</td><td>10+</td><td>4.6</td></tr><tr><td>竞店2</td><td>10-</td><td>0.0</td></tr><tr><td>竞店3</td><td>10-</td><td>4.3</td></tr></table><p style="font-size:12px;color:#8a93a6;margin-top:8px">竞店为美团匿名展示：名称隐藏、订单数为区间值，与美团行业页口径一致。</p></div>
   <div class="sec"><h2>😠 差评明细</h2><p style="color:#8a93a6;font-size:14px">暂无差评记录 🎉</p></div>
   <div class="footer">单店档案 · 数据随每日采集更新</div>
 </div>
@@ -75,14 +80,24 @@ a{text-decoration:none;color:inherit}
 <script>
 var dates=["2026-07-20"];
 function mk(id,opt){var c=echarts.init(document.getElementById(id));c.setOption(opt);window.addEventListener('resize',function(){c.resize();});}
-mk('c1',{tooltip:{trigger:'axis'},legend:{data:['营收','订单量']},grid:{left:60,right:60,top:40,bottom:30},
+var rev=[1065.3];
+var revWeek=rev.map(function(v,i){return i>=7?rev[i-7]:null;});
+mk('c1',{tooltip:{trigger:'axis'},legend:{data:['本店营收','同行均值','上周同日(环比)','订单量']},grid:{left:60,right:60,top:40,bottom:30},
 xAxis:{type:'category',data:dates},yAxis:[{type:'value',name:'营收(元)'},{type:'value',name:'订单量'}],
-series:[{name:'营收',type:'line',smooth:true,data:[1065.3],areaStyle:{opacity:.12},lineStyle:{width:3,color:'#2a5298'},itemStyle:{color:'#2a5298'}},
-{name:'订单量',type:'bar',yAxisIndex:1,data:[51.0],itemStyle:{color:'#91b4e8'}}]});
-mk('c2',{tooltip:{trigger:'axis',valueFormatter:function(v){return v==null?'—':(v*100).toFixed(1)+'%'}},legend:{data:['入店转化率','下单转化率']},grid:{left:60,right:20,top:40,bottom:30},
+series:[{name:'本店营收',type:'line',smooth:true,data:rev,areaStyle:{opacity:.12},lineStyle:{width:3,color:'#1a73e8'},itemStyle:{color:'#1a73e8'}},
+{name:'同行均值',type:'line',smooth:true,data:[760.11],lineStyle:{width:2,color:'#f2994a',type:'dashed'},itemStyle:{color:'#f2994a'}},
+{name:'上周同日(环比)',type:'line',smooth:true,data:revWeek,lineStyle:{width:2,color:'#9aa1b5',type:'dashed'},itemStyle:{color:'#9aa1b5'}},
+{name:'订单量',type:'bar',yAxisIndex:1,data:[51.0],itemStyle:{color:'#c7d9f5'}}]});
+mk('c2',{tooltip:{trigger:'axis',valueFormatter:function(v){return v==null?'—':(v*100).toFixed(1)+'%'}},
+legend:{data:['入店率·本店','下单率·本店','入店率·同行均值','下单率·同行均值','入店率·前10%','下单率·前10%']},
+grid:{left:60,right:20,top:40,bottom:30},
 xAxis:{type:'category',data:dates},yAxis:{type:'value',axisLabel:{formatter:function(v){return (v*100).toFixed(0)+'%'}}},
-series:[{name:'入店转化率',type:'line',smooth:true,data:[0.084],lineStyle:{width:3,color:'#18a058'},itemStyle:{color:'#18a058'}},
-{name:'下单转化率',type:'line',smooth:true,data:[0.1385],lineStyle:{width:3,color:'#e58a4d'},itemStyle:{color:'#e58a4d'}}]});
+series:[{name:'入店率·本店',type:'line',smooth:true,data:[0.084],lineStyle:{width:3,color:'#1a73e8'},itemStyle:{color:'#1a73e8'}},
+{name:'下单率·本店',type:'line',smooth:true,data:[0.1385],lineStyle:{width:3,color:'#5e9bff'},itemStyle:{color:'#5e9bff'}},
+{name:'入店率·同行均值',type:'line',smooth:true,data:[0.0687],lineStyle:{width:2,color:'#f2994a',type:'dashed'},itemStyle:{color:'#f2994a'}},
+{name:'下单率·同行均值',type:'line',smooth:true,data:[0.2869],lineStyle:{width:2,color:'#f7c873',type:'dashed'},itemStyle:{color:'#f7c873'}},
+{name:'入店率·前10%',type:'line',smooth:true,data:[0.0684],lineStyle:{width:2,color:'#d32f2f',type:'dashed'},itemStyle:{color:'#d32f2f'}},
+{name:'下单率·前10%',type:'line',smooth:true,data:[0.3108],lineStyle:{width:2,color:'#ef9a9a',type:'dashed'},itemStyle:{color:'#ef9a9a'}}]});
 mk('c3',{tooltip:{trigger:'axis'},grid:{left:60,right:20,top:20,bottom:30},
 xAxis:{type:'category',data:dates},yAxis:{type:'value',name:'花费(元)'},
 series:[{type:'bar',data:[93.96],itemStyle:{color:'#764ba2'}}]});
