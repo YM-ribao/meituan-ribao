@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta http-equiv="refresh" content="1800">
+<title>今日推广实时看板（17:15）</title>
+<style>
+ body { font-family: -apple-system, "PingFang SC", sans-serif; margin: 24px; background: #f5f6f8; color: #222; }
+ h1 { font-size: 20px; margin: 0 0 4px; }
+ h2 { font-size: 16px; margin: 24px 0 10px; }
+ .sub { color: #888; font-size: 13px; margin-bottom: 6px; }
+ .times { color: #666; font-size: 13px; margin-bottom: 16px; }
+ .t-latest { color: #cf1322; }
+ .cards { display: flex; gap: 12px; margin-bottom: 6px; flex-wrap: wrap; }
+ .card { background: #fff; border-radius: 12px; box-shadow: 0 1px 4px rgba(0,0,0,.06); padding: 12px 18px; min-width: 120px; }
+ .card .v { font-size: 24px; font-weight: 700; }
+ .card .k { font-size: 12px; color: #888; }
+ .sgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; }
+ .scard { background: #fff; border-radius: 12px; box-shadow: 0 1px 4px rgba(0,0,0,.06); padding: 14px 16px; }
+ .sname { font-weight: 700; font-size: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+ .stime { color: #999; font-size: 12px; margin: 2px 0 10px; }
+ .ranks { display: flex; gap: 10px; margin-bottom: 10px; }
+ .rank { flex: 1; background: #f7f8fa; border-radius: 8px; text-align: center; padding: 8px 4px; }
+ .rv { font-size: 26px; font-weight: 700; color: #1677ff; font-variant-numeric: tabular-nums; }
+ .rv small, td small { font-size: 12px; font-weight: 400; margin-left: 1px; }
+ .r-zero { color: #bbb; }
+ .r-none { color: #ccc; font-size: 20px; }
+ .r-good { color: #389e0d; font-weight: 700; }
+ .r-bad { color: #cf1322; font-weight: 700; }
+ .rk { font-size: 12px; color: #888; margin-top: 2px; }
+ .sparkbox { margin: 2px 0 8px; }
+ .spark { width: 100%; height: 46px; display: block; }
+ .spark-none { height: 46px; line-height: 46px; text-align: center; color: #ccc; }
+ .sparklabel { font-size: 11px; color: #bbb; text-align: right; margin-top: 1px; }
+ .srow { display: flex; justify-content: space-between; align-items: center; font-size: 13px; padding: 3px 0; color: #555; }
+ .srow b { font-variant-numeric: tabular-nums; }
+ .srow small { color: #999; font-size: 12px; }
+ .bal-low { color: #cf1322; }
+ .bal-warn { background: #fff1f0; color: #cf1322; padding: 1px 6px; border-radius: 3px; font-size: 12px; margin-left: 4px; }
+ table { border-collapse: collapse; width: 100%; font-size: 14px; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.06); }
+ th { text-align: left; border-bottom: 2px solid #333; padding: 8px 10px; font-size: 13px; color: #666; white-space: nowrap; }
+ td { border-bottom: 1px solid #f0f0f0; padding: 8px 10px; vertical-align: middle; }
+ .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+ .patsub { font-size: 11px; color: #999; font-weight: 400; }
+ .note { color:#aaa; font-size:12px; }
+</style></head><body>
+<!-- 手机滑动修复 -->
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>html,body{overflow:auto!important;height:auto!important;position:static!important;touch-action:auto!important}</style>
+<script>if(!sessionStorage.getItem('ym_gate'))location.replace('../index.html')</script><a class="back" href="../index.html" style="display:block;margin:10px 0 0 16px">← 返回首页</a>
+<h1>今日推广实时看板</h1>
+<div class="sub">截至今天 17:15 ｜ 每半小时自动更新（10:45 起，:15/:45 各一轮）｜ 点金推广口径，金额单位：元</div>
+<div class="times">今日已采集 12 次：12:00 / 12:01 / 12:02 / 12:06 / 12:15 / 12:33 / 12:45 / 13:15 / 15:45 / 16:15 / 16:45 / <b class='t-latest'>17:15</b></div>
+<h2>在推广的店（14 家，按今日花费排）</h2>
+<div class='sgrid'>
+  <div class="scard">
+   <div class="sname" title="龍门·柴火鸡（桐梓林店）">龍门·柴火鸡（桐梓林店）</div>
+   <div class="stime">颜毓恒　17:15 采集</div>
+   <div class="ranks">
+    <div class="rank"><div class="rv"><span class='r-bad'>38<small>位</small></span></div><div class="rk">综合排名</div></div>
+    <div class="rank"><div class="rv"><span class='r-good'>3<small>位</small></span></div><div class="rk">搜索排名</div></div>
+   </div>
+   <div class="sparkbox"><svg class='spark' viewBox='0 0 220 46' preserveAspectRatio='none'><polygon points='4,42 4.0,4.0 23.3,36.0 42.5,36.0 61.8,35.3 81.1,33.3 100.4,32.1 119.6,35.3 138.9,33.9 158.2,36.0 177.5,36.0 196.7,32.5 216.0,30.2 216,42' fill='#1677ff' fill-opacity='0.08'/><polyline points='4.0,4.0 23.3,36.0 42.5,36.0 61.8,35.3 81.1,33.3 100.4,32.1 119.6,35.3 138.9,33.9 158.2,36.0 177.5,36.0 196.7,32.5 216.0,30.2' fill='none' stroke='#1677ff' stroke-width='2' stroke-linejoin='round' stroke-linecap='round'/><circle cx='216.0' cy='30.2' r='3' fill='#1677ff'/></svg><div class="sparklabel">今日各批次花费（元/批）</div></div>
+   <div class="srow"><span>今日花费</span><b>93.43</b></div>
+   <div class="srow"><span>出价</span><b>0.6</b> <small>建议 0.6</small></div>
+   <div class="srow"><span>余额</span>143.35</div>
+  </div>
+  <div class="scard">
+   <div class="sname" title="螺会长螺蛳粉（汉峪光年店）">螺会长螺蛳粉（汉峪光年店）</div>
+   <div class="stime">颜毓恒　17:15 采集</div>
+   <div class="ranks">
+    <div class="rank"><div class="rv"><span class='r-good'>14<small>位</small></span></div><div class="rk">综合排名</div></div>
+    <div class="rank"><div class="rv"><span class='r-good'>4<small>位</small></span></div><div class="rk">搜索排名</div></div>
+   </div>
+   <div class="sparkbox"><svg class='spark' viewBox='0 0 220 46' preserveAspectRatio='none'><polygon points='4,42 4.0,4.0 23.3,34.8 42.5,36.0 61.8,33.6 81.1,32.1 100.4,28.6 119.6,33.7 138.9,23.2 158.2,31.3 177.5,36.0 196.7,34.9 216.0,24.1 216,42' fill='#1677ff' fill-opacity='0.08'/><polyline points='4.0,4.0 23.3,34.8 42.5,36.0 61.8,33.6 81.1,32.1 100.4,28.6 119.6,33.7 138.9,23.2 158.2,31.3 177.5,36.0 196.7,34.9 216.0,24.1' fill='none' stroke='#1677ff' stroke-width='2' stroke-linejoin='round' stroke-linecap='round'/><circle cx='216.0' cy='24.1' r='3' fill='#1677ff'/></svg><div class="sparklabel">今日各批次花费（元/批）</div></div>
+   <div class="srow"><span>今日花费</span><b>79.09</b></div>
+   <div class="srow"><span>出价</span><b>0.6</b> <small>建议 0.6</small></div>
+   <div class="srow"><span>余额</span>18.6</div>
+  </div>
+  <div class="scard">
+   <div class="sname" title="家福居汉餐·盖浇饭·小炒">家福居汉餐·盖浇饭·小炒</div>
+   <div class="stime">颜毓恒　17:15 采集</div>
+   <div class="ranks">
+    <div class="rank"><div class="rv"><span class='r-good'>1<small>位</small></span></div><div class="rk">综合排名</div></div>
+    <div class="rank"><div class="rv"><span class='r-zero'>0<small>位</small></span></div><div class="rk">搜索排名</div></div>
+   </div>
+   <div class="sparkbox"><svg class='spark' viewBox='0 0 220 46' preserveAspectRatio='none'><polygon points='4,42 4.0,4.0 23.3,35.1 42.5,36.0 61.8,34.0 81.1,32.0 100.4,31.5 119.6,29.0 138.9,34.1 158.2,36.0 177.5,36.0 196.7,36.0 216.0,36.0 216,42' fill='#1677ff' fill-opacity='0.08'/><polyline points='4.0,4.0 23.3,35.1 42.5,36.0 61.8,34.0 81.1,32.0 100.4,31.5 119.6,29.0 138.9,34.1 158.2,36.0 177.5,36.0 196.7,36.0 216.0,36.0' fill='none' stroke='#1677ff' stroke-width='2' stroke-linejoin='round' stroke-linecap='round'/><circle cx='216.0' cy='36.0' r='3' fill='#1677ff'/></svg><div class="sparklabel">今日各批次花费（元/批）</div></div>
+   <div class="srow"><span>今日花费</span><b>38.8</b></div>
+   <div class="srow"><span>出价</span><b>0.1</b> <small>建议 2.5</small></div>
+   <div class="srow"><span>余额</span>20.92</div>
+  </div>
+  <div class="scard">
+   <div class="sname" title="杨记烧腊（拌卤菜-套饭-大悦城店）">杨记烧腊（拌卤菜-套饭-大悦城店）</div>
+   <div class="stime">韦炼　17:15 采集</div>
+   <div class="ranks">
+    <div class="rank"><div class="rv"><span class='r-zero'>0<small>位</small></span></div><div class="rk">综合排名</div></div>
+    <div class="rank"><div class="rv"><span class='r-zero'>0<small>位</small></span></div><div class="rk">搜索排名</div></div>
+   </div>
+   <div class="sparkbox"><svg class='spark' viewBox='0 0 220 46' preserveAspectRatio='none'><polygon points='4,42 4.0,4.0 23.3,36.0 42.5,35.0 61.8,33.6 81.1,35.0 100.4,31.6 119.6,36.0 138.9,36.0 158.2,36.0 177.5,36.0 196.7,36.0 216.0,36.0 216,42' fill='#1677ff' fill-opacity='0.08'/><polyline points='4.0,4.0 23.3,36.0 42.5,35.0 61.8,33.6 81.1,35.0 100.4,31.6 119.6,36.0 138.9,36.0 158.2,36.0 177.5,36.0 196.7,36.0 216.0,36.0' fill='none' stroke='#1677ff' stroke-width='2' stroke-linejoin='round' stroke-linecap='round'/><circle cx='216.0' cy='36.0' r='3' fill='#1677ff'/></svg><div class="sparklabel">今日各批次花费（元/批）</div></div>
+   <div class="srow"><span>今日花费</span><b>20.06</b></div>
+   <div class="srow"><span>出价</span><b>0.3</b> <small>建议 0.6</small></div>
+   <div class="srow"><span>余额</span>25.01</div>
+  </div>
+  <div class="scard">
+   <div class="sname" title="厨邻里社区食堂(东北菜）">厨邻里社区食堂(东北菜）</div>
+   <div class="stime">韦炼　17:15 采集</div>
+   <div class="ranks">
+    <div class="rank"><div class="rv"><span class='r-good'>17<small>位</small></span></div><div class="rk">综合排名</div></div>
+    <div class="rank"><div class="rv"><span class='r-good'>5<small>位</small></span></div><div class="rk">搜索排名</div></div>
+   </div>
+   <div class="sparkbox"><svg class='spark' viewBox='0 0 220 46' preserveAspectRatio='none'><polygon points='4,42 4.0,4.0 23.3,36.0 42.5,30.9 61.8,36.0 81.1,36.0 100.4,25.6 119.6,30.9 138.9,36.0 158.2,36.0 177.5,36.0 196.7,23.8 216.0,8.4 216,42' fill='#1677ff' fill-opacity='0.08'/><polyline points='4.0,4.0 23.3,36.0 42.5,30.9 61.8,36.0 81.1,36.0 100.4,25.6 119.6,30.9 138.9,36.0 158.2,36.0 177.5,36.0 196.7,23.8 216.0,8.4' fill='none' stroke='#1677ff' stroke-width='2' stroke-linejoin='round' stroke-linecap='round'/><circle cx='216.0' cy='8.4' r='3' fill='#1677ff'/></svg><div class="sparklabel">今日各批次花费（元/批）</div></div>
+   <div class="srow"><span>今日花费</span><b>15.8</b></div>
+   <div class="srow"><span>出价</span><b>0.2</b> <small>建议 0.5</small></div>
+   <div class="srow"><span>余额</span>1451.62</div>
+  </div>
+  <div class="scard">
+   <div class="sname" title="正宗上佳黄焖鸡米饭（西昌店）">正宗上佳黄焖鸡米饭（西昌店）</div>
+   <div class="stime">颜毓恒　17:15 采集</div>
+   <div class="ranks">
+    <div class="rank"><div class="rv"><span class='r-zero'>0<small>位</small></span></div><div class="rk">综合排名</div></div>
+    <div class="rank"><div class="rv"><span class='r-zero'>0<small>位</small></span></div><div class="rk">搜索排名</div></div>
+   </div>
+   <div class="sparkbox"><svg class='spark' viewBox='0 0 220 46' preserveAspectRatio='none'><polygon points='4,42 4.0,4.0 23.3,36.0 42.5,36.0 61.8,36.0 81.1,36.0 100.4,16.8 119.6,36.0 138.9,22.5 158.2,36.0 177.5,36.0 196.7,36.0 216.0,28.6 216,42' fill='#1677ff' fill-opacity='0.08'/><polyline points='4.0,4.0 23.3,36.0 42.5,36.0 61.8,36.0 81.1,36.0 100.4,16.8 119.6,36.0 138.9,22.5 158.2,36.0 177.5,36.0 196.7,36.0 216.0,28.6' fill='none' stroke='#1677ff' stroke-width='2' stroke-linejoin='round' stroke-linecap='round'/><circle cx='216.0' cy='28.6' r='3' fill='#1677ff'/></svg><div class="sparklabel">今日各批次花费（元/批）</div></div>
+   <div class="srow"><span>今日花费</span><b>13.6</b></div>
+   <div class="srow"><span>出价</span><b>0.2</b> <small>建议 2.8</small></div>
+   <div class="srow"><span>余额</span>40.64</div>
+  </div>
+  <div class="scard">
+   <div class="sname" title="食禄记（牛肉面.豌杂面）">食禄记（牛肉面.豌杂面）</div>
+   <div class="stime">韦炼　17:15 采集</div>
+   <div class="ranks">
+    <div class="rank"><div class="rv"><span class='r-good'>18<small>位</small></span></div><div class="rk">综合排名</div></div>
+    <div class="rank"><div class="rv"><span class='r-good'>5<small>位</small></span></div><div class="rk">搜索排名</div></div>
+   </div>
+   <div class="sparkbox"><svg class='spark' viewBox='0 0 220 46' preserveAspectRatio='none'><polygon points='4,42 4.0,16.5 23.3,36.0 42.5,36.0 61.8,36.0 81.1,36.0 100.4,36.0 119.6,32.3 138.9,29.7 158.2,4.0 177.5,30.3 196.7,33.5 216.0,36.0 216,42' fill='#1677ff' fill-opacity='0.08'/><polyline points='4.0,16.5 23.3,36.0 42.5,36.0 61.8,36.0 81.1,36.0 100.4,36.0 119.6,32.3 138.9,29.7 158.2,4.0 177.5,30.3 196.7,33.5 216.0,36.0' fill='none' stroke='#1677ff' stroke-width='2' stroke-linejoin='round' stroke-linecap='round'/><circle cx='216.0' cy='36.0' r='3' fill='#1677ff'/></svg><div class="sparklabel">今日各批次花费（元/批）</div></div>
+   <div class="srow"><span>今日花费</span><b>9.37</b></div>
+   <div class="srow"><span>出价</span><b>0.2</b> <small>建议 0.6</small></div>
+   <div class="srow"><span>余额</span>1460.61</div>
+  </div>
+  <div class="scard">
+   <div class="sname" title="煮小篓盘盘麻辣烫·鲜货冒菜(紫荆店)">煮小篓盘盘麻辣烫·鲜货冒菜(紫荆店)</div>
+   <div class="stime">颜毓恒　17:15 采集</div>
+   <div class="ranks">
+    <div class="rank"><div class="rv"><span class='r-good'>12<small>位</small></span></div><div class="rk">综合排名</div></div>
+    <div class="rank"><div class="rv"><span class='r-zero'>0<small>位</small></span></div><div class="rk">搜索排名</div></div>
+   </div>
+   <div class="sparkbox"><svg class='spark' viewBox='0 0 220 46' preserveAspectRatio='none'><polygon points='4,42 4.0,4.0 23.3,36.0 42.5,36.0 61.8,36.0 81.1,35.0 100.4,36.0 119.6,36.0 138.9,36.0 158.2,36.0 177.5,36.0 196.7,36.0 216.0,33.1 216,42' fill='#1677ff' fill-opacity='0.08'/><polyline points='4.0,4.0 23.3,36.0 42.5,36.0 61.8,36.0 81.1,35.0 100.4,36.0 119.6,36.0 138.9,36.0 158.2,36.0 177.5,36.0 196.7,36.0 216.0,33.1' fill='none' stroke='#1677ff' stroke-width='2' stroke-linejoin='round' stroke-linecap='round'/><circle cx='216.0' cy='33.1' r='3' fill='#1677ff'/></svg><div class="sparklabel">今日各批次花费（元/批）</div></div>
+   <div class="srow"><span>今日花费</span><b>7.25</b></div>
+   <div class="srow"><span>出价</span><b>0.1</b> <small>建议 3.0</small></div>
+   <div class="srow"><span>余额</span>149.97</div>
+  </div>
+  <div class="scard">
+   <div class="sname" title="欢喜麻辣烫">欢喜麻辣烫</div>
+   <div class="stime">韦炼　17:15 采集</div>
+   <div class="ranks">
+    <div class="rank"><div class="rv"><span class='r-bad'>28<small>位</small></span></div><div class="rk">综合排名</div></div>
+    <div class="rank"><div class="rv"><span class='r-good'>8<small>位</small></span></div><div class="rk">搜索排名</div></div>
+   </div>
+   <div class="sparkbox"><svg class='spark' viewBox='0 0 220 46' preserveAspectRatio='none'><polygon points='4,42 4.0,4.0 23.3,36.0 42.5,36.0 61.8,36.0 81.1,36.0 100.4,31.0 119.6,36.0 138.9,36.0 158.2,31.7 177.5,36.0 196.7,36.0 216.0,26.0 216,42' fill='#1677ff' fill-opacity='0.08'/><polyline points='4.0,4.0 23.3,36.0 42.5,36.0 61.8,36.0 81.1,36.0 100.4,31.0 119.6,36.0 138.9,36.0 158.2,31.7 177.5,36.0 196.7,36.0 216.0,26.0' fill='none' stroke='#1677ff' stroke-width='2' stroke-linejoin='round' stroke-linecap='round'/><circle cx='216.0' cy='26.0' r='3' fill='#1677ff'/></svg><div class="sparklabel">今日各批次花费（元/批）</div></div>
+   <div class="srow"><span>今日花费</span><b>7.11</b></div>
+   <div class="srow"><span>出价</span><b>0.4</b> <small>建议 0.5</small></div>
+   <div class="srow"><span>余额</span>100.74</div>
+  </div>
+  <div class="scard">
+   <div class="sname" title="坨坨牛肉(烧菜·盖饭·拌面·花径路店)">坨坨牛肉(烧菜·盖饭·拌面·花径路店)</div>
+   <div class="stime">韦炼　17:15 采集</div>
+   <div class="ranks">
+    <div class="rank"><div class="rv"><span class='r-good'>16<small>位</small></span></div><div class="rk">综合排名</div></div>
+    <div class="rank"><div class="rv"><span class='r-bad'>11<small>位</small></span></div><div class="rk">搜索排名</div></div>
+   </div>
+   <div class="sparkbox"><svg class='spark' viewBox='0 0 220 46' preserveAspectRatio='none'><polygon points='4,42 4.0,4.0 23.3,36.0 42.5,36.0 61.8,36.0 81.1,36.0 100.4,36.0 119.6,36.0 138.9,36.0 158.2,36.0 177.5,36.0 196.7,36.0 216.0,36.0 216,42' fill='#1677ff' fill-opacity='0.08'/><polyline points='4.0,4.0 23.3,36.0 42.5,36.0 61.8,36.0 81.1,36.0 100.4,36.0 119.6,36.0 138.9,36.0 158.2,36.0 177.5,36.0 196.7,36.0 216.0,36.0' fill='none' stroke='#1677ff' stroke-width='2' stroke-linejoin='round' stroke-linecap='round'/><circle cx='216.0' cy='36.0' r='3' fill='#1677ff'/></svg><div class="sparklabel">今日各批次花费（元/批）</div></div>
+   <div class="srow"><span>今日花费</span><b>3.95</b></div>
+   <div class="srow"><span>出价</span><b>0.4</b> <small>建议 0.6</small></div>
+   <div class="srow"><span>余额</span>1164.89</div>
+  </div>
+  <div class="scard">
+   <div class="sname" title="白螺湾螺蛳粉">白螺湾螺蛳粉</div>
+   <div class="stime">颜毓恒　17:15 采集</div>
+   <div class="ranks">
+    <div class="rank"><div class="rv"><span class='r-bad'>45<small>位</small></span></div><div class="rk">综合排名</div></div>
+    <div class="rank"><div class="rv"><span class='r-bad'>13<small>位</small></span></div><div class="rk">搜索排名</div></div>
+   </div>
+   <div class="sparkbox"><svg class='spark' viewBox='0 0 220 46' preserveAspectRatio='none'><polygon points='4,42 4.0,4.0 23.3,36.0 42.5,36.0 61.8,4.0 81.1,36.0 100.4,4.0 119.6,36.0 138.9,36.0 158.2,36.0 177.5,36.0 196.7,36.0 216.0,36.0 216,42' fill='#1677ff' fill-opacity='0.08'/><polyline points='4.0,4.0 23.3,36.0 42.5,36.0 61.8,4.0 81.1,36.0 100.4,4.0 119.6,36.0 138.9,36.0 158.2,36.0 177.5,36.0 196.7,36.0 216.0,36.0' fill='none' stroke='#1677ff' stroke-width='2' stroke-linejoin='round' stroke-linecap='round'/><circle cx='216.0' cy='36.0' r='3' fill='#1677ff'/></svg><div class="sparklabel">今日各批次花费（元/批）</div></div>
+   <div class="srow"><span>今日花费</span><b>3.6</b></div>
+   <div class="srow"><span>出价</span><b>0.7</b> <small>建议 0.6</small></div>
+   <div class="srow"><span>余额</span>48.6</div>
+  </div>
+  <div class="scard">
+   <div class="sname" title="漾濞卷粉（二分店）">漾濞卷粉（二分店）</div>
+   <div class="stime">韦炼　17:15 采集</div>
+   <div class="ranks">
+    <div class="rank"><div class="rv"><span class='r-zero'>0<small>位</small></span></div><div class="rk">综合排名</div></div>
+    <div class="rank"><div class="rv"><span class='r-zero'>0<small>位</small></span></div><div class="rk">搜索排名</div></div>
+   </div>
+   <div class="sparkbox"><svg class='spark' viewBox='0 0 220 46' preserveAspectRatio='none'><line x1='4' y1='36' x2='216' y2='36' stroke='#d9d9d9' stroke-width='2'/></svg><div class="sparklabel">今日各批次花费（元/批）</div></div>
+   <div class="srow"><span>今日花费</span><b>0.0</b></div>
+   <div class="srow"><span>出价</span><b>0.7</b> <small>建议 0.1</small></div>
+   <div class="srow"><span>余额</span><b class='bal-low'>14.55</b><span class='bal-warn'>⚠ 该充值了</span></div>
+  </div>
+  <div class="scard">
+   <div class="sname" title="广东石磨肠粉（祥和里店）">广东石磨肠粉（祥和里店）</div>
+   <div class="stime">颜毓恒　17:15 采集</div>
+   <div class="ranks">
+    <div class="rank"><div class="rv"><span class='r-zero'>0<small>位</small></span></div><div class="rk">综合排名</div></div>
+    <div class="rank"><div class="rv"><span class='r-zero'>0<small>位</small></span></div><div class="rk">搜索排名</div></div>
+   </div>
+   <div class="sparkbox"><svg class='spark' viewBox='0 0 220 46' preserveAspectRatio='none'><line x1='4' y1='36' x2='216' y2='36' stroke='#d9d9d9' stroke-width='2'/></svg><div class="sparklabel">今日各批次花费（元/批）</div></div>
+   <div class="srow"><span>今日花费</span><b>0.0</b></div>
+   <div class="srow"><span>出价</span><b>0.2</b> <small>建议 2.8</small></div>
+   <div class="srow"><span>余额</span>84.65</div>
+  </div>
+  <div class="scard">
+   <div class="sname" title="锅盔女王（南充米粉.玉林店）">锅盔女王（南充米粉.玉林店）</div>
+   <div class="stime">颜毓恒　17:15 采集</div>
+   <div class="ranks">
+    <div class="rank"><div class="rv"><span class='r-zero'>0<small>位</small></span></div><div class="rk">综合排名</div></div>
+    <div class="rank"><div class="rv"><span class='r-zero'>0<small>位</small></span></div><div class="rk">搜索排名</div></div>
+   </div>
+   <div class="sparkbox"><svg class='spark' viewBox='0 0 220 46' preserveAspectRatio='none'><line x1='4' y1='36' x2='216' y2='36' stroke='#d9d9d9' stroke-width='2'/></svg><div class="sparklabel">今日各批次花费（元/批）</div></div>
+   <div class="srow"><span>今日花费</span><b>0.0</b></div>
+   <div class="srow"><span>出价</span><b>0.2</b> <small>建议 2.7</small></div>
+   <div class="srow"><span>余额</span>1073.72</div>
+  </div>
+</div>
+<p class='note'>0位 = 该渠道近1小时无推广曝光（美团页面口径，不标色）；— = 没采到。排名标准线：综合 ≤20 位绿 / &gt;20 位红，搜索 ≤10 位绿 / &gt;10 位红。卡内小曲线 = 今日各采集批次的单批花费（增量），越陡烧得越快。</p>
+<h2>推广汇总</h2>
+<div class="cards">
+ <div class="card"><div class="v">292.06</div><div class="k">今日已花（合计）</div></div>
+ <div class="card"><div class="v">257.31</div><div class="k">昨日同刻（合计）</div></div>
+ <div class="card"><div class="v">11</div><div class="k">今天在烧的店</div></div>
+ <div class="card"><div class="v" style="color:#389e0d">0</div><div class="k">预算要烧满（≥85%）</div></div>
+</div>
+<table>
+<tr><th>门店 / 负责人</th><th class="num">今日已花</th><th class="num">综合排名</th><th class="num">搜索排名</th>
+<th class="num">昨日同刻</th><th>快慢</th>
+<th class="num">出价</th><th class="num">日预算</th><th>预算已用</th><th class="num">余额</th><th>推广手段</th></tr>
+<tr style=''><td><b>龍门·柴火鸡（桐梓林店）</b><br><span style='font-size:12px;color:#888'>颜毓恒</span></td><td class='num'><b>93.43</b></td><td class='num'><span class='r-bad'>38<small>位</small></span></td><td class='num'><span class='r-good'>3<small>位</small></span></td><td class='num'>66.27</td><td style='color:#d4380d'>快 41%</td><td class='num'><b>0.6</b> <span style='font-size:12px;color:#888'>/ 商圈均1.1</span><br><span style='font-size:12px;color:#888'>范围0.6~1.7</span></td><td class='num'>159.0</td><td><div style='background:#f0f0f0;border-radius:3px;height:8px;width:80px'><div style='background:#389e0d;height:8px;border-radius:3px;width:58.8%'></div></div><span style='color:#389e0d;font-size:12px'>58.8%</span></td><td class='num'>143.35</td><td style='font-size:12px'>时间、顾客、区域类型、品类、客单价、搜索（搜索+0.4）</td></tr><tr style=''><td><b>螺会长螺蛳粉（汉峪光年店）</b><br><span style='font-size:12px;color:#888'>颜毓恒</span></td><td class='num'><b>79.09</b></td><td class='num'><span class='r-good'>14<small>位</small></span></td><td class='num'><span class='r-good'>4<small>位</small></span></td><td class='num'>62.1</td><td style='color:#d4380d'>快 27%</td><td class='num'><b>0.6</b> <span style='font-size:12px;color:#888'>/ 商圈均1.1</span><br><span style='font-size:12px;color:#888'>范围0.6~1.6</span></td><td class='num'>155.0</td><td><div style='background:#f0f0f0;border-radius:3px;height:8px;width:80px'><div style='background:#389e0d;height:8px;border-radius:3px;width:51.0%'></div></div><span style='color:#389e0d;font-size:12px'>51.0%</span></td><td class='num'>18.6</td><td style='font-size:12px'>时间、顾客、区域类型、品类、搜索（搜索+0.3）</td></tr><tr style=''><td><b>家福居汉餐·盖浇饭·小炒</b><br><span style='font-size:12px;color:#888'>颜毓恒</span></td><td class='num'><b>38.8</b></td><td class='num'><span class='r-good'>1<small>位</small></span></td><td class='num'><span class='r-zero'>0<small>位</small></span></td><td class='num'>16.51</td><td style='color:#d4380d'>快 135%</td><td class='num'><b>0.1</b> <span style='font-size:12px;color:#888'>/ 商圈均0.8</span><br><span style='font-size:12px;color:#888'>范围0.1~0.8</span></td><td class='num'>50.0</td><td><div style='background:#f0f0f0;border-radius:3px;height:8px;width:80px'><div style='background:#d48806;height:8px;border-radius:3px;width:77.6%'></div></div><span style='color:#d48806;font-size:12px'>77.6%</span></td><td class='num'>20.92</td><td style='font-size:12px'>时间、顾客、品类、搜索（搜索+0.3）</td></tr><tr style=''><td><b>杨记烧腊（拌卤菜-套饭-大悦城店）</b><br><span style='font-size:12px;color:#888'>韦炼</span></td><td class='num'><b>20.06</b></td><td class='num'><span class='r-zero'>0<small>位</small></span></td><td class='num'><span class='r-zero'>0<small>位</small></span></td><td class='num'>21.48</td><td style='color:#389e0d'>持平</td><td class='num'><b>0.3</b> <span style='font-size:12px;color:#888'>/ 商圈均0.8</span><br><span style='font-size:12px;color:#888'>范围0.3~0.7</span></td><td class='num'>50.0</td><td><div style='background:#f0f0f0;border-radius:3px;height:8px;width:80px'><div style='background:#389e0d;height:8px;border-radius:3px;width:40.1%'></div></div><span style='color:#389e0d;font-size:12px'>40.1%</span></td><td class='num'>25.01</td><td style='font-size:12px'>顾客、品类、搜索（搜索+0.2）</td></tr><tr style=''><td><b>厨邻里社区食堂(东北菜）</b><br><span style='font-size:12px;color:#888'>韦炼</span></td><td class='num'><b>15.8</b></td><td class='num'><span class='r-good'>17<small>位</small></span></td><td class='num'><span class='r-good'>5<small>位</small></span></td><td class='num'>45.81</td><td style='color:#096dd9'>慢 66%</td><td class='num'><b>0.2</b> <span style='font-size:12px;color:#888'>/ 商圈均0.8</span><br><span style='font-size:12px;color:#888'>范围0.1~1.2</span></td><td class='num'>60.0</td><td><div style='background:#f0f0f0;border-radius:3px;height:8px;width:80px'><div style='background:#389e0d;height:8px;border-radius:3px;width:26.3%'></div></div><span style='color:#389e0d;font-size:12px'>26.3%</span></td><td class='num'>1451.62</td><td style='font-size:12px'>品类、搜索（搜索+0.3）</td></tr><tr style=''><td><b>正宗上佳黄焖鸡米饭（西昌店）</b><br><span style='font-size:12px;color:#888'>颜毓恒</span></td><td class='num'><b>13.6</b></td><td class='num'><span class='r-zero'>0<small>位</small></span></td><td class='num'><span class='r-zero'>0<small>位</small></span></td><td class='num'>21.35</td><td style='color:#096dd9'>慢 36%</td><td class='num'><b>0.2</b> <span style='font-size:12px;color:#888'>/ 商圈均1.6</span><br><span style='font-size:12px;color:#888'>范围0.1~1.5</span></td><td class='num'>50.0</td><td><div style='background:#f0f0f0;border-radius:3px;height:8px;width:80px'><div style='background:#389e0d;height:8px;border-radius:3px;width:27.2%'></div></div><span style='color:#389e0d;font-size:12px'>27.2%</span></td><td class='num'>40.64</td><td style='font-size:12px'>时间、顾客、区域类型、品类、搜索（搜索+0.3）</td></tr><tr style=''><td><b>食禄记（牛肉面.豌杂面）</b><br><span style='font-size:12px;color:#888'>韦炼</span></td><td class='num'><b>9.37</b></td><td class='num'><span class='r-good'>18<small>位</small></span></td><td class='num'><span class='r-good'>5<small>位</small></span></td><td class='num'>0.0</td><td style='color:#999'>昨日没烧</td><td class='num'><b>0.2</b> <span style='font-size:12px;color:#888'>/ 商圈均0.8</span><br><span style='font-size:12px;color:#888'>范围0.2~1.0</span></td><td class='num'>50.0</td><td><div style='background:#f0f0f0;border-radius:3px;height:8px;width:80px'><div style='background:#389e0d;height:8px;border-radius:3px;width:18.7%'></div></div><span style='color:#389e0d;font-size:12px'>18.7%</span></td><td class='num'>1460.61</td><td style='font-size:12px'>顾客、品类、搜索（搜索+0.5）</td></tr><tr style=''><td><b>煮小篓盘盘麻辣烫·鲜货冒菜(紫荆店)</b><br><span style='font-size:12px;color:#888'>颜毓恒</span></td><td class='num'><b>7.25</b></td><td class='num'><span class='r-good'>12<small>位</small></span></td><td class='num'><span class='r-zero'>0<small>位</small></span></td><td class='num'>8.21</td><td style='color:#389e0d'>持平</td><td class='num'><b>0.1</b> <span style='font-size:12px;color:#888'>/ 商圈均0.8</span><br><span style='font-size:12px;color:#888'>范围0.1~1.0</span></td><td class='num'>50.0</td><td><div style='background:#f0f0f0;border-radius:3px;height:8px;width:80px'><div style='background:#389e0d;height:8px;border-radius:3px;width:14.5%'></div></div><span style='color:#389e0d;font-size:12px'>14.5%</span></td><td class='num'>149.97</td><td style='font-size:12px'>时间、顾客、区域类型、品类、搜索（搜索+0.4）</td></tr><tr style=''><td><b>欢喜麻辣烫</b><br><span style='font-size:12px;color:#888'>韦炼</span></td><td class='num'><b>7.11</b></td><td class='num'><span class='r-bad'>28<small>位</small></span></td><td class='num'><span class='r-good'>8<small>位</small></span></td><td class='num'>7.15</td><td style='color:#389e0d'>持平</td><td class='num'><b>0.4</b> <span style='font-size:12px;color:#888'>/ 商圈均0.8</span><br><span style='font-size:12px;color:#888'>范围0.4~1.1</span></td><td class='num'>50.0</td><td><div style='background:#f0f0f0;border-radius:3px;height:8px;width:80px'><div style='background:#389e0d;height:8px;border-radius:3px;width:14.2%'></div></div><span style='color:#389e0d;font-size:12px'>14.2%</span></td><td class='num'>100.74</td><td style='font-size:12px'>顾客、品类、搜索（搜索+0.4）</td></tr><tr style=''><td><b>坨坨牛肉(烧菜·盖饭·拌面·花径路店)</b><br><span style='font-size:12px;color:#888'>韦炼</span></td><td class='num'><b>3.95</b></td><td class='num'><span class='r-good'>16<small>位</small></span></td><td class='num'><span class='r-bad'>11<small>位</small></span></td><td class='num'>3.91</td><td style='color:#389e0d'>持平</td><td class='num'><b>0.4</b> <span style='font-size:12px;color:#888'>/ 商圈均0.8</span><br><span style='font-size:12px;color:#888'>范围0.4~1.0</span></td><td class='num'>50.0</td><td><div style='background:#f0f0f0;border-radius:3px;height:8px;width:80px'><div style='background:#389e0d;height:8px;border-radius:3px;width:7.9%'></div></div><span style='color:#389e0d;font-size:12px'>7.9%</span></td><td class='num'>1164.89</td><td style='font-size:12px'>顾客、品类、搜索（搜索+0.4）</td></tr><tr style=''><td><b>白螺湾螺蛳粉</b><br><span style='font-size:12px;color:#888'>颜毓恒</span></td><td class='num'><b>3.6</b></td><td class='num'><span class='r-bad'>45<small>位</small></span></td><td class='num'><span class='r-bad'>13<small>位</small></span></td><td class='num'>4.51</td><td style='color:#096dd9'>慢 20%</td><td class='num'><b>0.7</b> <span style='font-size:12px;color:#888'>/ 商圈均1.1</span><br><span style='font-size:12px;color:#888'>范围0.7~1.6</span></td><td class='num'>50.0</td><td><div style='background:#f0f0f0;border-radius:3px;height:8px;width:80px'><div style='background:#389e0d;height:8px;border-radius:3px;width:7.2%'></div></div><span style='color:#389e0d;font-size:12px'>7.2%</span></td><td class='num'>48.6</td><td style='font-size:12px'>时间、顾客、区域类型、品类、搜索（搜索+0.4）</td></tr><tr><td colspan='11' style='background:#fafafa;color:#999;font-size:12px'>今日还没烧的 5 家 ↓</td></tr><tr style='color:#bbb'><td><b>广东石磨肠粉（祥和里店）</b><br><span style='font-size:12px;color:#888'>颜毓恒</span></td><td class='num'><b>0.0</b></td><td class='num'><span class='r-zero'>0<small>位</small></span></td><td class='num'><span class='r-zero'>0<small>位</small></span></td><td class='num'>0.0</td><td style='color:#999'>—</td><td class='num'><b>0.2</b> <span style='font-size:12px;color:#888'>/ 商圈均1.1</span><br><span style='font-size:12px;color:#888'>范围0.2~1.0</span></td><td class='num'>50.0</td><td><div style='background:#f0f0f0;border-radius:3px;height:8px;width:80px'><div style='background:#389e0d;height:8px;border-radius:3px;width:0.0%'></div></div><span style='color:#389e0d;font-size:12px'>0.0%</span></td><td class='num'>84.65</td><td style='font-size:12px'>时间、顾客、品类、搜索（搜索+0.3）</td></tr><tr style='color:#bbb'><td><b>漾濞卷粉（二分店）</b><br><span style='font-size:12px;color:#888'>韦炼</span></td><td class='num'><b>0.0</b></td><td class='num'><span class='r-zero'>0<small>位</small></span></td><td class='num'><span class='r-zero'>0<small>位</small></span></td><td class='num'>0.0</td><td style='color:#999'>—</td><td class='num'><b>0.7</b> <span style='font-size:12px;color:#888'>/ 商圈均1.0</span><br><span style='font-size:12px;color:#888'>范围0.35~2.4</span></td><td class='num'>50.0</td><td><div style='background:#f0f0f0;border-radius:3px;height:8px;width:80px'><div style='background:#389e0d;height:8px;border-radius:3px;width:0.0%'></div></div><span style='color:#389e0d;font-size:12px'>0.0%</span></td><td class='num'><b style='color:#cf1322'>14.55</b> <span style='background:#fff1f0;color:#cf1322;padding:1px 6px;border-radius:3px;font-size:12px'>⚠ 该充值了</span></td><td style='font-size:12px'>顾客、品类、搜索（搜索+0.7）</td></tr><tr style='color:#bbb'><td><b>老罗家烧烤大排档（南虹路店）</b><br><span style='font-size:12px;color:#888'>韦炼</span></td><td class='num'><b>0.0</b></td><td class='num'><span class='r-none'>—</span></td><td class='num'><span class='r-none'>—</span></td><td class='num'>0.01</td><td style='color:#096dd9'>慢 100%</td><td class='num'><b>0.3</b> <span style='font-size:12px;color:#888'>/ 商圈均0.8</span><br><span style='font-size:12px;color:#888'>范围0.13~1.86</span></td><td class='num'>50.0</td><td><div style='background:#f0f0f0;border-radius:3px;height:8px;width:80px'><div style='background:#389e0d;height:8px;border-radius:3px;width:0.0%'></div></div><span style='color:#389e0d;font-size:12px'>0.0%</span></td><td class='num'>—</td><td style='font-size:12px'>时间、顾客、区域类型、品类、客单价、搜索（搜索+0.3）</td></tr><tr style='color:#bbb'><td><b>锅盔女王（南充米粉.玉林店）</b><br><span style='font-size:12px;color:#888'>颜毓恒</span></td><td class='num'><b>0.0</b></td><td class='num'><span class='r-zero'>0<small>位</small></span></td><td class='num'><span class='r-zero'>0<small>位</small></span></td><td class='num'>0.0</td><td style='color:#999'>—</td><td class='num'><b>0.2</b> <span style='font-size:12px;color:#888'>/ 商圈均0.8</span><br><span style='font-size:12px;color:#888'>范围0.2~1.0</span></td><td class='num'>50.0</td><td><div style='background:#f0f0f0;border-radius:3px;height:8px;width:80px'><div style='background:#389e0d;height:8px;border-radius:3px;width:0.0%'></div></div><span style='color:#389e0d;font-size:12px'>0.0%</span></td><td class='num'>1073.72</td><td style='font-size:12px'>时间、顾客、区域类型、品类、搜索（搜索+0.3）</td></tr><tr style='color:#bbb'><td><b>鹏鹏砂锅地摊火锅</b><br><span style='font-size:12px;color:#888'>韦炼</span></td><td class='num'><b>0.0</b></td><td class='num'><span class='r-none'>—</span></td><td class='num'><span class='r-none'>—</span></td><td class='num'>0.0</td><td style='color:#999'>—</td><td class='num'><b>0.3</b> <span style='font-size:12px;color:#888'>/ 商圈均1.0</span><br><span style='font-size:12px;color:#888'>范围0.3~1.0</span></td><td class='num'>50.0</td><td><div style='background:#f0f0f0;border-radius:3px;height:8px;width:80px'><div style='background:#389e0d;height:8px;border-radius:3px;width:0.0%'></div></div><span style='color:#389e0d;font-size:12px'>0.0%</span></td><td class='num'>—</td><td style='font-size:12px'>时间、顾客、品类、客单价、搜索（搜索+0.3）</td></tr>
+</table>
+
+<h2>推广规律（跨 1 天汇总，按门店 × 时段）</h2>
+<table>
+<tr><th>门店</th><th class='num'>12点</th><th class='num'>13点</th><th class='num'>15点</th><th class='num'>16点</th><th class='num'>17点</th></tr>
+<tr><td><b>龍门·柴火鸡（桐梓林店）</b></td><td class='num'><b>10.4</b><br><span class='patsub'><span class='r-bad'>综合48位</span>·7次</span></td><td class='num'><b>3.9</b><br><span class='patsub'><span class='r-bad'>综合46位</span>·1次</span></td><td class='num'><b>0.0</b><br><span class='patsub'>1次</span></td><td class='num'><b>3.2</b><br><span class='patsub'><span class='r-bad'>综合46位</span>·2次</span></td><td class='num'><b>10.5</b><br><span class='patsub'><span class='r-bad'>综合38位</span>·1次</span></td></tr><tr><td><b>螺会长螺蛳粉（汉峪光年店）</b></td><td class='num'><b>7.0</b><br><span class='patsub'><span class='r-good'>综合18位</span>·7次</span></td><td class='num'><b>12.7</b><br><span class='patsub'><span class='r-good'>综合11位</span>·1次</span></td><td class='num'><b>4.7</b><br><span class='patsub'><span class='r-good'>综合2位</span>·1次</span></td><td class='num'><b>0.6</b><br><span class='patsub'><span class='r-good'>综合8位</span>·2次</span></td><td class='num'><b>11.8</b><br><span class='patsub'><span class='r-good'>综合14位</span>·1次</span></td></tr><tr><td><b>家福居汉餐·盖浇饭·小炒</b></td><td class='num'><b>5.3</b><br><span class='patsub'><span class='r-good'>综合12位</span>·7次</span></td><td class='num'><b>1.4</b><br><span class='patsub'><span class='r-good'>综合10位</span>·1次</span></td><td class='num'><b>0.0</b><br><span class='patsub'><span class='r-good'>综合3位</span>·1次</span></td><td class='num'><b>0.0</b><br><span class='patsub'><span class='r-good'>综合2位</span>·2次</span></td><td class='num'><b>0.0</b><br><span class='patsub'><span class='r-good'>综合1位</span>·1次</span></td></tr><tr><td><b>杨记烧腊（拌卤菜-套饭-大悦城店）</b></td><td class='num'><b>2.9</b><br><span class='patsub'><span class='r-bad'>综合22位</span>·7次</span></td><td class='num'><b>0.0</b><br><span class='patsub'><span class='r-good'>综合18位</span>·1次</span></td><td class='num'><b>0.0</b><br><span class='patsub'>1次</span></td><td class='num'><b>0.0</b><br><span class='patsub'>2次</span></td><td class='num'><b>0.0</b><br><span class='patsub'>1次</span></td></tr><tr><td><b>厨邻里社区食堂(东北菜）</b></td><td class='num'><b>1.3</b><br><span class='patsub'><span class='r-good'>综合18位</span>·7次</span></td><td class='num'><b>0.0</b><br><span class='patsub'><span class='r-bad'>综合23位</span>·1次</span></td><td class='num'><b>0.0</b><br><span class='patsub'><span class='r-good'>综合3位</span>·1次</span></td><td class='num'><b>1.0</b><br><span class='patsub'><span class='r-good'>综合8位</span>·2次</span></td><td class='num'><b>4.7</b><br><span class='patsub'><span class='r-good'>综合17位</span>·1次</span></td></tr><tr><td><b>正宗上佳黄焖鸡米饭（西昌店）</b></td><td class='num'><b>1.4</b><br><span class='patsub'><span class='r-bad'>综合27位</span>·7次</span></td><td class='num'><b>2.5</b><br><span class='patsub'><span class='r-good'>综合20位</span>·1次</span></td><td class='num'><b>0.0</b><br><span class='patsub'>1次</span></td><td class='num'><b>0.0</b><br><span class='patsub'><span class='r-good'>综合13位</span>·2次</span></td><td class='num'><b>1.4</b><br><span class='patsub'>1次</span></td></tr><tr><td><b>食禄记（牛肉面.豌杂面）</b></td><td class='num'><b>0.4</b><br><span class='patsub'><span class='r-good'>综合11位</span>·7次</span></td><td class='num'><b>0.9</b><br><span class='patsub'><span class='r-good'>综合14位</span>·1次</span></td><td class='num'><b>4.3</b><br><span class='patsub'><span class='r-good'>综合14位</span>·1次</span></td><td class='num'><b>0.5</b><br><span class='patsub'><span class='r-good'>综合16位</span>·2次</span></td><td class='num'><b>0.0</b><br><span class='patsub'><span class='r-good'>综合18位</span>·1次</span></td></tr><tr><td><b>煮小篓盘盘麻辣烫·鲜货冒菜(紫荆店)</b></td><td class='num'><b>1.0</b><br><span class='patsub'><span class='r-bad'>综合38位</span>·7次</span></td><td class='num'><b>0.0</b><br><span class='patsub'><span class='r-good'>综合20位</span>·1次</span></td><td class='num'><b>0.0</b><br><span class='patsub'>1次</span></td><td class='num'><b>0.0</b><br><span class='patsub'>2次</span></td><td class='num'><b>0.6</b><br><span class='patsub'><span class='r-good'>综合12位</span>·1次</span></td></tr><tr><td><b>欢喜麻辣烫</b></td><td class='num'><b>0.7</b><br><span class='patsub'><span class='r-good'>综合15位</span>·7次</span></td><td class='num'><b>0.0</b><br><span class='patsub'><span class='r-good'>综合19位</span>·1次</span></td><td class='num'><b>0.6</b><br><span class='patsub'>1次</span></td><td class='num'><b>0.0</b><br><span class='patsub'>2次</span></td><td class='num'><b>1.4</b><br><span class='patsub'><span class='r-bad'>综合28位</span>·1次</span></td></tr><tr><td><b>坨坨牛肉(烧菜·盖饭·拌面·花径路店)</b></td><td class='num'><b>0.6</b><br><span class='patsub'>7次</span></td><td class='num'><b>0.0</b><br><span class='patsub'><span class='r-bad'>综合62位</span>·1次</span></td><td class='num'><b>0.0</b><br><span class='patsub'>1次</span></td><td class='num'><b>0.0</b><br><span class='patsub'>2次</span></td><td class='num'><b>0.0</b><br><span class='patsub'><span class='r-good'>综合16位</span>·1次</span></td></tr><tr><td><b>白螺湾螺蛳粉</b></td><td class='num'><b>0.5</b><br><span class='patsub'><span class='r-bad'>综合37位</span>·7次</span></td><td class='num'><b>0.0</b><br><span class='patsub'><span class='r-good'>综合7位</span>·1次</span></td><td class='num'><b>0.0</b><br><span class='patsub'>1次</span></td><td class='num'><b>0.0</b><br><span class='patsub'>2次</span></td><td class='num'><b>0.0</b><br><span class='patsub'><span class='r-bad'>综合45位</span>·1次</span></td></tr><tr><td><b>锅盔女王（南充米粉.玉林店）</b></td><td class='num'><b>0.0</b><br><span class='patsub'>7次</span></td><td class='num'><b>0.0</b><br><span class='patsub'>1次</span></td><td class='num'><b>0.0</b><br><span class='patsub'>1次</span></td><td class='num'><b>0.0</b><br><span class='patsub'>2次</span></td><td class='num'><b>0.0</b><br><span class='patsub'>1次</span></td></tr><tr><td><b>老罗家烧烤大排档（南虹路店）</b></td><td class='num'><b>0.0</b><br><span class='patsub'>7次</span></td><td class='num'><b>0.0</b><br><span class='patsub'>1次</span></td><td class='num'><b>0.0</b><br><span class='patsub'>1次</span></td><td class='num'><b>0.0</b><br><span class='patsub'>2次</span></td><td class='num'><b>0.0</b><br><span class='patsub'>1次</span></td></tr><tr><td><b>广东石磨肠粉（祥和里店）</b></td><td class='num'><b>0.0</b><br><span class='patsub'>7次</span></td><td class='num'><b>0.0</b><br><span class='patsub'>1次</span></td><td class='num'><b>0.0</b><br><span class='patsub'>1次</span></td><td class='num'><b>0.0</b><br><span class='patsub'>2次</span></td><td class='num'><b>0.0</b><br><span class='patsub'>1次</span></td></tr><tr><td><b>漾濞卷粉（二分店）</b></td><td class='num'><b>0.0</b><br><span class='patsub'>7次</span></td><td class='num'><b>0.0</b><br><span class='patsub'>1次</span></td><td class='num'><b>0.0</b><br><span class='patsub'>1次</span></td><td class='num'><b>0.0</b><br><span class='patsub'>2次</span></td><td class='num'><b>0.0</b><br><span class='patsub'>1次</span></td></tr><tr><td><b>鹏鹏砂锅地摊火锅</b></td><td class='num'><b>0.0</b><br><span class='patsub'>7次</span></td><td class='num'><b>0.0</b><br><span class='patsub'>1次</span></td><td class='num'><b>0.0</b><br><span class='patsub'>1次</span></td><td class='num'><b>0.0</b><br><span class='patsub'>2次</span></td><td class='num'><b>0.0</b><br><span class='patsub'>1次</span></td></tr>
+</table>
+<p class="note">单元格大字 = 该时段平均单批花费（元/批，跨天平均）；小字 = 平均综合排名（0位=无曝光，不计入平均）
+· 批次数。数据会随每天采集越攒越多，规律越看越准。</p>
+
+<h2>近7日排名分布（20260715-20260721，进店量按排名位置拆）</h2>
+<table>
+<tr><th>门店</th><th class="num">综合1-5位</th><th class="num">6-10</th><th class="num">11-15</th>
+<th class="num">16-20</th><th class="num">21-25</th><th class="num">25位以下</th>
+<th class="num">搜索1-5位</th><th class="num">7日总进店</th><th class="num">同行均价(元)</th></tr>
+<tr><td><b>厨邻里社区食堂(东北菜）</b></td><td class='num'>145</td><td class='num'>104</td><td class='num'>49</td><td class='num'>35</td><td class='num'>35</td><td class='num'>64</td><td class='num'>81</td><td class='num'>574</td><td class='num'>0.78</td></tr><tr><td><b>坨坨牛肉(烧菜·盖饭·拌面·花径路店)</b></td><td class='num'>24</td><td class='num'>21</td><td class='num'>34</td><td class='num'>3</td><td class='num'>5</td><td class='num'>8</td><td class='num'>22</td><td class='num'>163</td><td class='num'>0.91</td></tr><tr><td><b>家福居汉餐·盖浇饭·小炒</b></td><td class='num'>120</td><td class='num'>132</td><td class='num'>73</td><td class='num'>11</td><td class='num'>22</td><td class='num'>23</td><td class='num'>113</td><td class='num'>519</td><td class='num'>0.59</td></tr><tr><td><b>广东石磨肠粉（祥和里店）</b></td><td class='num'>0</td><td class='num'>0</td><td class='num'>0</td><td class='num'>0</td><td class='num'>0</td><td class='num'>0</td><td class='num'>0</td><td class='num'>0</td><td class='num'>0.84</td></tr><tr><td><b>杨记烧腊（拌卤菜-套饭-大悦城店）</b></td><td class='num'>38</td><td class='num'>67</td><td class='num'>87</td><td class='num'>30</td><td class='num'>23</td><td class='num'>63</td><td class='num'>50</td><td class='num'>384</td><td class='num'>0.73</td></tr><tr><td><b>欢喜麻辣烫</b></td><td class='num'>78</td><td class='num'>78</td><td class='num'>40</td><td class='num'>14</td><td class='num'>10</td><td class='num'>38</td><td class='num'>147</td><td class='num'>408</td><td class='num'>0.58</td></tr><tr><td><b>正宗上佳黄焖鸡米饭（西昌店）</b></td><td class='num'>18</td><td class='num'>58</td><td class='num'>14</td><td class='num'>6</td><td class='num'>6</td><td class='num'>25</td><td class='num'>104</td><td class='num'>306</td><td class='num'>0.76</td></tr><tr><td><b>漾濞卷粉（二分店）</b></td><td class='num'>0</td><td class='num'>0</td><td class='num'>0</td><td class='num'>0</td><td class='num'>0</td><td class='num'>0</td><td class='num'>0</td><td class='num'>0</td><td class='num'>0.55</td></tr><tr><td><b>煮小篓盘盘麻辣烫·鲜货冒菜(紫荆店)</b></td><td class='num'>13</td><td class='num'>23</td><td class='num'>14</td><td class='num'>10</td><td class='num'>18</td><td class='num'>21</td><td class='num'>17</td><td class='num'>139</td><td class='num'>0.84</td></tr><tr><td><b>白螺湾螺蛳粉</b></td><td class='num'>0</td><td class='num'>2</td><td class='num'>9</td><td class='num'>0</td><td class='num'>0</td><td class='num'>19</td><td class='num'>9</td><td class='num'>46</td><td class='num'>0.87</td></tr><tr><td><b>老罗家烧烤大排档（南虹路店）</b></td><td class='num'>57</td><td class='num'>60</td><td class='num'>30</td><td class='num'>8</td><td class='num'>40</td><td class='num'>37</td><td class='num'>104</td><td class='num'>351</td><td class='num'>0.86</td></tr><tr><td><b>螺会长螺蛳粉（汉峪光年店）</b></td><td class='num'>164</td><td class='num'>128</td><td class='num'>66</td><td class='num'>6</td><td class='num'>39</td><td class='num'>45</td><td class='num'>391</td><td class='num'>853</td><td class='num'>0.79</td></tr><tr><td><b>锅盔女王（南充米粉.玉林店）</b></td><td class='num'>0</td><td class='num'>0</td><td class='num'>0</td><td class='num'>0</td><td class='num'>0</td><td class='num'>0</td><td class='num'>0</td><td class='num'>0</td><td class='num'>0.72</td></tr><tr><td><b>食禄记（牛肉面.豌杂面）</b></td><td class='num'>123</td><td class='num'>106</td><td class='num'>40</td><td class='num'>12</td><td class='num'>25</td><td class='num'>25</td><td class='num'>97</td><td class='num'>441</td><td class='num'>0.75</td></tr><tr><td><b>鹏鹏砂锅地摊火锅</b></td><td class='num'>0</td><td class='num'>0</td><td class='num'>0</td><td class='num'>0</td><td class='num'>0</td><td class='num'>0</td><td class='num'>0</td><td class='num'>0</td><td class='num'>0.58</td></tr><tr><td><b>龍门·柴火鸡（桐梓林店）</b></td><td class='num'>90</td><td class='num'>55</td><td class='num'>93</td><td class='num'>48</td><td class='num'>243</td><td class='num'>450</td><td class='num'>40</td><td class='num'>1041</td><td class='num'>0.9</td></tr>
+</table>
+<p class="note">分位置段的排名美团只给完整天的，今日实时没有（已实测验证），这张表每天滚一次，来源：推广排名_20260722.csv。</p>
+<p class="note">快慢 = 今日到此刻 ÷ 昨日同刻。余额为门店级（各店独立，2026-07-22 probe_L/M 实测），
+只采「现在在推广的」店省时间，空就是没采；低于 15 元红色加粗提醒充值。
+综合/搜索实时排名来自点金子页「推广实况 ＞」地图页接口（/ad/v2/live/home），只采在推广的店。</p>
+</body></html>
