@@ -31,10 +31,16 @@ tr.store{cursor:pointer;transition:background .15s}tr.store:hover{background:#f7
 .green{background:#22a06b}.orange{background:#f0932b}.red{background:#e15241}.purple{background:#8e5adf}.gray{background:#9aa0a8}
 .up{color:#e15241}.down{color:#22a06b}.ok{color:#22a06b;font-weight:600}.warn{color:#f0932b;font-weight:600}.bad{color:#e15241;font-weight:600}
 .detail td{padding:0}.dwrap{padding:18px 20px;background:#fbfcfe}
-.cmp{width:100%;font-size:13px;margin:2px 0 14px}
-.cmp th{background:transparent;text-align:right;color:#8a9099;cursor:default}
-.cmp td,.cmp th{padding:7px 10px;border-bottom:1px solid #eef0f3}
-.cmp td:first-child,.cmp th:first-child{text-align:left;color:#5a6069}
+.mflegend{font-size:11px;color:#8a9099;margin-bottom:6px}
+.mfrow{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+.mfcol{flex:1;min-width:90px;background:#fff;border:1px solid #eef0f3;border-radius:8px;padding:8px 6px;text-align:center}
+.mfhead{font-size:11px;color:#5a6069;font-weight:600;margin-bottom:6px;white-space:nowrap}
+.mfbars{display:flex;align-items:flex-end;justify-content:center;height:40px;gap:3px}
+.mfstage{width:14px;height:100%;display:flex;align-items:flex-end}
+.mfbar{width:100%;border-radius:2px 2px 0 0;min-height:2px}
+.mfnums{display:flex;justify-content:space-between;font-size:10px;color:#5a6069;margin-top:4px;gap:2px}
+.mfnums span{flex:1}
+@media(max-width:700px){.mfcol{min-width:31%}}
 .diag{background:#fff;border-left:4px solid;border-radius:8px;padding:12px 14px;margin-bottom:10px}
 .diag .a{color:#3a6df0;font-size:13px;margin-top:6px}
 .fin{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:13px;color:#5a6069;padding-top:8px;border-top:1px dashed #eef0f3}
@@ -107,8 +113,6 @@ function toggle(tr,s){
   if(nx&&nx.classList.contains('detail')){nx.remove();return;}
   document.querySelectorAll('.detail').forEach(e=>e.remove());
   const d=s.detail;
-  const mm=v=>v==null?'—':money(v);   // 新客/老客人数：无数据显示—，不拿0冒充
-  const pp=v=>v==null?'—':pct(v);     // 新客/老客比率：无商圈对比基准，一律不着色，免误导
   const iq=s.ind||{};
   let indHtml='';
   if(iq['商圈排名']){
@@ -121,13 +125,31 @@ function toggle(tr,s){
       ${comps?`<span style="flex-basis:100%;color:#8a9099">同行洞察：${comps}</span>`:''}
     </div>`;
   }
+  const COLORHEX={green:'#22a06b',orange:'#f0932b',red:'#e15241',purple:'#8e5adf',gray:'#9aa0a8'};
+  const mf=(exp,vr,orr,label,c)=>{
+    const vh=Math.max((vr||0)*100,exp==null?0:4), oh=Math.max((vr||0)*(orr||0)*100,exp==null?0:3);
+    const hex=COLORHEX[c]||'#3a6df0';
+    return `<div class="mfcol">
+      <div class="mfhead">${label}</div>
+      <div class="mfbars">
+        <div class="mfstage"><div class="mfbar" style="height:${exp==null?0:100}%;background:${hex}"></div></div>
+        <div class="mfstage"><div class="mfbar" style="height:${vh}%;background:${hex};opacity:.75"></div></div>
+        <div class="mfstage"><div class="mfbar" style="height:${oh}%;background:${hex};opacity:.5"></div></div>
+      </div>
+      <div class="mfnums"><span>${exp==null?'—':money(exp)}</span><span>${vr==null?'—':pct(vr)}</span><span>${orr==null?'—':pct(orr)}</span></div>
+    </div>`;
+  };
+  const cmpHtml=`<div class="mflegend">漏斗对比：曝光 → 入店转化率 → 下单转化率(相对入店)</div>
+    <div class="mfrow">
+      ${mf(s.exposure,s.vr,s.orr,'本店(全部)',s.color)}
+      ${mf(s.nc_exp,s.nc_vr,s.nc_or,'新客','gray')}
+      ${mf(s.oc_exp,s.oc_vr,s.oc_or,'老客','gray')}
+      ${mf(s.exp_avg,s.vr_avg,s.orr_avg,'商圈均值','gray')}
+      ${mf(s.exp_top,s.vr_top,s.orr_top,'商圈前10%','green')}
+    </div>`;
   const tr2=document.createElement('tr');tr2.className='detail';
   tr2.innerHTML=`<td colspan="9"><div class="dwrap">
-    <table class="cmp"><thead><tr><th>漏斗</th><th>本店(全部)</th><th>新客</th><th>老客</th><th>商圈均值</th><th>商圈前10%</th></tr></thead><tbody>
-      <tr><td>曝光人数</td><td>${money(s.exposure)}</td><td>${mm(s.nc_exp)}</td><td>${mm(s.oc_exp)}</td><td>${s.exp_avg?money(s.exp_avg):'—'}</td><td>${s.exp_top?money(s.exp_top):'—'}</td></tr>
-      <tr><td>进店率</td><td>${cell(s.vr,s.vr_c)}</td><td>${pp(s.nc_vr)}</td><td>${pp(s.oc_vr)}</td><td>${s.vr_avg?pct(s.vr_avg):'—'}</td><td>${s.vr_top?pct(s.vr_top):'—'}</td></tr>
-      <tr><td>下单率</td><td>${cell(s.orr,s.orr_c)}</td><td>${pp(s.nc_or)}</td><td>${pp(s.oc_or)}</td><td>${s.orr_avg?pct(s.orr_avg):'—'}</td><td>${s.orr_top?pct(s.orr_top):'—'}</td></tr>
-    </tbody></table>
+    ${cmpHtml}
     ${indHtml}
     ${s.bad_n>0?`<div class="badbox"><div class="bt">⚠️ 当日差评 ${s.bad_n} 条 · 待申诉</div><div class="bc">${(s.bad_txt||'').replace(/</g,'&lt;')}</div></div>`:''}
     <div class="diag" style="border-color:var(--c)">
