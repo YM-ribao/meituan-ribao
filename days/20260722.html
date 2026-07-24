@@ -31,16 +31,18 @@ tr.store{cursor:pointer;transition:background .15s}tr.store:hover{background:#f7
 .green{background:#22a06b}.orange{background:#f0932b}.red{background:#e15241}.purple{background:#8e5adf}.gray{background:#9aa0a8}
 .up{color:#e15241}.down{color:#22a06b}.ok{color:#22a06b;font-weight:600}.warn{color:#f0932b;font-weight:600}.bad{color:#e15241;font-weight:600}
 .detail td{padding:0}.dwrap{padding:18px 20px;background:#fbfcfe}
-.mflegend{font-size:11px;color:#8a9099;margin-bottom:6px}
-.mfrow{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap}
-.mfcol{flex:1;min-width:90px;background:#fff;border:1px solid #eef0f3;border-radius:8px;padding:8px 6px;text-align:center}
-.mfhead{font-size:11px;color:#5a6069;font-weight:600;margin-bottom:6px;white-space:nowrap}
-.mfbars{display:flex;align-items:flex-end;justify-content:center;height:40px;gap:3px}
-.mfstage{width:14px;height:100%;display:flex;align-items:flex-end}
-.mfbar{width:100%;border-radius:2px 2px 0 0;min-height:2px}
-.mfnums{display:flex;justify-content:space-between;font-size:10px;color:#5a6069;margin-top:4px;gap:2px}
-.mfnums span{flex:1}
-@media(max-width:700px){.mfcol{min-width:31%}}
+.f3wrap{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:14px}
+.f3card{flex:1;min-width:260px;background:#fff;border:1px solid #eef0f3;border-radius:10px;padding:10px 14px}
+.f3title{font-size:12px;font-weight:700;color:#5a6069;margin-bottom:8px}
+.f3tier{margin-bottom:7px}
+.f3tname{font-size:10px;color:#8a9099;margin-bottom:3px}
+.f3row{display:flex;align-items:center;gap:6px;margin-bottom:2px}
+.f3lab{width:66px;font-size:10px;color:#5a6069;white-space:nowrap;text-align:right;flex-shrink:0}
+.f3track{flex:1;background:#f3f4f6;border-radius:3px;height:10px;overflow:hidden}
+.f3bar{height:100%;border-radius:3px;min-width:2px}
+.f3val{width:50px;font-size:10px;color:#1f2329;font-weight:600;text-align:left;flex-shrink:0}
+.f3note{font-size:10px;color:#c4922e;margin-top:4px}
+@media(max-width:700px){.f3card{min-width:100%}}
 .diag{background:#fff;border-left:4px solid;border-radius:8px;padding:12px 14px;margin-bottom:10px}
 .diag .a{color:#3a6df0;font-size:13px;margin-top:6px}
 .fin{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:13px;color:#5a6069;padding-top:8px;border-top:1px dashed #eef0f3}
@@ -125,35 +127,34 @@ function toggle(tr,s){
       ${comps?`<span style="flex-basis:100%;color:#8a9099">同行洞察：${comps}</span>`:''}
     </div>`;
   }
+  // 2026-07-23 炼总定案：三个漏斗都用"商圈均值｜主体｜商圈前十"同一套结构，
+  // 主体依次换成 本店(全部)/新客/老客。商圈均值/前十本身是全店口径，不是新客/老客
+  // 专属基准，新客/老客那两个漏斗只是拿它当参照线，不是严格对标——她要求保留这个对比。
   const COLORHEX={green:'#22a06b',orange:'#f0932b',red:'#e15241',purple:'#8e5adf',gray:'#9aa0a8'};
-  const mf=(exp,vr,orr,label,c)=>{
-    const vh=Math.max((vr||0)*100,exp==null?0:4), oh=Math.max((vr||0)*(orr||0)*100,exp==null?0:3);
-    const hex=COLORHEX[c]||'#3a6df0';
-    return `<div class="mfcol">
-      <div class="mfhead">${label}</div>
-      <div class="mfbars">
-        <div class="mfstage"><div class="mfbar" style="height:${exp==null?0:100}%;background:${hex}"></div></div>
-        <div class="mfstage"><div class="mfbar" style="height:${vh}%;background:${hex};opacity:.75"></div></div>
-        <div class="mfstage"><div class="mfbar" style="height:${oh}%;background:${hex};opacity:.5"></div></div>
-      </div>
-      <div class="mfnums"><span>${exp==null?'—':money(exp)}</span><span>${vr==null?'—':pct(vr)}</span><span>${orr==null?'—':pct(orr)}</span></div>
+  const hex=COLORHEX[s.color]||'#3a6df0';
+  const f3row=(label,val,max,isPct,color)=>{
+    const w=val==null?0:Math.max((isPct?val*100:val/max*100),2);
+    const txt=val==null?'—':(isPct?pct(val):money(val));
+    return `<div class="f3row"><span class="f3lab">${label}</span><div class="f3track"><div class="f3bar" style="width:${w}%;background:${color}"></div></div><span class="f3val">${txt}</span></div>`;
+  };
+  const funnel3=(title,entities,note)=>{
+    const maxExp=Math.max(...entities.map(e=>e.exp||0),1);
+    const tier=(key,isPct)=>entities.map(e=>f3row(e.label,e[key],maxExp,isPct,e.color)).join('');
+    return `<div class="f3card">
+      <div class="f3title">${title}</div>
+      <div class="f3tier"><div class="f3tname">曝光</div>${tier('exp',false)}</div>
+      <div class="f3tier"><div class="f3tname">入店转化率</div>${tier('vr',true)}</div>
+      <div class="f3tier"><div class="f3tname">下单转化率(相对入店)</div>${tier('orr',true)}</div>
+      ${note?`<div class="f3note">${note}</div>`:''}
     </div>`;
   };
-  // 2026-07-23 炼总纠正：商圈均值/前十是整体口径，没有细分新客/老客，
-  // 不能跟"新客""老客"两列并排放一张表里（会让人误以为四者可比）。
-  // 拆成两组：①本店/商圈均值/商圈前十（同行对比，都是全量口径，可比）
-  //          ②新客/老客（各自曝光→入店→下单，不跟商圈比，因为没有对应的商圈新客/老客基准）
-  const cmpHtml=`<div class="mflegend">同行对比：曝光 → 入店转化率 → 下单转化率(相对入店)</div>
-    <div class="mfrow">
-      ${mf(s.exposure,s.vr,s.orr,'本店(全部)',s.color)}
-      ${mf(s.exp_avg,s.vr_avg,s.orr_avg,'商圈均值','gray')}
-      ${mf(s.exp_top,s.vr_top,s.orr_top,'商圈前10%','green')}
-    </div>
-    <div class="mflegend">新客/老客对比：曝光 → 入店转化率 → 下单转化率(相对入店)，不跟商圈比</div>
-    <div class="mfrow">
-      ${mf(s.nc_exp,s.nc_vr,s.nc_or,'新客','gray')}
-      ${mf(s.oc_exp,s.oc_vr,s.oc_or,'老客','gray')}
-    </div>`;
+  const avgE={label:'商圈均值',exp:s.exp_avg,vr:s.vr_avg,orr:s.orr_avg,color:'#9aa0a8'};
+  const topE={label:'商圈前10%',exp:s.exp_top,vr:s.vr_top,orr:s.orr_top,color:'#22a06b'};
+  const cmpHtml=`<div class="f3wrap">
+    ${funnel3('本店对比',[avgE,{label:'本店(全部)',exp:s.exposure,vr:s.vr,orr:s.orr,color:hex},topE])}
+    ${funnel3('新客对比',[avgE,{label:'新客',exp:s.nc_exp,vr:s.nc_vr,orr:s.nc_or,color:'#3a6df0'},topE],'商圈均值/前十为全店口径，非新客专属基准，仅供参考')}
+    ${funnel3('老客对比',[avgE,{label:'老客',exp:s.oc_exp,vr:s.oc_vr,orr:s.oc_or,color:'#8e5adf'},topE],'商圈均值/前十为全店口径，非老客专属基准，仅供参考')}
+  </div>`;
   const tr2=document.createElement('tr');tr2.className='detail';
   tr2.innerHTML=`<td colspan="9"><div class="dwrap">
     ${cmpHtml}
