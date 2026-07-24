@@ -130,8 +130,8 @@ function toggle(tr,s){
   // 2026-07-23 炼总定案：三个漏斗都用"商圈均值｜主体｜商圈前十"同一套结构，
   // 主体依次换成 本店(全部)/新客/老客。商圈均值/前十本身是全店口径，不是新客/老客
   // 专属基准，新客/老客那两个漏斗只是拿它当参照线，不是严格对标——她要求保留这个对比。
-  const COLORHEX={green:'#22a06b',orange:'#f0932b',red:'#e15241',purple:'#8e5adf',gray:'#9aa0a8'};
-  const hex=COLORHEX[s.color]||'#3a6df0';
+  // 2026-07-24 炼总纠正：本店那根柱子之前用健康度状态色，"健康"店会跟"商圈前十"
+  // 撞成同一个绿色分不清。改成三个固定色，跟健康度脱钩：商圈均值=灰/主体=蓝/商圈前十=绿。
   const f3row=(label,val,max,isPct,color)=>{
     const w=val==null?0:Math.max((isPct?val*100:val/max*100),2);
     const txt=val==null?'—':(isPct?pct(val):money(val));
@@ -151,7 +151,7 @@ function toggle(tr,s){
   const avgE={label:'商圈均值',exp:s.exp_avg,vr:s.vr_avg,orr:s.orr_avg,color:'#9aa0a8'};
   const topE={label:'商圈前10%',exp:s.exp_top,vr:s.vr_top,orr:s.orr_top,color:'#22a06b'};
   const cmpHtml=`<div class="f3wrap">
-    ${funnel3('本店对比',[avgE,{label:'本店(全部)',exp:s.exposure,vr:s.vr,orr:s.orr,color:hex},topE])}
+    ${funnel3('本店对比',[avgE,{label:'本店(全部)',exp:s.exposure,vr:s.vr,orr:s.orr,color:'#1a73e8'},topE])}
     ${funnel3('新客对比',[avgE,{label:'新客',exp:s.nc_exp,vr:s.nc_vr,orr:s.nc_or,color:'#3a6df0'},topE],'商圈均值/前十为全店口径，非新客专属基准，仅供参考')}
     ${funnel3('老客对比',[avgE,{label:'老客',exp:s.oc_exp,vr:s.oc_vr,orr:s.oc_or,color:'#8e5adf'},topE],'商圈均值/前十为全店口径，非老客专属基准，仅供参考')}
   </div>`;
