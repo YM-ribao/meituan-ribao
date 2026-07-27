@@ -67,9 +67,9 @@ a{text-decoration:none;color:inherit}
 <p>泸州-水井沟商圈 <span class="badge">负责人 韦炼</span><span class="badge">门店ID 30407368</span></p></div>
 <div class="wrap">
   <div class="kpis">
-    <div class="kpi"><div class="lb">营业收入(726)</div><div class="vl">¥0.00</div><div class="dl down">▼ 1,897 比前日</div></div>
-    <div class="kpi"><div class="lb">订单量</div><div class="vl">0</div></div>
-    <div class="kpi"><div class="lb">实付单均价</div><div class="vl">¥0.00</div></div>
+    <div class="kpi"><div class="lb">营业收入(726)</div><div class="vl">¥445.28</div><div class="dl down">▼ 21 比前日</div></div>
+    <div class="kpi"><div class="lb">订单量</div><div class="vl">45</div></div>
+    <div class="kpi"><div class="lb">实付单均价</div><div class="vl">¥15.95</div></div>
     <div class="kpi"><div class="lb">曝光人数</div><div class="vl">1,834</div></div>
     <div class="kpi"><div class="lb">入店转化率</div><div class="vl">6.8%</div></div>
     <div class="kpi"><div class="lb">下单转化率</div><div class="vl">30.4%</div></div>
@@ -107,7 +107,7 @@ var dates=["20260720", "20260721", "20260722", "20260723", "20260724", "20260725
 function mk(id,opt){var c=echarts.init(document.getElementById(id));c.setOption(opt);window.addEventListener('resize',function(){c.resize();});}
 // 2026-07-24 改版：营收图加7/15/30/全部/自定义周期选择器；双转率拆成入店率/下单率两张图
 // （原来10条线挤一张图看不清）；曝光单独一张（原来还有个"入店/下单人数"图，炼总要求去掉）。
-var revFull=[432.28, 524.32, 775.89, 385.74, 529.06, 466.74, 0.0], ordFull=[44.0, 49.0, 65.0, 42.0, 50.0, 46.0, 0.0], revMeanFull=[608.7, 632.47, 645.4, 716.64, 661.85, 705.13, 0.0], datesFull=dates;
+var revFull=[432.28, 524.32, 775.89, 385.74, 529.06, 466.74, 445.28], ordFull=[44.0, 49.0, 65.0, 42.0, 50.0, 46.0, 45.0], revMeanFull=[608.7, 632.47, 645.4, 716.64, 661.85, 705.13, 713.06], datesFull=dates;
 var c1chart=echarts.init(document.getElementById('c1'));
 window.addEventListener('resize',function(){c1chart.resize();});
 function renderC1(n, start, end){
