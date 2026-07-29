@@ -67,9 +67,9 @@ a{text-decoration:none;color:inherit}
 <p>伏龙小区 <span class="badge">负责人 颜毓恒</span><span class="badge">门店ID 16653155</span></p></div>
 <div class="wrap">
   <div class="kpis">
-    <div class="kpi"><div class="lb">营业收入(728)</div><div class="vl">¥675.48</div><div class="dl down">▼ 370 比前日</div></div>
-    <div class="kpi"><div class="lb">订单量</div><div class="vl">23</div></div>
-    <div class="kpi"><div class="lb">实付单均价</div><div class="vl">¥39.66</div></div>
+    <div class="kpi"><div class="lb">营业收入(728)</div><div class="vl">¥—</div></div>
+    <div class="kpi"><div class="lb">订单量</div><div class="vl">—</div></div>
+    <div class="kpi"><div class="lb">实付单均价</div><div class="vl">¥—</div></div>
     <div class="kpi"><div class="lb">曝光人数</div><div class="vl">2,616</div></div>
     <div class="kpi"><div class="lb">入店转化率</div><div class="vl">12.2%</div></div>
     <div class="kpi"><div class="lb">下单转化率</div><div class="vl">7.2%</div></div>
@@ -107,7 +107,7 @@ var dates=["20260720", "20260721", "20260722", "20260723", "20260724", "20260725
 function mk(id,opt){var c=echarts.init(document.getElementById(id));c.setOption(opt);window.addEventListener('resize',function(){c.resize();});}
 // 2026-07-24 改版：营收图加7/15/30/全部/自定义周期选择器；双转率拆成入店率/下单率两张图
 // （原来10条线挤一张图看不清）；曝光单独一张（原来还有个"入店/下单人数"图，炼总要求去掉）。
-var revFull=[764.58, 1236.69, 1176.81, 1460.58, 1175.22, 738.94, 1138.33, 1045.41, 675.48], ordFull=[28.0, 39.0, 35.0, 41.0, 34.0, 24.0, 28.0, 30.0, 23.0], revMeanFull=[883.15, 912.04, 913.33, 924.88, 924.13, 846.25, 891.96, 879.88, 816.32], datesFull=dates;
+var revFull=[764.58, 1236.69, 1176.81, 1460.58, 1175.22, 738.94, 1138.33, 1045.41, null], ordFull=[28.0, 39.0, 35.0, 41.0, 34.0, 24.0, 28.0, 30.0, null], revMeanFull=[883.15, 912.04, 913.33, 924.88, 924.13, 846.25, 891.96, 879.88, null], datesFull=dates;
 var c1chart=echarts.init(document.getElementById('c1'));
 window.addEventListener('resize',function(){c1chart.resize();});
 function renderC1(n, start, end){
