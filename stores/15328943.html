@@ -67,9 +67,9 @@ a{text-decoration:none;color:inherit}
 <p>缤纷广场 <span class="badge">负责人 颜毓恒</span><span class="badge">门店ID 15328943</span></p></div>
 <div class="wrap">
   <div class="kpis">
-    <div class="kpi"><div class="lb">营业收入(728)</div><div class="vl">¥—</div></div>
-    <div class="kpi"><div class="lb">订单量</div><div class="vl">—</div></div>
-    <div class="kpi"><div class="lb">实付单均价</div><div class="vl">¥—</div></div>
+    <div class="kpi"><div class="lb">营业收入(728)</div><div class="vl">¥432.95</div><div class="dl up">▲ 225 比前日</div></div>
+    <div class="kpi"><div class="lb">订单量</div><div class="vl">22</div></div>
+    <div class="kpi"><div class="lb">实付单均价</div><div class="vl">¥31.49</div></div>
     <div class="kpi"><div class="lb">曝光人数</div><div class="vl">1,534</div></div>
     <div class="kpi"><div class="lb">入店转化率</div><div class="vl">7.4%</div></div>
     <div class="kpi"><div class="lb">下单转化率</div><div class="vl">18.6%</div></div>
@@ -107,7 +107,7 @@ var dates=["20260720", "20260721", "20260722", "20260723", "20260724", "20260725
 function mk(id,opt){var c=echarts.init(document.getElementById(id));c.setOption(opt);window.addEventListener('resize',function(){c.resize();});}
 // 2026-07-24 改版：营收图加7/15/30/全部/自定义周期选择器；双转率拆成入店率/下单率两张图
 // （原来10条线挤一张图看不清）；曝光单独一张（原来还有个"入店/下单人数"图，炼总要求去掉）。
-var revFull=[642.75, 158.96, 391.2, 349.59, 459.59, 684.36, 321.16, 207.69, null], ordFull=[36.0, 14.0, 28.0, 28.0, 25.0, 29.0, 18.0, 16.0, null], revMeanFull=[1043.44, 1005.81, 988.09, 1020.57, 1052.01, 1024.28, 1061.67, 1036.99, null], datesFull=dates;
+var revFull=[642.75, 158.96, 391.2, 349.59, 459.59, 684.36, 321.16, 207.69, 432.95], ordFull=[36.0, 14.0, 28.0, 28.0, 25.0, 29.0, 18.0, 16.0, 22.0], revMeanFull=[1043.44, 1005.81, 988.09, 1020.57, 1052.01, 1024.28, 1061.67, 1036.99, 979.29], datesFull=dates;
 var c1chart=echarts.init(document.getElementById('c1'));
 window.addEventListener('resize',function(){c1chart.resize();});
 function renderC1(n, start, end){
