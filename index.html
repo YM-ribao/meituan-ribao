@@ -104,8 +104,8 @@ document.querySelectorAll('#grid .card').forEach(function(c){
 c.style.display=c.getAttribute('data-nm').indexOf(q)>-1?'':'none';});}
 var tc=echarts.init(document.getElementById('trendchart'));
 tc.setOption({tooltip:{trigger:'axis'},grid:{left:60,right:20,top:20,bottom:30},
-xAxis:{type:'category',data:["20260720", "20260721", "20260722", "20260723", "20260724", "20260725", "20260726", "20260727", "20260728", "20260729"]},yAxis:{type:'value',name:'营收(元)'},
-series:[{type:'line',smooth:true,data:[28720.41, 24651.24, 28692.57, 30017.05, 30138.78, 31405.85, 31069.73, 26551.59, 26715.94, 26948.16],areaStyle:{opacity:.15},lineStyle:{width:3,color:'#2a5298'},itemStyle:{color:'#2a5298'}}]});
+xAxis:{type:'category',data:["20260720", "20260721", "20260722", "20260723", "20260724", "20260725", "20260726", "20260727", "20260728", "20260729", "20260730"]},yAxis:{type:'value',name:'营收(元)'},
+series:[{type:'line',smooth:true,data:[28720.41, 24651.24, 28692.57, 30017.05, 30138.78, 31405.85, 31069.73, 26551.59, 26715.94, 26948.16, 26509.39],areaStyle:{opacity:.15},lineStyle:{width:3,color:'#2a5298'},itemStyle:{color:'#2a5298'}}]});
 window.addEventListener('resize',function(){tc.resize();});
 </script>
 </body></html>
