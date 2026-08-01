@@ -498,6 +498,19 @@
       </div>
     </header>
 
+    <section class="auth-panel">
+      <div>
+        <h2>使用授权</h2>
+        <p>请输入老师发放的激活码。每点击一次“生成诊断”扣 1 次，填入示例和复制结果不扣次数。</p>
+      </div>
+      <div class="auth-row">
+        <input id="accessCode" type="text" placeholder="请输入激活码">
+        <button class="btn secondary" id="applyBtn" type="button">申请使用</button>
+        <button class="btn" id="unlockBtn" type="button">确认授权</button>
+        <div class="auth-status" id="authStatus">未授权：请先输入激活码。</div>
+      </div>
+    </section>
+
     <section class="grid">
       <form class="panel input-panel" id="diagnosisForm">
         <div class="panel-head">
@@ -606,6 +619,14 @@
   <script>
     const $ = (id) => document.getElementById(id);
 
+    const accessCodes = {
+      "YM-PF-03": { label: "评分体验码", uses: 3 },
+      "YM-PF-10": { label: "评分正式码", uses: 10 },
+      "YM-NEIBU": { label: "内部无限码", uses: null }
+    };
+    const usageStorageKey = "ymsp_score_tool_usage_v1";
+    const activeCodeStorageKey = "ymsp_score_tool_active_code_v1";
+    let activeCode = "";
     let hasGenerated = false;
 
     const ids = [
@@ -634,6 +655,117 @@
 
     function clamp(value, min, max) {
       return Math.max(min, Math.min(max, value));
+    }
+
+    function getUsageMap() {
+      try {
+        return JSON.parse(localStorage.getItem(usageStorageKey)) || {};
+      } catch {
+        return {};
+      }
+    }
+
+    function saveUsageMap(map) {
+      localStorage.setItem(usageStorageKey, JSON.stringify(map));
+    }
+
+    function remainingFor(code) {
+      const config = accessCodes[code];
+      if (!config) return 0;
+      if (config.uses === null) return Infinity;
+      const usage = getUsageMap();
+      if (usage[code] === undefined) {
+        usage[code] = config.uses;
+        saveUsageMap(usage);
+      }
+      return usage[code];
+    }
+
+    function setRemaining(code, remaining) {
+      if (accessCodes[code]?.uses === null) return;
+      const usage = getUsageMap();
+      usage[code] = Math.max(0, remaining);
+      saveUsageMap(usage);
+    }
+
+    function setAuthStatus(message, level = "") {
+      const status = $("authStatus");
+      status.textContent = message;
+      status.className = `auth-status ${level}`.trim();
+    }
+
+    function setToolEnabled(enabled) {
+      ids.forEach((id) => { $(id).disabled = !enabled; });
+      $("sampleBtn").disabled = !enabled;
+      $("resetBtn").disabled = !enabled;
+      $("generateBtn").disabled = !enabled;
+      $("copyBtn").disabled = !enabled || !hasGenerated;
+    }
+
+    function refreshAuthUi() {
+      if (!activeCode || !accessCodes[activeCode]) {
+        setToolEnabled(false);
+        setAuthStatus("未授权：请先输入激活码。");
+        return;
+      }
+      const remaining = remainingFor(activeCode);
+      const config = accessCodes[activeCode];
+      $("accessCode").value = activeCode;
+      if (remaining === Infinity) {
+        setToolEnabled(true);
+        setAuthStatus(`已授权：${config.label}，不限次数。`, "ok");
+      } else if (remaining > 0) {
+        setToolEnabled(true);
+        setAuthStatus(`已授权：${config.label}，剩余 ${remaining} 次。`, "ok");
+      } else {
+        setToolEnabled(false);
+        $("copyBtn").disabled = !hasGenerated;
+        setAuthStatus(`激活码 ${activeCode} 次数已用完，请联系老师续开。`, "danger");
+      }
+    }
+
+    function unlock() {
+      const code = $("accessCode").value.trim().toUpperCase();
+      if (!accessCodes[code]) {
+        activeCode = "";
+        localStorage.removeItem(activeCodeStorageKey);
+        refreshAuthUi();
+        setAuthStatus("激活码无效，请检查后重新输入。", "danger");
+        return;
+      }
+      activeCode = code;
+      localStorage.setItem(activeCodeStorageKey, activeCode);
+      remainingFor(activeCode);
+      refreshAuthUi();
+    }
+
+    function consumeOneUse() {
+      if (!activeCode || !accessCodes[activeCode]) {
+        setAuthStatus("请先输入有效激活码。", "danger");
+        return false;
+      }
+      const remaining = remainingFor(activeCode);
+      if (remaining === Infinity) {
+        hasGenerated = true;
+        return true;
+      }
+      if (remaining <= 0) {
+        refreshAuthUi();
+        return false;
+      }
+      setRemaining(activeCode, remaining - 1);
+      hasGenerated = true;
+      return true;
+    }
+
+    async function applyForAccess() {
+      const text = "我想申请使用《店铺评分提升诊断器》，请帮我开通激活码。";
+      try {
+        await navigator.clipboard.writeText(text);
+        setAuthStatus("申请文案已复制，可以发给老师开通激活码。", "ok");
+      } catch {
+        setAuthStatus("申请文案：我想申请使用《店铺评分提升诊断器》，请帮我开通激活码。", "warn");
+      }
     }
 
     function neededFiveStars(current, target, count) {
@@ -804,6 +936,7 @@
       $("copyStatus").textContent = "已清空，请重新填写后点击“生成诊断”。";
       $("copyBtn").disabled = true;
       clearOutput();
+      refreshAuthUi();
     }
 
     function clearOutput() {
@@ -822,10 +955,10 @@
     }
 
     function generateDiagnosis() {
-      hasGenerated = true;
+      if (!consumeOneUse()) return;
       update();
-      $("copyStatus").textContent = "已生成诊断。";
-      $("copyBtn").disabled = false;
+      $("copyStatus").textContent = "已生成诊断，本次已扣 1 次。";
+      refreshAuthUi();
     }
 
     function outputText() {
@@ -870,9 +1003,21 @@
     $("resetBtn").addEventListener("click", resetForm);
     $("generateBtn").addEventListener("click", generateDiagnosis);
     $("copyBtn").addEventListener("click", copyOutput);
+    $("unlockBtn").addEventListener("click", unlock);
+    $("applyBtn").addEventListener("click", applyForAccess);
+    $("accessCode").addEventListener("input", () => {
+      $("accessCode").value = $("accessCode").value.toUpperCase();
+    });
+    $("accessCode").addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        unlock();
+      }
+    });
 
+    activeCode = localStorage.getItem(activeCodeStorageKey) || "";
     clearOutput();
-    $("copyBtn").disabled = true;
+    refreshAuthUi();
   </script>
 </body>
 </html>
