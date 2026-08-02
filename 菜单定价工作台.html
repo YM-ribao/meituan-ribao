@@ -6,18 +6,18 @@
   <title>菜单定价工作台</title>
   <style>
     :root {
-      --bg: #f6f5f1;
+      --bg: #f3f8f5;
       --panel: #ffffff;
       --ink: #232323;
       --muted: #6c6a63;
-      --line: #dedbd2;
-      --soft: #faf9f5;
-      --brand: #f4c431;
-      --brand-dark: #8b6400;
+      --line: #d7e4df;
+      --soft: #eef6f2;
+      --brand: #4d8a76;
+      --brand-dark: #245849;
       --good: #0f7a55;
       --warn: #a96700;
       --bad: #b3342d;
-      --shadow: 0 10px 30px rgba(36, 31, 16, 0.08);
+      --shadow: 0 10px 30px rgba(24, 63, 53, 0.08);
       font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
     }
 
@@ -29,6 +29,9 @@
       color: var(--ink);
       font-size: 15px;
     }
+
+    .ym-topnav{position:sticky;top:0;z-index:100;display:flex;align-items:center;padding:12px max(22px,calc((100vw - 1320px)/2));background:rgba(248,251,250,.94);border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}
+    .ym-topnav a{color:var(--brand-dark);font-weight:800;text-decoration:none}
 
     button, input, select {
       font: inherit;
@@ -209,7 +212,7 @@
     .role-btn.active {
       background: var(--brand);
       border-color: var(--brand-dark);
-      color: #2b2100;
+      color: #fff;
       font-weight: 700;
     }
 
@@ -243,15 +246,15 @@
     }
 
     .btn.primary {
-      background: var(--ink);
-      border-color: var(--ink);
+      background: var(--brand-dark);
+      border-color: var(--brand-dark);
       color: #fff;
     }
 
     .btn.yellow {
       background: var(--brand);
       border-color: var(--brand-dark);
-      color: #2b2100;
+      color: #fff;
       font-weight: 700;
     }
 
@@ -388,6 +391,7 @@
   </style>
 </head>
 <body>
+  <nav class="ym-topnav"><a href="index.html">← 返回辅助驾驶首页</a></nav>
   <main id="lock" class="lock">
     <section class="lock-box">
       <h1>菜单定价工作台</h1>

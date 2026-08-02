@@ -85,7 +85,37 @@
 <!-- 手机滑动修复 -->
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <style>html,body{overflow:auto!important;height:auto!important;position:static!important;touch-action:auto!important}</style>
-<script>if(!sessionStorage.getItem('ym_gate'))location.replace('index.html')</script><a class="back" href="index.html" style="display:block;margin:10px 0 0 16px">← 返回首页</a>
+
+<style>
+:root{--ym-deep:#245849;--ym-green:#4d8a76;--ym-pale:#e8f3ee;--ym-line:#d7e4df}
+body{background:linear-gradient(180deg,#eaf3ef 0,#f7f9f8 320px)!important;color:#183f35!important;padding-top:58px!important}
+.ym-topnav{position:fixed;top:0;left:0;right:0;z-index:99999;display:flex;align-items:center;gap:18px;padding:11px max(18px,calc((100vw - 1080px)/2));background:#f8fbfaf2;border-bottom:1px solid var(--ym-line);box-shadow:0 3px 14px rgba(24,63,53,.08);font:14px/1.5 -apple-system,sans-serif;backdrop-filter:blur(12px)}
+.ym-topnav a{color:var(--ym-deep)!important;font-weight:800;text-decoration:none}.ym-topnav label{display:flex;align-items:center;gap:7px;color:#6d8179}.ym-topnav select{border:1px solid #bfd2ca;border-radius:8px;padding:5px 9px;background:#fff;color:var(--ym-deep)}
+.card,.kpi,.panel,.section,.box,.bar,.funnel-card,.f3card,.diag,.store-card,.summary-card{border-color:var(--ym-line)!important;box-shadow:0 5px 18px rgba(24,63,53,.07)!important;background-color:#fffffff2!important}.dwrap{background:#f2f8f5!important}.fbar{background:linear-gradient(180deg,#347a66,#78ad99)!important}.fbar.s2{background:linear-gradient(180deg,#4d8a76,#9bc6b6)!important}.fbar.s3{background:linear-gradient(180deg,#7cac9b,#c5ddd4)!important}.farrow .frate,.diag .a{color:var(--ym-green)!important}tr.store:hover{background:#f2f8f5!important}
+.back{color:var(--ym-deep)!important;background:var(--ym-pale)!important;border-color:#cfe1da!important}
+@media(max-width:600px){.ym-topnav{gap:9px;padding:9px 12px}.ym-topnav a{font-size:13px}.ym-topnav label{font-size:0}.ym-topnav select{font-size:13px}}
+</style>
+<script>if(!sessionStorage.getItem('ym_gate'))location.replace('index.html')</script>
+<!-- 日期切换条 -->
+<div class="ym-topnav">
+<a href="index.html">← 返回辅助驾驶首页</a><label>日期 <select id="ym-datebar" onchange="if(this.value)location.href=this.value"><option value="">选择日期…</option></select></label></div>
+<script>
+(function(){
+  var base = location.pathname.replace(/\/(days|stores)\/.*/, '');
+  fetch(base + '/days.json').then(function(r){return r.json()}).then(function(d){
+    var sel = document.getElementById('ym-datebar');
+    if(!sel) return;
+    d.days.slice().reverse().forEach(function(day){
+      var o = document.createElement('option');
+      o.value = base + '/days/' + day + '.html';
+      o.text = day.slice(0,4) + '-' + day.slice(4,6) + '-' + day.slice(6,8);
+      if (location.pathname.indexOf(day) > -1) o.selected = true;
+      sel.appendChild(o);
+    });
+  }).catch(function(){});
+})();
+</script>
+
 <div class="day-selector">
  <label for="day-select">📅 选择日期：</label>
  <select id="day-select" onchange="switchDay(this.value)">

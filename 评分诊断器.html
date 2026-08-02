@@ -6,20 +6,20 @@
   <title>店铺评分提升诊断器</title>
   <style>
     :root {
-      --bg: #f7f4ee;
-      --surface: #fffdf8;
+      --bg: #f3f8f5;
+      --surface: #ffffff;
       --surface-2: #f1f7f4;
       --ink: #20242a;
       --muted: #6b7280;
-      --line: #ded8cc;
-      --brand: #0f766e;
-      --brand-2: #115e59;
-      --accent: #b7791f;
+      --line: #d7e4df;
+      --brand: #347a66;
+      --brand-2: #245849;
+      --accent: #c5a45a;
       --danger: #b42318;
       --warn: #a15c07;
       --ok: #147d52;
-      --shadow: 0 14px 38px rgba(46, 38, 24, .10);
-      --radius: 8px;
+      --shadow: 0 10px 30px rgba(24, 63, 53, .08);
+      --radius: 12px;
     }
 
     * {
@@ -35,6 +35,9 @@
         var(--bg);
       line-height: 1.5;
     }
+
+    .ym-topnav{position:sticky;top:0;z-index:100;display:flex;align-items:center;padding:12px max(22px,calc((100vw - 1240px)/2));background:rgba(248,251,250,.94);border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}
+    .ym-topnav a{color:var(--brand-2);font-weight:800;text-decoration:none}
 
     button,
     input {
@@ -483,6 +486,7 @@
   </style>
 </head>
 <body>
+  <nav class="ym-topnav"><a href="index.html">← 返回辅助驾驶首页</a></nav>
   <main class="app">
     <header class="topbar">
       <div>
