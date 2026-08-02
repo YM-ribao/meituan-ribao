@@ -520,29 +520,7 @@
 
         <div class="section">
           <div class="section-title">
-            <h3>商品满意度</h3>
-            <span class="hint">按平台评分项填写</span>
-          </div>
-          <div class="form-grid">
-            <div class="field"><label for="productCurrent">当前商品满意度</label><input id="productCurrent" type="number" min="0" max="5" step="0.01" value="0"></div>
-            <div class="field"><label for="productTarget">目标商品满意度</label><input id="productTarget" type="number" min="1" max="4.99" step="0.1" value="4.6"></div>
-          </div>
-        </div>
-
-        <div class="section">
-          <div class="section-title">
-            <h3>包装满意度</h3>
-            <span class="hint">同一条好评可同时贡献商品和包装</span>
-          </div>
-          <div class="form-grid">
-            <div class="field"><label for="packCurrent">当前包装满意度</label><input id="packCurrent" type="number" min="0" max="5" step="0.01" value="0"></div>
-            <div class="field"><label for="packTarget">目标包装满意度</label><input id="packTarget" type="number" min="1" max="4.99" step="0.1" value="4.6"></div>
-          </div>
-        </div>
-
-        <div class="section">
-          <div class="section-title">
-            <h3>评价数据</h3>
+            <h3>1. 评价数量</h3>
             <span class="hint">后台“数据统计—评价”页面，选择近60天</span>
           </div>
           <div class="form-grid">
@@ -553,18 +531,16 @@
 
         <div class="section">
           <div class="section-title">
-            <h3>服务与负反馈</h3>
-            <span class="hint">这些问题通常不能靠补评价解决</span>
+            <h3>2—7. 评分明细</h3>
+            <span class="hint">按照后台从上到下的顺序填写当前数据</span>
           </div>
-          <div class="form-grid three">
-            <div class="field"><label for="messageCurrent">当前消息回复率（%）</label><input id="messageCurrent" type="number" min="0" max="100" step="0.1" value="0"></div>
-            <div class="field"><label for="messageTarget">目标消息回复率（%）</label><input id="messageTarget" type="number" min="0" max="100" step="0.1" value="100"></div>
-            <div class="field"><label for="serviceNeg">当前服务负反馈数</label><input id="serviceNeg" type="number" min="0" step="1" value="0"></div>
-            <div class="field"><label for="serviceTarget">目标服务负反馈数</label><input id="serviceTarget" type="number" min="0" step="1" value="0"></div>
-            <div class="field"><label for="foodNeg">当前食安负反馈数</label><input id="foodNeg" type="number" min="0" step="1" value="0"></div>
-            <div class="field"><label for="foodTarget">目标食安负反馈数</label><input id="foodTarget" type="number" min="0" step="1" value="0"></div>
-            <div class="field"><label for="repeatRate">当前复购率（%）</label><input id="repeatRate" type="number" min="0" max="100" step="0.1" value="0"></div>
-            <div class="field"><label for="repeatTarget">目标复购率（%）</label><input id="repeatTarget" type="number" min="0" max="100" step="0.1" value="25"></div>
+          <div class="form-grid">
+            <div class="field"><label for="productCurrent">2. 当前商品质量分</label><input id="productCurrent" type="number" min="0" max="5" step="0.01" value="0"></div>
+            <div class="field"><label for="packCurrent">3. 当前包装满意度</label><input id="packCurrent" type="number" min="0" max="5" step="0.01" value="0"></div>
+            <div class="field"><label for="repeatRate">4. 当前复购率（%）</label><input id="repeatRate" type="number" min="0" max="100" step="0.1" value="0"></div>
+            <div class="field"><label for="foodNegRate">5. 当前食品安全负反馈率（%）</label><input id="foodNegRate" type="number" min="0" max="100" step="0.01" value="0"></div>
+            <div class="field"><label for="messageCurrent">6. 当前消息回复率（%）</label><input id="messageCurrent" type="number" min="0" max="100" step="0.1" value="0"></div>
+            <div class="field"><label for="serviceNegRate">7. 当前服务负反馈率（%）</label><input id="serviceNegRate" type="number" min="0" max="100" step="0.01" value="0"></div>
           </div>
         </div>
       </form>
@@ -578,7 +554,7 @@
         </div>
 
         <div class="metric-strip">
-          <div class="metric"><span>商品满意度</span><strong id="productScore">--</strong></div>
+          <div class="metric"><span>商品质量分</span><strong id="productScore">--</strong></div>
           <div class="metric"><span>包装满意度</span><strong id="packScore">--</strong></div>
           <div class="metric"><span>消息回复率</span><strong id="messageRate">--</strong></div>
         </div>
@@ -593,8 +569,8 @@
             <h3>补评与评价量</h3>
             <table class="mini-table">
               <tbody>
-                <tr><th>商品满意度</th><td id="productNeedText">请填写当前商品满意度、目标值和近60天有效评价量。</td></tr>
-                <tr><th>包装满意度</th><td id="packNeedText">请填写当前包装满意度、目标值和近60天有效评价量。</td></tr>
+                <tr><th>商品质量分</th><td id="productNeedText">请填写当前商品质量分和近60天有效评价量。</td></tr>
+                <tr><th>包装满意度</th><td id="packNeedText">请填写当前包装满意度和近60天有效评价量。</td></tr>
                 <tr><th>评价率</th><td id="reviewVolumeText">请填写后台近60天评价率。</td></tr>
               </tbody>
             </table>
@@ -630,22 +606,19 @@
     let hasGenerated = false;
 
     const ids = [
-      "productCurrent","productTarget",
-      "packCurrent","packTarget",
+      "productCurrent","packCurrent",
       "effectiveReviewCount","reviewRate",
-      "messageCurrent","messageTarget",
-      "serviceNeg","serviceTarget",
-      "foodNeg","foodTarget",
-      "repeatRate","repeatTarget"
+      "repeatRate","foodNegRate",
+      "messageCurrent","serviceNegRate"
     ];
 
-    const weights = {
-      product: 26.25,
-      pack: 8.75,
-      repeat: 17.5,
-      food: 17.5,
-      message: 10,
-      service: 20
+    const standards = {
+      product: 4.6,
+      pack: 4.6,
+      repeat: 25,
+      foodNegative: 0,
+      message: 100,
+      serviceNegative: 0
     };
 
     function num(id) {
@@ -795,9 +768,9 @@
 
     function update() {
       const productCurrent = clamp(num("productCurrent"), 0, 5);
-      const productTarget = clamp(num("productTarget"), 1, 4.99);
+      const productTarget = standards.product;
       const packCurrent = clamp(num("packCurrent"), 0, 5);
-      const packTarget = clamp(num("packTarget"), 1, 4.99);
+      const packTarget = standards.pack;
       const effectiveReviewCount = num("effectiveReviewCount");
       const reviewRate = num("reviewRate");
 
@@ -806,13 +779,13 @@
       const validReviewNeed = Math.max(productNeedStars, packNeedStars);
 
       const messageRate = num("messageCurrent");
-      const messageTarget = num("messageTarget");
-      const serviceNeg = num("serviceNeg");
-      const serviceTarget = num("serviceTarget");
-      const foodNeg = num("foodNeg");
-      const foodTarget = num("foodTarget");
+      const messageTarget = standards.message;
+      const serviceNeg = num("serviceNegRate");
+      const serviceTarget = standards.serviceNegative;
+      const foodNeg = num("foodNegRate");
+      const foodTarget = standards.foodNegative;
       const repeatRate = num("repeatRate");
-      const repeatTarget = num("repeatTarget");
+      const repeatTarget = standards.repeat;
 
       $("neededReviews").textContent = validReviewNeed;
       $("reviewNote").textContent = validReviewNeed
@@ -828,34 +801,34 @@
       const guides = [];
 
       if (effectiveReviewCount && productCurrent && productCurrent < productTarget) {
-        weaknesses.push({ label: `商品满意度低于目标`, level: "warn" });
+        weaknesses.push({ label: `商品质量分低于参考线`, level: "warn" });
         addAction(actions, `先查商品差评高频词，优先处理口味、分量、温度、出品稳定性，再引导满意顾客评价味道和分量。`, 80);
         guides.push("味道好、分量足、口感稳定、出餐温度合适");
       }
 
       if (effectiveReviewCount && packCurrent && packCurrent < packTarget) {
-        weaknesses.push({ label: `包装满意度低于目标`, level: "warn" });
+        weaknesses.push({ label: `包装满意度低于参考线`, level: "warn" });
         addAction(actions, `同步检查包装封口、保温、防洒漏和餐具完整度，再引导顾客评价包装体验。`, 70);
         guides.push("包装严实、没有洒漏、保温好、餐具齐全");
       }
 
       if (foodNeg > foodTarget) {
-        weaknesses.push({ label: "食安负反馈高危", level: "danger" });
+        weaknesses.push({ label: "食品安全负反馈率需关注", level: "danger" });
         addAction(actions, `食安负反馈先止血：检查异物、效期、后厨卫生和打包复核，至少连续 7 天不再新增，30 天看稳定。`, 100);
       }
 
       if (serviceNeg > serviceTarget) {
-        weaknesses.push({ label: "服务负反馈需止血", level: "danger" });
+        weaknesses.push({ label: "服务负反馈率需关注", level: "danger" });
         addAction(actions, `服务负反馈先处理：减少漏餐、错餐、态度问题和异常订单投诉，问题订单先安抚再申诉。`, 95);
       }
 
       if (messageTarget > 0 && messageRate < messageTarget) {
-        weaknesses.push({ label: "消息回复率未满", level: messageRate < 95 ? "danger" : "warn" });
-        addAction(actions, `消息回复率目标 ${pct(messageTarget)}：开启自动回复，高峰期安排人看消息，从今天起连续保持 5 分钟内回复。`, 85);
+        weaknesses.push({ label: "消息回复率未达参考线", level: messageRate < 95 ? "danger" : "warn" });
+        addAction(actions, `消息回复率未达参考线：开启自动回复，高峰期安排人看消息，从今天起连续保持 5 分钟内回复。`, 85);
       }
 
       if (repeatTarget > 0 && repeatRate > 0 && repeatRate < repeatTarget) {
-        weaknesses.push({ label: "复购率低于目标", level: "warn" });
+        weaknesses.push({ label: "复购率低于参考线", level: "warn" });
         addAction(actions, `复购率属于慢变量，本轮先记录问题，后续用产品稳定、老客券、收藏和复购触达处理。`, 40);
       }
 
@@ -878,11 +851,11 @@
 
       $("productNeedText").textContent = effectiveReviewCount && productCurrent
         ? `按近60天 ${effectiveReviewCount} 条有效评价估算：当前 ${productCurrent.toFixed(2)}，目标 ${productTarget.toFixed(1)}，约需新增 ${productNeedStars} 条有效五星评价。`
-        : "请填写当前商品满意度、目标值和近60天有效评价量。";
+        : "请填写当前商品质量分和近60天有效评价量。";
 
       $("packNeedText").textContent = effectiveReviewCount && packCurrent
         ? `按近60天 ${effectiveReviewCount} 条有效评价估算：当前 ${packCurrent.toFixed(2)}，目标 ${packTarget.toFixed(1)}，约需新增 ${packNeedStars} 条有效五星评价。`
-        : "请填写当前包装满意度、目标值和近60天有效评价量。";
+        : "请填写当前包装满意度和近60天有效评价量。";
 
       $("reviewVolumeText").textContent = `当前近60天评价率 ${reviewRate.toFixed(1)}%；5%为合格线，8%为正常目标。`;
 
@@ -908,30 +881,20 @@
 
     function fillSample() {
       const sample = {
-        productCurrent: 4.34, productTarget: 4.6,
-        packCurrent: 4.25, packTarget: 4.6,
+        productCurrent: 4.34,
+        packCurrent: 4.25,
         effectiveReviewCount: 50, reviewRate: 5.3,
-        messageCurrent: 92.6, messageTarget: 100,
-        serviceNeg: 1, serviceTarget: 0,
-        foodNeg: 0, foodTarget: 0,
-        repeatRate: 18, repeatTarget: 25
+        repeatRate: 18,
+        foodNegRate: 0,
+        messageCurrent: 92.6,
+        serviceNegRate: 1
       };
       Object.entries(sample).forEach(([id, value]) => $(id).value = value);
       $("copyStatus").textContent = "已填入示例，请点击“生成诊断”。";
     }
 
     function resetForm() {
-      ids.forEach((id) => {
-        const defaults = {
-          productTarget: 4.6,
-          packTarget: 4.6,
-          messageTarget: 100,
-          serviceTarget: 0,
-          foodTarget: 0,
-          repeatTarget: 25
-        };
-        $(id).value = defaults[id] ?? 0;
-      });
+      ids.forEach((id) => { $(id).value = 0; });
       hasGenerated = false;
       $("copyStatus").textContent = "已清空，请重新填写后点击“生成诊断”。";
       $("copyBtn").disabled = true;
@@ -947,8 +910,8 @@
       $("messageRate").textContent = "--";
       $("weaknessChips").innerHTML = "";
       $("weaknessChips").appendChild(chip("待生成诊断", ""));
-      $("productNeedText").textContent = "请填写当前商品满意度、目标值和近60天有效评价量。";
-      $("packNeedText").textContent = "请填写当前包装满意度、目标值和近60天有效评价量。";
+      $("productNeedText").textContent = "请填写当前商品质量分和近60天有效评价量。";
+      $("packNeedText").textContent = "请填写当前包装满意度和近60天有效评价量。";
       $("reviewVolumeText").textContent = "请填写后台近60天评价率。";
       $("actionList").innerHTML = "";
       $("reviewGuide").textContent = "生成诊断后，这里会给出本轮好评引导方向。";
@@ -968,7 +931,7 @@
         "店铺评分提升诊断结果",
         `主要短板：${weaknesses}`,
         `预计新增有效五星评价数：${$("neededReviews").textContent} 条`,
-        `商品满意度：${$("productScore").textContent}`,
+        `商品质量分：${$("productScore").textContent}`,
         `包装满意度：${$("packScore").textContent}`,
         `消息回复率：${$("messageRate").textContent}`,
         "",
