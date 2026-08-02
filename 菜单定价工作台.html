@@ -123,6 +123,17 @@
       line-height: 1.6;
     }
 
+    .notice-box {
+      margin-bottom: 18px;
+      padding: 14px 16px;
+      border: 2px solid var(--brand);
+      border-radius: 8px;
+      background: #fff9dc;
+      color: #5f4600;
+      font-weight: 700;
+      line-height: 1.7;
+    }
+
     .grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -395,14 +406,18 @@
     <header>
       <div>
         <h1>菜单定价工作台</h1>
-        <p class="subtitle">先算清一单，再整理整张菜单。工具只算单品毛利润，不替代完整经营利润表。</p>
+        <p class="subtitle">先算清一份可独立成单的套餐，再整理整张菜单。本工具不替代完整经营利润表。</p>
       </div>
       <div class="toolbar">
-        <button class="btn" id="resetFormBtn" type="button">清空当前菜</button>
+        <button class="btn" id="resetFormBtn" type="button">清空当前套餐</button>
         <button class="btn primary" id="saveBtn" type="button">保存到菜单</button>
         <button class="btn yellow" id="exportBtn" type="button">导出菜单建议表</button>
       </div>
     </header>
+
+    <div class="notice-box">
+      重要提示：本菜单定价工作台适合计算能够独立成单的套餐或主品套餐，不适合计算单点不送的提单品、凑单品、加料等单品。此类商品只能作为加购成本参考，不能直接用这里的“顾客到手、老板到手、建议售价”作为最终定价结论。
+    </div>
 
     <div class="layout">
       <section class="panel">
@@ -436,10 +451,6 @@
           <label>
             <span class="field-title">默认配送服务费</span>
             <input id="defaultDeliveryFee" type="number" step="0.1" min="0" value="0">
-          </label>
-          <label>
-            <span class="field-title">默认顾客配送费（可不填）</span>
-            <input id="customerDeliveryFee" type="number" step="0.1" min="0" value="0">
           </label>
           <label>
             <span class="field-title">本店预计起送价</span>
@@ -499,31 +510,32 @@
               <input id="fullReduction2" type="number" step="0.1" min="0" value="0">
             </label>
             <label>
-              <span class="field-title">配送费减免</span>
+              <span class="field-title">顾客免配金额（老板承担）</span>
               <input id="deliveryDiscount" type="number" step="0.1" min="0" value="0">
             </label>
             <label>
-              <span class="field-title">下单返券预留</span>
+              <span class="field-title">下单返券金额</span>
               <input id="returnCouponReserve" type="number" step="0.1" min="0" value="0">
             </label>
             <label>
-              <span class="field-title">集点领券预留</span>
+              <span class="field-title">集点返券金额</span>
               <input id="pointsReserve" type="number" step="0.1" min="0" value="0">
             </label>
           </div>
+          <p class="panel-note" style="margin:10px 0 0">新客可同时使用进店领券和新客立减；老客在进店领券、下单返券、集点返券中只选一个。顾客免配金额只计入老板承担，不再把顾客配送费并入套餐到手价。</p>
         </div>
       </section>
 
       <section class="panel">
-        <h2>单个菜品计算</h2>
-        <p class="panel-note">选身份、填成本和售价。保存后可以继续算下一道菜，最后统一导出。</p>
+        <h2>单个套餐/主品计算</h2>
+        <p class="panel-note">选身份、填整份套餐的成本和售价。保存后可以继续算下一份套餐，最后统一导出。</p>
 
         <div class="section" style="border-top:0;padding-top:0;margin-top:0">
           <h3>菜品基础信息</h3>
           <div class="grid">
             <label>
-              <span class="field-title">菜品名称</span>
-              <input id="itemName" placeholder="例如：招牌鸡腿饭">
+              <span class="field-title">套餐/主品名称</span>
+              <input id="itemName" placeholder="例如：招牌鸡腿饭套餐">
             </label>
             <label>
               <span class="field-title">菜单分类</span>
@@ -561,14 +573,39 @@
 
         <div class="section">
           <h3>活动灵活调配</h3>
+          <div class="grid" style="margin-bottom:12px">
+            <label>
+              <span class="field-title">本次按哪类顾客计算</span>
+              <select id="customerType">
+                <option value="new">新客</option>
+                <option value="old">老客</option>
+              </select>
+            </label>
+            <label id="oldCouponTypeWrap" class="hidden">
+              <span class="field-title">老客本单使用哪一种券</span>
+              <select id="oldCouponType">
+                <option value="none">不使用</option>
+                <option value="entry">进店领券</option>
+                <option value="return">下单返券</option>
+                <option value="points">集点返券</option>
+              </select>
+            </label>
+          </div>
           <div class="switch-line">
             <span>沿用店铺默认活动</span>
             <input id="useDefaultActivity" type="checkbox" checked>
           </div>
           <div class="switch-line">
-            <span>把复购预留成本计入毛利判断</span>
+            <span>把本单完成后的复购预留成本计入毛利判断</span>
             <input id="includeReserve" type="checkbox">
           </div>
+          <label id="reserveTypeWrap" class="hidden" style="margin:12px 0">
+            <span class="field-title">下一次复购预留选择哪一种</span>
+            <select id="reserveType">
+              <option value="return">下单返券</option>
+              <option value="points">集点返券</option>
+            </select>
+          </label>
           <div class="grid">
             <label>
               <span class="field-title">调高让利 ↑</span>
@@ -582,7 +619,7 @@
         </div>
 
         <div class="section">
-          <h3>这个菜在菜单里承担什么任务？</h3>
+          <h3>这份套餐/主品在菜单里承担什么任务？</h3>
           <div class="roles" id="roleButtons"></div>
           <div class="role-help" id="roleHelp"></div>
         </div>
@@ -596,9 +633,9 @@
               <small>你在上方输入、想要测试的价格</small>
             </div>
             <div class="metric">
-              <span>测试价｜顾客到手</span>
+              <span id="testCustomerPayLabel">测试价｜新客到手</span>
               <strong id="testCustomerPay">¥0.00</strong>
-              <small>含打包费，配送费按上方填写</small>
+              <small>含打包费，不含顾客配送费</small>
             </div>
             <div class="metric">
               <span>测试价｜老板到手</span>
@@ -606,7 +643,7 @@
               <small>扣除活动、佣金、配送服务费</small>
             </div>
             <div class="metric">
-              <span>测试价｜单品毛利率</span>
+              <span>测试价｜套餐毛利率</span>
               <strong id="testMarginRate">0%</strong>
               <small id="targetRange">身份建议区间：-</small>
             </div>
@@ -616,7 +653,7 @@
               <small id="suggestedNote">按当前菜品身份的毛利区间估算</small>
             </div>
             <div class="metric">
-              <span>建议价｜顾客到手</span>
+              <span id="suggestedCustomerPayLabel">建议价｜新客到手</span>
               <strong id="suggestedCustomerPay">¥0.00</strong>
               <small>按建议售价重新计算</small>
             </div>
@@ -626,7 +663,7 @@
               <small>按建议售价重新计算</small>
             </div>
             <div class="metric">
-              <span>建议价｜单品毛利率</span>
+              <span>建议价｜套餐毛利率</span>
               <strong id="suggestedMarginRate">0%</strong>
               <small>用于和测试价直接比较</small>
             </div>
@@ -639,7 +676,7 @@
     <section class="panel" style="margin-top:18px">
       <h2>菜单定价表</h2>
       <p class="panel-note" id="startPriceJudge">起送价判断：填写本店预计起送价和商圈常见起送价后显示。</p>
-      <div id="emptyState" class="empty">还没有保存菜品。先在上方算一道菜，再点“保存到菜单”。</div>
+      <div id="emptyState" class="empty">还没有保存套餐。先在上方算一份套餐，再点“保存到菜单”。</div>
       <div class="table-wrap hidden" id="tableWrap">
         <table>
           <thead>
@@ -654,7 +691,7 @@
               <th>老板到手</th>
               <th>食材</th>
               <th>包材</th>
-              <th>毛利润</th>
+              <th>套餐毛利润</th>
               <th>毛利率</th>
               <th>判断</th>
               <th>排序建议</th>
@@ -761,7 +798,7 @@ window.PROXY_CITY_NAMES = ["淮南","亳州","池州","宣城","攀枝花","广�
       $("resetFormBtn").addEventListener("click", resetItemForm);
       $("exportBtn").addEventListener("click", exportCsv);
 
-      selectRole(currentRole);
+      selectRole(currentRole, false);
       loadData();
       updateCommissionByCity(false);
       renderMenuTable();
@@ -805,14 +842,14 @@ window.PROXY_CITY_NAMES = ["淮南","亳州","池州","宣城","攀枝花","广�
       }
     }
 
-    function selectRole(role) {
+    function selectRole(role, shouldRecalc = true) {
       currentRole = role;
       document.querySelectorAll(".role-btn").forEach((btn) => {
         btn.classList.toggle("active", btn.textContent === role);
       });
       const roleInfo = roles[role];
       $("roleHelp").textContent = `${role}品：${roleInfo.desc} 建议毛利率 ${roleInfo.range[0]}%-${roleInfo.range[1]}%。`;
-      recalc();
+      if (shouldRecalc) recalc();
     }
 
     function normalizeCityName(name) {
@@ -897,7 +934,6 @@ window.PROXY_CITY_NAMES = ["淮南","亳州","池州","宣城","攀枝花","广�
         commissionMin: num("commissionMin"),
         commissionMeta: currentCommissionMeta(),
         deliveryFee: currentCommissionMeta().type === "代理" ? 0 : num("defaultDeliveryFee"),
-        customerDeliveryFee: num("customerDeliveryFee"),
         startPrice: num("startPrice"),
         marketStartPrice: num("marketStartPrice"),
         tierEnabled: $("tierEnabled").checked,
@@ -925,8 +961,11 @@ window.PROXY_CITY_NAMES = ["淮南","亳州","池州","宣城","攀枝花","广�
         packageCost: num("packageCost"),
         foodCost: num("foodCost"),
         customerPackageFee: num("customerPackageFee"),
+        customerType: $("customerType").value,
+        oldCouponType: $("oldCouponType").value,
         useDefaultActivity: $("useDefaultActivity").checked,
         includeReserve: $("includeReserve").checked,
+        reserveType: $("reserveType").value,
         extraActivityCost: num("extraActivityCost"),
         lessActivityCost: num("lessActivityCost")
       };
@@ -958,32 +997,64 @@ window.PROXY_CITY_NAMES = ["淮南","亳州","池州","宣城","攀枝花","广�
       return reductions[0];
     }
 
+    function selectedCustomerActivity(store, item) {
+      if (!item.useDefaultActivity) {
+        return { label: "未沿用店铺默认券", amount: 0 };
+      }
+      if (item.customerType === "old") {
+        const oldCouponMap = {
+          entry: { label: "老客进店领券", amount: store.entryCoupon },
+          return: { label: "老客下单返券", amount: store.returnCouponReserve },
+          points: { label: "老客集点返券", amount: store.pointsReserve },
+          none: { label: "老客本单不使用券", amount: 0 }
+        };
+        return oldCouponMap[item.oldCouponType] || oldCouponMap.none;
+      }
+      return {
+        label: "新客进店领券＋新客立减",
+        amount: store.entryCoupon + store.newCustomerDiscount
+      };
+    }
+
+    function selectedReserveCost(store, item) {
+      if (!item.includeReserve) {
+        return { label: "未计复购预留", amount: 0 };
+      }
+      if (item.reserveType === "points") {
+        return { label: "集点返券预留", amount: store.pointsReserve };
+      }
+      return { label: "下单返券预留", amount: store.returnCouponReserve };
+    }
+
     function calculateWithPrice(price, itemOverride) {
       const store = getStoreParams();
       const item = itemOverride || getItemInputs();
       item.salePrice = price;
       const orderAmount = price;
-      const fullReduction = triggeredFullReduction(orderAmount, store);
-
-      const defaultActivity = item.useDefaultActivity
-        ? store.entryCoupon + store.newCustomerDiscount + fullReduction.amount + store.deliveryDiscount
-        : 0;
+      const fullReduction = item.useDefaultActivity
+        ? triggeredFullReduction(orderAmount, store)
+        : { threshold: 0, amount: 0 };
+      const customerActivity = selectedCustomerActivity(store, item);
+      const defaultActivity = customerActivity.amount + fullReduction.amount;
       const directActivity = Math.max(defaultActivity + item.extraActivityCost - item.lessActivityCost, 0);
       const tier = triggeredTierDiscount(orderAmount, store);
-      const reserve = store.returnCouponReserve + store.pointsReserve;
+      const reserveSelection = selectedReserveCost(store, item);
+      const reserve = reserveSelection.amount;
+      const deliveryCost = item.useDefaultActivity ? store.deliveryDiscount : 0;
       const commissionBase = store.commissionMeta.type === "代理"
         ? price
         : Math.max(price - directActivity - tier.cost, 0);
       const commissionRaw = commissionBase * store.commissionRate;
       const commission = Math.max(commissionRaw, store.commissionMin || 0);
-      const customerPay = Math.max(price + item.customerPackageFee + store.customerDeliveryFee - directActivity - tier.discount, 0);
-      const merchantReceive = price + item.customerPackageFee - directActivity - tier.cost - commission - store.deliveryFee;
+      const customerPay = Math.max(price + item.customerPackageFee - directActivity - tier.discount, 0);
+      const merchantReceive = price + item.customerPackageFee - directActivity - tier.cost - commission - store.deliveryFee - deliveryCost;
       const rawProfit = merchantReceive - item.foodCost - item.packageCost;
       const judgedProfit = rawProfit - (item.includeReserve ? reserve : 0);
       const marginRate = merchantReceive > 0 ? judgedProfit / merchantReceive * 100 : -999;
 
       return {
-        store, item, orderAmount, fullReduction, directActivity, tier, reserve, commission,
+        store, item, orderAmount, fullReduction, customerActivity, directActivity, tier,
+        reserveSelection, reserve, deliveryCost, commission,
         customerPay, merchantReceive, rawProfit, judgedProfit, marginRate
       };
     }
@@ -1016,6 +1087,16 @@ window.PROXY_CITY_NAMES = ["淮南","亳州","池州","宣城","攀枝花","广�
       }
 
       const lines = [];
+      lines.push(`本次按${calc.item.customerType === "old" ? "老客" : "新客"}计算：${calc.customerActivity.label} ${money(calc.customerActivity.amount)}。`);
+      if (calc.item.includeReserve) {
+        lines.push(`本单完成后，下一次复购预留只计${calc.reserveSelection.label} ${money(calc.reserve)}，未与另一种返券相加。`);
+      }
+      if (calc.fullReduction.amount > 0) {
+        lines.push(`本单同时触发满 ${calc.fullReduction.threshold} 减 ${money(calc.fullReduction.amount)}。`);
+      }
+      if (calc.deliveryCost > 0) {
+        lines.push(`顾客免配金额 ${money(calc.deliveryCost)} 只从老板到手中扣除。`);
+      }
       if (calc.judgedProfit < 0) {
         box.classList.add("bad");
         lines.push("当前做法会亏，不建议长期这样卖。");
@@ -1048,6 +1129,10 @@ window.PROXY_CITY_NAMES = ["淮南","亳州","池州","宣城","攀枝花","广�
       if (suggested) {
         lines.push(`按${calc.item.role}品建议毛利区间，建议售价可参考 ${money(suggested.item.salePrice)}。`);
       }
+      if (["提单", "凑单"].includes(calc.item.role)) {
+        box.classList.add("warn");
+        lines.push("本商品如果设置为单点不送，当前结果只能作为加购成本参考，不能作为独立成交价结论。");
+      }
 
       box.textContent = lines.join(" ");
       return lines[0];
@@ -1071,6 +1156,7 @@ window.PROXY_CITY_NAMES = ["淮南","亳州","池州","宣城","攀枝花","广�
 
     function recalc() {
       if (!$("suggestedPrice")) return;
+      updateActivityControls();
       const calc = calculateWithPrice(num("salePrice"));
       const suggested = suggestPrice();
       $("testPrice").textContent = money(calc.item.salePrice);
@@ -1081,11 +1167,23 @@ window.PROXY_CITY_NAMES = ["淮南","亳州","池州","宣城","攀枝花","广�
       $("suggestedCustomerPay").textContent = suggested ? money(suggested.customerPay) : "暂无";
       $("suggestedMerchantReceive").textContent = suggested ? money(suggested.merchantReceive) : "暂无";
       $("suggestedMarginRate").textContent = suggested ? pct(suggested.marginRate) : "暂无";
+      const customerLabel = calc.item.customerType === "old" ? "老客" : "新客";
+      $("testCustomerPayLabel").textContent = `测试价｜${customerLabel}到手`;
+      $("suggestedCustomerPayLabel").textContent = `建议价｜${customerLabel}到手`;
       $("targetRange").textContent = `身份建议区间：${roles[currentRole].range[0]}%-${roles[currentRole].range[1]}%`;
       $("suggestedNote").textContent = suggested ? "按当前菜品身份的毛利区间估算" : "请补充成本和活动参数";
       makeJudgement(calc, suggested);
       updateStartPriceJudge();
       persistData();
+    }
+
+    function updateActivityControls() {
+      const isOld = $("customerType").value === "old";
+      $("oldCouponTypeWrap").classList.toggle("hidden", !isOld);
+      $("oldCouponType").disabled = !isOld;
+      const hasReserve = $("includeReserve").checked;
+      $("reserveTypeWrap").classList.toggle("hidden", !hasReserve);
+      $("reserveType").disabled = !hasReserve;
     }
 
     function menuPositionForRole(role) {
@@ -1147,7 +1245,7 @@ window.PROXY_CITY_NAMES = ["淮南","亳州","池州","宣城","攀枝花","广�
     function saveCurrentItem() {
       const record = currentRecord();
       if (!record.name || record.name === "未命名菜品") {
-        alert("先填菜品名称，再保存。");
+        alert("先填套餐/主品名称，再保存。");
         return;
       }
       const index = menuItems.findIndex((item) => item.id === record.id);
@@ -1224,8 +1322,11 @@ window.PROXY_CITY_NAMES = ["淮南","亳州","池州","宣城","攀枝花","广�
       $("packageCost").value = input.packageCost || 0;
       $("foodCost").value = input.foodCost || 0;
       $("customerPackageFee").value = input.customerPackageFee || 0;
+      $("customerType").value = input.customerType || "new";
+      $("oldCouponType").value = input.oldCouponType || "none";
       $("useDefaultActivity").checked = input.useDefaultActivity !== false;
       $("includeReserve").checked = !!input.includeReserve;
+      $("reserveType").value = input.reserveType || "return";
       $("extraActivityCost").value = input.extraActivityCost || 0;
       $("lessActivityCost").value = input.lessActivityCost || 0;
       recalc();
@@ -1239,16 +1340,19 @@ window.PROXY_CITY_NAMES = ["淮南","亳州","池州","宣城","攀枝花","广�
       ["salePrice", "marketRefPrice", "packageCost", "foodCost", "customerPackageFee", "extraActivityCost", "lessActivityCost"].forEach((id) => $(id).value = 0);
       $("useDefaultActivity").checked = true;
       $("includeReserve").checked = false;
+      $("customerType").value = "new";
+      $("oldCouponType").value = "none";
+      $("reserveType").value = "return";
       selectRole("常规");
       recalc();
     }
 
     function exportCsv() {
       if (!menuItems.length) {
-        alert("还没有保存菜品。");
+        alert("还没有保存套餐。");
         return;
       }
-      const headers = ["菜单分类", "建议菜单位置", "菜品名称", "菜品身份", "当前售价", "建议售价", "顾客预计到手", "老板预计到手", "食材成本", "包材成本", "单品毛利润", "毛利率", "判断结果", "排序建议"];
+      const headers = ["菜单分类", "建议菜单位置", "套餐/主品名称", "菜品身份", "当前售价", "建议售价", "顾客预计到手", "老板预计到手", "食材成本", "包材成本", "套餐毛利润", "毛利率", "判断结果", "排序建议"];
       const rows = sortedMenuItems().map((item) => [
         item.category, item.suggestedPosition || menuPositionForRole(item.role)[0], item.name, item.role, item.salePrice, item.suggestedPrice,
         item.customerPay, item.merchantReceive, item.foodCost, item.packageCost,
@@ -1291,7 +1395,6 @@ window.PROXY_CITY_NAMES = ["淮南","亳州","池州","宣城","攀枝花","广�
           commissionRate: $("commissionRate").value,
           commissionMin: $("commissionMin").value,
           defaultDeliveryFee: $("defaultDeliveryFee").value,
-          customerDeliveryFee: $("customerDeliveryFee").value,
           startPrice: $("startPrice").value,
           marketStartPrice: $("marketStartPrice").value,
           tierEnabled: $("tierEnabled").checked,
