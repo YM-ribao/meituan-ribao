@@ -522,7 +522,7 @@
               <input id="pointsReserve" type="number" step="0.1" min="0" value="0">
             </label>
           </div>
-          <p class="panel-note" style="margin:10px 0 0">新客可同时使用进店领券和新客立减；老客在进店领券、下单返券、集点返券中只选一个。顾客免配金额只计入老板承担，不再把顾客配送费并入套餐到手价。</p>
+          <p class="panel-note" style="margin:10px 0 0">按后台实际金额填写，系统会根据顾客类型自动判断，不需要自己计算。</p>
         </div>
       </section>
 
@@ -1076,7 +1076,7 @@ window.PROXY_CITY_NAMES = ["淮南","亳州","池州","宣城","攀枝花","广�
       return best;
     }
 
-    function makeJudgement(calc, suggested) {
+    function makeJudgement(calc) {
       const [minRate, maxRate] = roles[calc.item.role].range;
       const box = $("judgeBox");
       box.className = "judgement";
@@ -1086,56 +1086,33 @@ window.PROXY_CITY_NAMES = ["淮南","亳州","池州","宣城","攀枝花","广�
         return "信息不足";
       }
 
-      const lines = [];
-      lines.push(`本次按${calc.item.customerType === "old" ? "老客" : "新客"}计算：${calc.customerActivity.label} ${money(calc.customerActivity.amount)}。`);
-      if (calc.item.includeReserve) {
-        lines.push(`本单完成后，下一次复购预留只计${calc.reserveSelection.label} ${money(calc.reserve)}，未与另一种返券相加。`);
-      }
-      if (calc.fullReduction.amount > 0) {
-        lines.push(`本单同时触发满 ${calc.fullReduction.threshold} 减 ${money(calc.fullReduction.amount)}。`);
-      }
-      if (calc.deliveryCost > 0) {
-        lines.push(`顾客免配金额 ${money(calc.deliveryCost)} 只从老板到手中扣除。`);
-      }
+      let result = "";
       if (calc.judgedProfit < 0) {
         box.classList.add("bad");
-        lines.push("当前做法会亏，不建议长期这样卖。");
+        result = "不合理：当前套餐会亏，售价和活动力度压不住成本。";
       } else if (calc.marginRate < minRate) {
-        box.classList.add("warn");
-        lines.push(`毛利率低于${calc.item.role}品建议区间，活动或售价可能偏重。`);
+        box.classList.add("bad");
+        result = "不合理：当前利润偏低，售价偏低或让利偏重。";
       } else if (calc.marginRate > maxRate + 12) {
         box.classList.add("warn");
-        lines.push("毛利率很高，利润够，但要留意顾客是否觉得贵。");
+        result = "需要关注：利润空间足够，但顾客可能会觉得价格偏高。";
       } else {
         box.classList.add("good");
-        lines.push("当前毛利率落在建议区间附近，可以进入菜单测试。");
-      }
-
-      if (calc.tier.threshold) {
-        lines.push(`本单预计触发满 ${calc.tier.threshold} 的新阶梯神券，神券商家侧成本按 ${money(calc.tier.cost)} 计。`);
-      } else if (calc.tier.discount > 0) {
-        lines.push(`本单预计触发 20 元以下新阶梯神券，神券商家侧成本按 ${money(calc.tier.cost)} 计。`);
-      }
-      if (calc.tier.managerSupplement > 0) {
-        lines.push(`其中业务经理神券追补 ${money(calc.tier.managerSupplement)} 只降低顾客到手价，不计入老板成本。`);
+        result = "合理：当前利润和售价基本匹配，可以进入菜单测试。";
       }
 
       if (calc.item.marketRefPrice > 0) {
         const ratio = calc.item.salePrice / calc.item.marketRefPrice;
-        if (ratio > 1.15) lines.push("当前售价高于商圈参考价较多，需要靠图片、分量或套餐价值承接。");
-        if (ratio < 0.85) lines.push("当前售价低于商圈参考价较多，要确认不是把利润打薄了。");
-      }
-
-      if (suggested) {
-        lines.push(`按${calc.item.role}品建议毛利区间，建议售价可参考 ${money(suggested.item.salePrice)}。`);
+        if (ratio > 1.15) result += " 同时售价明显高于商圈，需要有足够的分量或套餐价值支撑。";
+        if (ratio < 0.85) result += " 同时售价明显低于商圈，要留意利润被压薄。";
       }
       if (["提单", "凑单"].includes(calc.item.role)) {
         box.classList.add("warn");
-        lines.push("本商品如果设置为单点不送，当前结果只能作为加购成本参考，不能作为独立成交价结论。");
+        result += " 如果这是单点不送商品，本结果只能作加购成本参考。";
       }
 
-      box.textContent = lines.join(" ");
-      return lines[0];
+      box.textContent = result;
+      return result;
     }
 
     function updateStartPriceJudge() {
