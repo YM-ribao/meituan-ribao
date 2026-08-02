@@ -520,7 +520,7 @@
 
         <div class="section">
           <div class="section-title">
-            <h3>1. 评价数量</h3>
+            <h3>评价数量</h3>
             <span class="hint">后台“数据统计—评价”页面，选择近60天</span>
           </div>
           <div class="form-grid">
@@ -531,16 +531,25 @@
 
         <div class="section">
           <div class="section-title">
-            <h3>2—7. 评分明细</h3>
-            <span class="hint">按照后台从上到下的顺序填写当前数据</span>
+            <h3>商品质量分 · 占综合评分80%</h3>
+            <span class="hint">下面四项共同构成商品质量分</span>
           </div>
           <div class="form-grid">
-            <div class="field"><label for="productCurrent">2. 当前商品质量分</label><input id="productCurrent" type="number" min="0" max="5" step="0.01" value="0"></div>
-            <div class="field"><label for="packCurrent">3. 当前包装满意度</label><input id="packCurrent" type="number" min="0" max="5" step="0.01" value="0"></div>
-            <div class="field"><label for="repeatRate">4. 当前复购率（%）</label><input id="repeatRate" type="number" min="0" max="100" step="0.1" value="0"></div>
-            <div class="field"><label for="foodNegRate">5. 当前食品安全负反馈率（%）</label><input id="foodNegRate" type="number" min="0" max="100" step="0.01" value="0"></div>
-            <div class="field"><label for="messageCurrent">6. 当前消息回复率（%）</label><input id="messageCurrent" type="number" min="0" max="100" step="0.1" value="0"></div>
-            <div class="field"><label for="serviceNegRate">7. 当前服务负反馈率（%）</label><input id="serviceNegRate" type="number" min="0" max="100" step="0.01" value="0"></div>
+            <div class="field"><label for="productCurrent">1. 当前商品满意度</label><input id="productCurrent" type="number" min="0" max="5" step="0.01" value="0"></div>
+            <div class="field"><label for="packCurrent">2. 当前包装满意度</label><input id="packCurrent" type="number" min="0" max="5" step="0.01" value="0"></div>
+            <div class="field"><label for="repeatRate">3. 当前复购率（%）</label><input id="repeatRate" type="number" min="0" max="100" step="0.1" value="0"></div>
+            <div class="field"><label for="foodNegRate">4. 当前食品安全负反馈率（%）</label><input id="foodNegRate" type="number" min="0" max="100" step="0.01" value="0"></div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-title">
+            <h3>服务体验分 · 占综合评分20%</h3>
+            <span class="hint">下面两项共同构成服务体验分</span>
+          </div>
+          <div class="form-grid">
+            <div class="field"><label for="messageCurrent">5. 当前消息回复率（%）</label><input id="messageCurrent" type="number" min="0" max="100" step="0.1" value="0"></div>
+            <div class="field"><label for="serviceNegRate">6. 当前服务负反馈率（%）</label><input id="serviceNegRate" type="number" min="0" max="100" step="0.01" value="0"></div>
           </div>
         </div>
       </form>
@@ -554,7 +563,7 @@
         </div>
 
         <div class="metric-strip">
-          <div class="metric"><span>商品质量分</span><strong id="productScore">--</strong></div>
+          <div class="metric"><span>商品满意度</span><strong id="productScore">--</strong></div>
           <div class="metric"><span>包装满意度</span><strong id="packScore">--</strong></div>
           <div class="metric"><span>消息回复率</span><strong id="messageRate">--</strong></div>
         </div>
@@ -569,7 +578,7 @@
             <h3>补评与评价量</h3>
             <table class="mini-table">
               <tbody>
-                <tr><th>商品质量分</th><td id="productNeedText">请填写当前商品质量分和近60天有效评价量。</td></tr>
+                <tr><th>商品满意度</th><td id="productNeedText">请填写当前商品满意度和近60天有效评价量。</td></tr>
                 <tr><th>包装满意度</th><td id="packNeedText">请填写当前包装满意度和近60天有效评价量。</td></tr>
                 <tr><th>评价率</th><td id="reviewVolumeText">请填写后台近60天评价率。</td></tr>
               </tbody>
@@ -801,7 +810,7 @@
       const guides = [];
 
       if (effectiveReviewCount && productCurrent && productCurrent < productTarget) {
-        weaknesses.push({ label: `商品质量分低于参考线`, level: "warn" });
+        weaknesses.push({ label: `商品满意度低于参考线`, level: "warn" });
         addAction(actions, `先查商品差评高频词，优先处理口味、分量、温度、出品稳定性，再引导满意顾客评价味道和分量。`, 80);
         guides.push("味道好、分量足、口感稳定、出餐温度合适");
       }
@@ -851,7 +860,7 @@
 
       $("productNeedText").textContent = effectiveReviewCount && productCurrent
         ? `按近60天 ${effectiveReviewCount} 条有效评价估算：当前 ${productCurrent.toFixed(2)}，目标 ${productTarget.toFixed(1)}，约需新增 ${productNeedStars} 条有效五星评价。`
-        : "请填写当前商品质量分和近60天有效评价量。";
+        : "请填写当前商品满意度和近60天有效评价量。";
 
       $("packNeedText").textContent = effectiveReviewCount && packCurrent
         ? `按近60天 ${effectiveReviewCount} 条有效评价估算：当前 ${packCurrent.toFixed(2)}，目标 ${packTarget.toFixed(1)}，约需新增 ${packNeedStars} 条有效五星评价。`
@@ -910,7 +919,7 @@
       $("messageRate").textContent = "--";
       $("weaknessChips").innerHTML = "";
       $("weaknessChips").appendChild(chip("待生成诊断", ""));
-      $("productNeedText").textContent = "请填写当前商品质量分和近60天有效评价量。";
+      $("productNeedText").textContent = "请填写当前商品满意度和近60天有效评价量。";
       $("packNeedText").textContent = "请填写当前包装满意度和近60天有效评价量。";
       $("reviewVolumeText").textContent = "请填写后台近60天评价率。";
       $("actionList").innerHTML = "";
@@ -931,7 +940,7 @@
         "店铺评分提升诊断结果",
         `主要短板：${weaknesses}`,
         `预计新增有效五星评价数：${$("neededReviews").textContent} 条`,
-        `商品质量分：${$("productScore").textContent}`,
+        `商品满意度：${$("productScore").textContent}`,
         `包装满意度：${$("packScore").textContent}`,
         `消息回复率：${$("messageRate").textContent}`,
         "",
