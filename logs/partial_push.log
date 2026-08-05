@@ -1,0 +1,191 @@
+﻿
+==== partial push start 2026-08-04 10:18:45 ====
+Cloning into 'D:\云淼辅助驾驶_Windows正本_20260803\网站'...
+From https://github.com/YM-ribao/meituan-ribao
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+[main b44885f] Windows自动更新推广巡店 20260804
+ 9 files changed, 583 insertions(+), 4836 deletions(-)
+ create mode 100644 "data/\345\267\241\345\272\227\347\212\266\346\200\201_20260804.csv"
+ create mode 100644 "data/\346\216\250\345\271\277\345\256\236\346\227\266_20260804.csv"
+ create mode 100644 "data/\346\216\250\345\271\277\346\216\222\345\220\215_20260804.csv"
+ create mode 100644 logs/latest_windows_push.html
+ create mode 100644 logs/partial_push.log
+ create mode 100644 logs/patrol_auto.log
+ create mode 100644 logs/promo_auto.log
+ create mode 100644 "logs/\346\211\213\345\212\250\344\270\212\344\274\240_\346\216\250\345\271\277\345\267\241\345\272\227_20260804_095716.log"
+To https://github.com/YM-ribao/meituan-ribao.git
+   8449c12..b44885f  main -> main
+pushed changes
+==== partial push end 2026-08-04 10:18:59 ====
+==== partial push start 2026-08-04 10:30:15 ====
+From https://github.com/YM-ribao/meituan-ribao
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+[main 302aa72] Windows鑷姩鏇存柊鎺ㄥ箍宸″簵 20260804
+ 5 files changed, 62 insertions(+), 35 deletions(-)
+To https://github.com/YM-ribao/meituan-ribao.git
+   b44885f..302aa72  main -> main
+pushed changes
+==== partial push end 2026-08-04 10:30:23 ====
+==== partial push start 2026-08-04 10:32:17 ====
+From https://github.com/YM-ribao/meituan-ribao
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+[main 5f5e3b3] Windows鑷姩鏇存柊鎺ㄥ箍宸″簵 20260804
+ 6 files changed, 205 insertions(+), 130 deletions(-)
+To https://github.com/YM-ribao/meituan-ribao.git
+   302aa72..5f5e3b3  main -> main
+pushed changes
+==== partial push end 2026-08-04 10:32:24 ====
+==== partial push start 2026-08-04 11:00:14 ====
+From https://github.com/YM-ribao/meituan-ribao
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+[main f685715] Windows鑷姩鏇存柊鎺ㄥ箍宸″簵 20260804
+ 5 files changed, 41 insertions(+), 45 deletions(-)
+To https://github.com/YM-ribao/meituan-ribao.git
+   5f5e3b3..f685715  main -> main
+pushed changes
+==== partial push end 2026-08-04 11:00:22 ====
+==== partial push start 2026-08-04 11:30:14 ====
+From https://github.com/YM-ribao/meituan-ribao
+ * branch            main       -> FETCH_HEAD
+Auto-merging 鎺ㄥ箍瀹炴椂.html
+CONFLICT (content): Merge conflict in 鎺ㄥ箍瀹炴椂.html
+Rebasing (1/4)
+error: could not apply b44885f... Windows鑷姩鏇存柊鎺ㄥ箍宸″簵 20260804
+hint: Resolve all conflicts manually, mark them as resolved with
+hint: "git add/rm <conflicted_files>", then run "git rebase --continue".
+hint: You can instead skip this commit: run "git rebase --skip".
+hint: To abort and get back to the state before "git rebase", run "git rebase --abort".
+hint: Disable this message with "git config set advice.mergeConflict false"
+Could not apply b44885f... # Windows鑷姩鏇存柊鎺ㄥ箍宸″簵 20260804
+==== partial push start 2026-08-04 12:00:14 ====
+error: Pulling is not possible because you have unmerged files.
+hint: Fix them up in the work tree, and then use 'git add/rm <file>'
+hint: as appropriate to mark resolution and make a commit.
+fatal: Exiting because of an unresolved conflict.
+==== partial push start 2026-08-04 12:30:14 ====
+error: Pulling is not possible because you have unmerged files.
+hint: Fix them up in the work tree, and then use 'git add/rm <file>'
+hint: as appropriate to mark resolution and make a commit.
+fatal: Exiting because of an unresolved conflict.
+==== partial push start 2026-08-04 13:00:13 ====
+error: Pulling is not possible because you have unmerged files.
+hint: Fix them up in the work tree, and then use 'git add/rm <file>'
+hint: as appropriate to mark resolution and make a commit.
+fatal: Exiting because of an unresolved conflict.
+==== partial push start 2026-08-04 13:30:14 ====
+error: Pulling is not possible because you have unmerged files.
+hint: Fix them up in the work tree, and then use 'git add/rm <file>'
+hint: as appropriate to mark resolution and make a commit.
+fatal: Exiting because of an unresolved conflict.
+==== partial push start 2026-08-04 14:00:14 ====
+error: Pulling is not possible because you have unmerged files.
+hint: Fix them up in the work tree, and then use 'git add/rm <file>'
+hint: as appropriate to mark resolution and make a commit.
+fatal: Exiting because of an unresolved conflict.
+==== partial push start 2026-08-04 17:00:14 ====
+error: Pulling is not possible because you have unmerged files.
+hint: Fix them up in the work tree, and then use 'git add/rm <file>'
+hint: as appropriate to mark resolution and make a commit.
+fatal: Exiting because of an unresolved conflict.
+==== partial push start 2026-08-04 17:30:14 ====
+error: Pulling is not possible because you have unmerged files.
+hint: Fix them up in the work tree, and then use 'git add/rm <file>'
+hint: as appropriate to mark resolution and make a commit.
+fatal: Exiting because of an unresolved conflict.
+==== partial push start 2026-08-04 18:00:14 ====
+error: Pulling is not possible because you have unmerged files.
+hint: Fix them up in the work tree, and then use 'git add/rm <file>'
+hint: as appropriate to mark resolution and make a commit.
+fatal: Exiting because of an unresolved conflict.
+==== partial push start 2026-08-04 18:30:14 ====
+error: Pulling is not possible because you have unmerged files.
+hint: Fix them up in the work tree, and then use 'git add/rm <file>'
+hint: as appropriate to mark resolution and make a commit.
+fatal: Exiting because of an unresolved conflict.
+==== partial push start 2026-08-04 19:00:14 ====
+error: Pulling is not possible because you have unmerged files.
+hint: Fix them up in the work tree, and then use 'git add/rm <file>'
+hint: as appropriate to mark resolution and make a commit.
+fatal: Exiting because of an unresolved conflict.
+==== partial push start 2026-08-04 19:30:14 ====
+error: Pulling is not possible because you have unmerged files.
+hint: Fix them up in the work tree, and then use 'git add/rm <file>'
+hint: as appropriate to mark resolution and make a commit.
+fatal: Exiting because of an unresolved conflict.
+==== partial push start 2026-08-04 20:00:13 ====
+error: Pulling is not possible because you have unmerged files.
+hint: Fix them up in the work tree, and then use 'git add/rm <file>'
+hint: as appropriate to mark resolution and make a commit.
+fatal: Exiting because of an unresolved conflict.
+==== partial push start 2026-08-04 20:30:14 ====
+error: Pulling is not possible because you have unmerged files.
+hint: Fix them up in the work tree, and then use 'git add/rm <file>'
+hint: as appropriate to mark resolution and make a commit.
+fatal: Exiting because of an unresolved conflict.
+==== partial push start 2026-08-04 21:00:14 ====
+error: Pulling is not possible because you have unmerged files.
+hint: Fix them up in the work tree, and then use 'git add/rm <file>'
+hint: as appropriate to mark resolution and make a commit.
+fatal: Exiting because of an unresolved conflict.
+==== partial push start 2026-08-05 09:58:55 ====
+Cloning into 'D:\云淼辅助驾驶_Windows正本_20260803\网站'...
+[main 6be0757] Windows自动更新推广巡店 20260805
+ 8 files changed, 1175 insertions(+), 4966 deletions(-)
+ create mode 100644 "data/\345\267\241\345\272\227\347\212\266\346\200\201_20260805.csv"
+ create mode 100644 logs/daily_auto.log
+ create mode 100644 logs/latest_windows_push.html
+ create mode 100644 logs/partial_push.log
+ create mode 100644 logs/patrol_auto.log
+ create mode 100644 logs/promo_auto.log
+ create mode 100644 "logs/\346\211\213\345\212\250\344\270\212\344\274\240_\346\216\250\345\271\277\345\267\241\345\272\227_20260804_095716.log"
+To https://github.com/YM-ribao/meituan-ribao.git
+   a494f88..6be0757  main -> main
+pushed changes
+==== partial push end 2026-08-05 09:59:05 ====
+==== partial push start 2026-08-05 10:00:18 ====
+Cloning into 'D:\浜戞芳杈呭姪椹鹃┒_Windows姝ｆ湰_20260803\缃戠珯'...
+[main 08e3118] Windows鑷姩鏇存柊鎺ㄥ箍宸″簵 20260805
+ 5 files changed, 42 insertions(+), 1 deletion(-)
+To https://github.com/YM-ribao/meituan-ribao.git
+   6be0757..08e3118  main -> main
+pushed changes
+==== partial push end 2026-08-05 10:00:33 ====
+==== partial push start 2026-08-05 10:02:04 ====
+Cloning into 'D:\浜戞芳杈呭姪椹鹃┒_Windows姝ｆ湰_20260803\缃戠珯'...
+[main ca219cc] Windows鑷姩鏇存柊鎺ㄥ箍宸″簵 20260805
+ 10 files changed, 1551 insertions(+), 4970 deletions(-)
+ create mode 100644 "data/\345\267\241\345\272\227\347\212\266\346\200\201_20260805.csv"
+ create mode 100644 "data/\346\216\250\345\271\277\345\256\236\346\227\266_20260805.csv"
+ create mode 100644 "data/\346\216\250\345\271\277\346\216\222\345\220\215_20260805.csv"
+ create mode 100644 logs/daily_auto.log
+ create mode 100644 logs/latest_windows_push.html
+ create mode 100644 logs/partial_push.log
+ create mode 100644 logs/patrol_auto.log
+ create mode 100644 logs/promo_auto.log
+ create mode 100644 "logs/\346\211\213\345\212\250\344\270\212\344\274\240_\346\216\250\345\271\277\345\267\241\345\272\227_20260804_095716.log"
+To https://github.com/YM-ribao/meituan-ribao.git
+   2cca127..ca219cc  main -> main
+pushed changes
+==== partial push end 2026-08-05 10:02:29 ====
+==== partial push start 2026-08-05 10:30:17 ====
+Cloning into 'D:\浜戞芳杈呭姪椹鹃┒_Windows姝ｆ湰_20260803\缃戠珯'...
+[main 308d9e7] Windows鑷姩鏇存柊鎺ㄥ箍宸″簵 20260805
+ 6 files changed, 43 insertions(+), 18 deletions(-)
+To https://github.com/YM-ribao/meituan-ribao.git
+   ca219cc..308d9e7  main -> main
+pushed changes
+==== partial push end 2026-08-05 10:30:35 ====
+==== partial push start 2026-08-05 10:32:23 ====
+Cloning into 'D:\浜戞芳杈呭姪椹鹃┒_Windows姝ｆ湰_20260803\缃戠珯'...
+[main 25fe4c3] Windows鑷姩鏇存柊鎺ㄥ箍宸″簵 20260805
+ 5 files changed, 197 insertions(+), 125 deletions(-)
+To https://github.com/YM-ribao/meituan-ribao.git
+   b2e6c26..25fe4c3  main -> main
+pushed changes
+==== partial push end 2026-08-05 10:32:37 ====
+==== partial push start 2026-08-05 11:00:17 ====
+Cloning into 'D:\浜戞芳杈呭姪椹鹃┒_Windows姝ｆ湰_20260803\缃戠珯'...

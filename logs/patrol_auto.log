@@ -1,0 +1,508 @@
+﻿==== patrol start 2026-08-04 10:14:45 ====
+✓ 营业状态：44 家店拿到
+  营业异常：2 条
+  商品异常：0 条
+  评价异常：9 条
+  活动异常：3 条
+  风险管控：0 条
+✓ 已生成：D:\云淼辅助驾驶_Windows正本_20260803\数据\巡店状态_20260804.csv（44 家店，13 家有巡店异常）
+==== patrol end 2026-08-04 10:15:01 rc=0 ====
+==== patrol start 2026-08-04 10:30:03 ====
+鉁?钀ヤ笟鐘舵€侊細44 瀹跺簵鎷垮埌
+  钀ヤ笟寮傚父锛? 鏉?
+  鍟嗗搧寮傚父锛? 鏉?
+  璇勪环寮傚父锛? 鏉?
+  娲诲姩寮傚父锛? 鏉?
+  椋庨櫓绠℃帶锛? 鏉?
+鉁?宸茬敓鎴愶細D:\浜戞芳杈呭姪椹鹃┒_Windows姝ｆ湰_20260803\鏁版嵁\宸″簵鐘舵€乢20260804.csv锛?4 瀹跺簵锛?3 瀹舵湁宸″簵寮傚父锛?
+==== patrol end 2026-08-04 10:30:23 rc=0 ====
+==== patrol start 2026-08-04 11:00:03 ====
+鉁?钀ヤ笟鐘舵€侊細0 瀹跺簵鎷垮埌
+  鉁?钀ヤ笟寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  钀ヤ笟寮傚父锛? 鏉?
+  鉁?鍟嗗搧寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  鍟嗗搧寮傚父锛? 鏉?
+  鉁?璇勪环寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  璇勪环寮傚父锛? 鏉?
+  鉁?娲诲姩寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  娲诲姩寮傚父锛? 鏉?
+  鉁?椋庨櫓绠℃帶 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  椋庨櫓绠℃帶锛? 鏉?
+鉁?宸茬敓鎴愶細D:\浜戞芳杈呭姪椹鹃┒_Windows姝ｆ湰_20260803\鏁版嵁\宸″簵鐘舵€乢20260804.csv锛? 瀹跺簵锛? 瀹舵湁宸″簵寮傚父锛?
+==== patrol end 2026-08-04 11:00:22 rc=0 ====
+==== patrol start 2026-08-04 11:30:03 ====
+鉁?钀ヤ笟鐘舵€侊細0 瀹跺簵鎷垮埌
+  鉁?钀ヤ笟寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  钀ヤ笟寮傚父锛? 鏉?
+  鉁?鍟嗗搧寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  鍟嗗搧寮傚父锛? 鏉?
+  鉁?璇勪环寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  璇勪环寮傚父锛? 鏉?
+  鉁?娲诲姩寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  娲诲姩寮傚父锛? 鏉?
+  鉁?椋庨櫓绠℃帶 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  椋庨櫓绠℃帶锛? 鏉?
+鉁?宸茬敓鎴愶細D:\浜戞芳杈呭姪椹鹃┒_Windows姝ｆ湰_20260803\鏁版嵁\宸″簵鐘舵€乢20260804.csv锛? 瀹跺簵锛? 瀹舵湁宸″簵寮傚父锛?
+==== patrol end 2026-08-04 11:30:18 rc=0 ====
+==== patrol start 2026-08-04 12:00:03 ====
+鉁?钀ヤ笟鐘舵€侊細0 瀹跺簵鎷垮埌
+  鉁?钀ヤ笟寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  钀ヤ笟寮傚父锛? 鏉?
+  鉁?鍟嗗搧寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  鍟嗗搧寮傚父锛? 鏉?
+  鉁?璇勪环寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  璇勪环寮傚父锛? 鏉?
+  鉁?娲诲姩寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  娲诲姩寮傚父锛? 鏉?
+  鉁?椋庨櫓绠℃帶 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  椋庨櫓绠℃帶锛? 鏉?
+鉁?宸茬敓鎴愶細D:\浜戞芳杈呭姪椹鹃┒_Windows姝ｆ湰_20260803\鏁版嵁\宸″簵鐘舵€乢20260804.csv锛? 瀹跺簵锛? 瀹舵湁宸″簵寮傚父锛?
+==== patrol end 2026-08-04 12:00:14 rc=0 ====
+==== patrol start 2026-08-04 12:30:03 ====
+鉁?钀ヤ笟鐘舵€侊細0 瀹跺簵鎷垮埌
+  鉁?钀ヤ笟寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  钀ヤ笟寮傚父锛? 鏉?
+  鉁?鍟嗗搧寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  鍟嗗搧寮傚父锛? 鏉?
+  鉁?璇勪环寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  璇勪环寮傚父锛? 鏉?
+  鉁?娲诲姩寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  娲诲姩寮傚父锛? 鏉?
+  鉁?椋庨櫓绠℃帶 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  椋庨櫓绠℃帶锛? 鏉?
+鉁?宸茬敓鎴愶細D:\浜戞芳杈呭姪椹鹃┒_Windows姝ｆ湰_20260803\鏁版嵁\宸″簵鐘舵€乢20260804.csv锛? 瀹跺簵锛? 瀹舵湁宸″簵寮傚父锛?
+==== patrol end 2026-08-04 12:30:14 rc=0 ====
+==== patrol start 2026-08-04 13:00:03 ====
+鉁?钀ヤ笟鐘舵€侊細0 瀹跺簵鎷垮埌
+  鉁?钀ヤ笟寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  钀ヤ笟寮傚父锛? 鏉?
+  鉁?鍟嗗搧寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  鍟嗗搧寮傚父锛? 鏉?
+  鉁?璇勪环寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  璇勪环寮傚父锛? 鏉?
+  鉁?娲诲姩寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  娲诲姩寮傚父锛? 鏉?
+  鉁?椋庨櫓绠℃帶 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  椋庨櫓绠℃帶锛? 鏉?
+鉁?宸茬敓鎴愶細D:\浜戞芳杈呭姪椹鹃┒_Windows姝ｆ湰_20260803\鏁版嵁\宸″簵鐘舵€乢20260804.csv锛? 瀹跺簵锛? 瀹舵湁宸″簵寮傚父锛?
+==== patrol end 2026-08-04 13:00:14 rc=0 ====
+==== patrol start 2026-08-04 13:30:03 ====
+鉁?钀ヤ笟鐘舵€侊細0 瀹跺簵鎷垮埌
+  鉁?钀ヤ笟寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  钀ヤ笟寮傚父锛? 鏉?
+  鉁?鍟嗗搧寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  鍟嗗搧寮傚父锛? 鏉?
+  鉁?璇勪环寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  璇勪环寮傚父锛? 鏉?
+  鉁?娲诲姩寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  娲诲姩寮傚父锛? 鏉?
+  鉁?椋庨櫓绠℃帶 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  椋庨櫓绠℃帶锛? 鏉?
+鉁?宸茬敓鎴愶細D:\浜戞芳杈呭姪椹鹃┒_Windows姝ｆ湰_20260803\鏁版嵁\宸″簵鐘舵€乢20260804.csv锛? 瀹跺簵锛? 瀹舵湁宸″簵寮傚父锛?
+==== patrol end 2026-08-04 13:30:14 rc=0 ====
+==== patrol start 2026-08-04 14:00:03 ====
+鉁?钀ヤ笟鐘舵€侊細0 瀹跺簵鎷垮埌
+  鉁?钀ヤ笟寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  钀ヤ笟寮傚父锛? 鏉?
+  鉁?鍟嗗搧寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  鍟嗗搧寮傚父锛? 鏉?
+  鉁?璇勪环寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  璇勪环寮傚父锛? 鏉?
+  鉁?娲诲姩寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  娲诲姩寮傚父锛? 鏉?
+  鉁?椋庨櫓绠℃帶 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  椋庨櫓绠℃帶锛? 鏉?
+鉁?宸茬敓鎴愶細D:\浜戞芳杈呭姪椹鹃┒_Windows姝ｆ湰_20260803\鏁版嵁\宸″簵鐘舵€乢20260804.csv锛? 瀹跺簵锛? 瀹舵湁宸″簵寮傚父锛?
+==== patrol end 2026-08-04 14:00:15 rc=0 ====
+==== patrol start 2026-08-04 17:00:03 ====
+鉁?钀ヤ笟鐘舵€侊細0 瀹跺簵鎷垮埌
+  鉁?钀ヤ笟寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  钀ヤ笟寮傚父锛? 鏉?
+  鉁?鍟嗗搧寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  鍟嗗搧寮傚父锛? 鏉?
+  鉁?璇勪环寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  璇勪环寮傚父锛? 鏉?
+  鉁?娲诲姩寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  娲诲姩寮傚父锛? 鏉?
+  鉁?椋庨櫓绠℃帶 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  椋庨櫓绠℃帶锛? 鏉?
+鉁?宸茬敓鎴愶細D:\浜戞芳杈呭姪椹鹃┒_Windows姝ｆ湰_20260803\鏁版嵁\宸″簵鐘舵€乢20260804.csv锛? 瀹跺簵锛? 瀹舵湁宸″簵寮傚父锛?
+==== patrol end 2026-08-04 17:00:14 rc=0 ====
+==== patrol start 2026-08-04 17:30:04 ====
+鉁?钀ヤ笟鐘舵€侊細0 瀹跺簵鎷垮埌
+  鉁?钀ヤ笟寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  钀ヤ笟寮傚父锛? 鏉?
+  鉁?鍟嗗搧寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  鍟嗗搧寮傚父锛? 鏉?
+  鉁?璇勪环寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  璇勪环寮傚父锛? 鏉?
+  鉁?娲诲姩寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  娲诲姩寮傚父锛? 鏉?
+  鉁?椋庨櫓绠℃帶 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  椋庨櫓绠℃帶锛? 鏉?
+鉁?宸茬敓鎴愶細D:\浜戞芳杈呭姪椹鹃┒_Windows姝ｆ湰_20260803\鏁版嵁\宸″簵鐘舵€乢20260804.csv锛? 瀹跺簵锛? 瀹舵湁宸″簵寮傚父锛?
+==== patrol end 2026-08-04 17:30:14 rc=0 ====
+==== patrol start 2026-08-04 18:00:03 ====
+鉁?钀ヤ笟鐘舵€侊細0 瀹跺簵鎷垮埌
+  鉁?钀ヤ笟寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  钀ヤ笟寮傚父锛? 鏉?
+  鉁?鍟嗗搧寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  鍟嗗搧寮傚父锛? 鏉?
+  鉁?璇勪环寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  璇勪环寮傚父锛? 鏉?
+  鉁?娲诲姩寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  娲诲姩寮傚父锛? 鏉?
+  鉁?椋庨櫓绠℃帶 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  椋庨櫓绠℃帶锛? 鏉?
+鉁?宸茬敓鎴愶細D:\浜戞芳杈呭姪椹鹃┒_Windows姝ｆ湰_20260803\鏁版嵁\宸″簵鐘舵€乢20260804.csv锛? 瀹跺簵锛? 瀹舵湁宸″簵寮傚父锛?
+==== patrol end 2026-08-04 18:00:14 rc=0 ====
+==== patrol start 2026-08-04 18:30:03 ====
+鉁?钀ヤ笟鐘舵€侊細0 瀹跺簵鎷垮埌
+  鉁?钀ヤ笟寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  钀ヤ笟寮傚父锛? 鏉?
+  鉁?鍟嗗搧寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  鍟嗗搧寮傚父锛? 鏉?
+  鉁?璇勪环寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  璇勪环寮傚父锛? 鏉?
+  鉁?娲诲姩寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  娲诲姩寮傚父锛? 鏉?
+  鉁?椋庨櫓绠℃帶 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  椋庨櫓绠℃帶锛? 鏉?
+鉁?宸茬敓鎴愶細D:\浜戞芳杈呭姪椹鹃┒_Windows姝ｆ湰_20260803\鏁版嵁\宸″簵鐘舵€乢20260804.csv锛? 瀹跺簵锛? 瀹舵湁宸″簵寮傚父锛?
+==== patrol end 2026-08-04 18:30:15 rc=0 ====
+==== patrol start 2026-08-04 19:00:03 ====
+鉁?钀ヤ笟鐘舵€侊細0 瀹跺簵鎷垮埌
+  鉁?钀ヤ笟寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  钀ヤ笟寮傚父锛? 鏉?
+  鉁?鍟嗗搧寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  鍟嗗搧寮傚父锛? 鏉?
+  鉁?璇勪环寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  璇勪环寮傚父锛? 鏉?
+  鉁?娲诲姩寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  娲诲姩寮傚父锛? 鏉?
+  鉁?椋庨櫓绠℃帶 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  椋庨櫓绠℃帶锛? 鏉?
+鉁?宸茬敓鎴愶細D:\浜戞芳杈呭姪椹鹃┒_Windows姝ｆ湰_20260803\鏁版嵁\宸″簵鐘舵€乢20260804.csv锛? 瀹跺簵锛? 瀹舵湁宸″簵寮傚父锛?
+==== patrol end 2026-08-04 19:00:14 rc=0 ====
+==== patrol start 2026-08-04 19:30:03 ====
+鉁?钀ヤ笟鐘舵€侊細0 瀹跺簵鎷垮埌
+  鉁?钀ヤ笟寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  钀ヤ笟寮傚父锛? 鏉?
+  鉁?鍟嗗搧寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  鍟嗗搧寮傚父锛? 鏉?
+  鉁?璇勪环寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  璇勪环寮傚父锛? 鏉?
+  鉁?娲诲姩寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  娲诲姩寮傚父锛? 鏉?
+  鉁?椋庨櫓绠℃帶 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  椋庨櫓绠℃帶锛? 鏉?
+鉁?宸茬敓鎴愶細D:\浜戞芳杈呭姪椹鹃┒_Windows姝ｆ湰_20260803\鏁版嵁\宸″簵鐘舵€乢20260804.csv锛? 瀹跺簵锛? 瀹舵湁宸″簵寮傚父锛?
+==== patrol end 2026-08-04 19:30:14 rc=0 ====
+==== patrol start 2026-08-04 20:00:03 ====
+鉁?钀ヤ笟鐘舵€侊細0 瀹跺簵鎷垮埌
+  鉁?钀ヤ笟寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  钀ヤ笟寮傚父锛? 鏉?
+  鉁?鍟嗗搧寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  鍟嗗搧寮傚父锛? 鏉?
+  鉁?璇勪环寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  璇勪环寮傚父锛? 鏉?
+  鉁?娲诲姩寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  娲诲姩寮傚父锛? 鏉?
+  鉁?椋庨櫓绠℃帶 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  椋庨櫓绠℃帶锛? 鏉?
+鉁?宸茬敓鎴愶細D:\浜戞芳杈呭姪椹鹃┒_Windows姝ｆ湰_20260803\鏁版嵁\宸″簵鐘舵€乢20260804.csv锛? 瀹跺簵锛? 瀹舵湁宸″簵寮傚父锛?
+==== patrol end 2026-08-04 20:00:13 rc=0 ====
+==== patrol start 2026-08-04 20:30:03 ====
+鉁?钀ヤ笟鐘舵€侊細0 瀹跺簵鎷垮埌
+  鉁?钀ヤ笟寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  钀ヤ笟寮傚父锛? 鏉?
+  鉁?鍟嗗搧寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  鍟嗗搧寮傚父锛? 鏉?
+  鉁?璇勪环寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  璇勪环寮傚父锛? 鏉?
+  鉁?娲诲姩寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  娲诲姩寮傚父锛? 鏉?
+  鉁?椋庨櫓绠℃帶 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  椋庨櫓绠℃帶锛? 鏉?
+鉁?宸茬敓鎴愶細D:\浜戞芳杈呭姪椹鹃┒_Windows姝ｆ湰_20260803\鏁版嵁\宸″簵鐘舵€乢20260804.csv锛? 瀹跺簵锛? 瀹舵湁宸″簵寮傚父锛?
+==== patrol end 2026-08-04 20:30:14 rc=0 ====
+==== patrol start 2026-08-04 21:00:03 ====
+鉁?钀ヤ笟鐘舵€侊細0 瀹跺簵鎷垮埌
+  鉁?钀ヤ笟寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  钀ヤ笟寮傚父锛? 鏉?
+  鉁?鍟嗗搧寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  鍟嗗搧寮傚父锛? 鏉?
+  鉁?璇勪环寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  璇勪环寮傚父锛? 鏉?
+  鉁?娲诲姩寮傚父 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  娲诲姩寮傚父锛? 鏉?
+  鉁?椋庨櫓绠℃帶 鏌ヨ澶辫触锛歅age.evaluate: TypeError: Cannot read properties of undefined (reading 'sign')
+    at eval (eval at evaluate (:311:30), <anonymous>:2:44)
+    at UtilityScript.evaluate (<anonymous>:318:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+  椋庨櫓绠℃帶锛? 鏉?
+鉁?宸茬敓鎴愶細D:\浜戞芳杈呭姪椹鹃┒_Windows姝ｆ湰_20260803\鏁版嵁\宸″簵鐘舵€乢20260804.csv锛? 瀹跺簵锛? 瀹舵湁宸″簵寮傚父锛?
+==== patrol end 2026-08-04 21:00:14 rc=0 ====
+==== patrol start 2026-08-05 10:00:04 ====
+鉁?钀ヤ笟鐘舵€侊細0 瀹跺簵鎷垮埌
+  钀ヤ笟寮傚父锛? 鏉?
+  鍟嗗搧寮傚父锛? 鏉?
+  璇勪环寮傚父锛?3 鏉?
+  娲诲姩寮傚父锛? 鏉?
+  椋庨櫓绠℃帶锛? 鏉?
+鉁?宸茬敓鎴愶細D:\浜戞芳杈呭姪椹鹃┒_Windows姝ｆ湰_20260803\鏁版嵁\宸″簵鐘舵€乢20260805.csv锛?7 瀹跺簵锛?7 瀹舵湁宸″簵寮傚父锛?
+==== patrol end 2026-08-05 10:00:33 rc=0 ====
+==== patrol start 2026-08-05 10:30:04 ====
+鉁?钀ヤ笟鐘舵€侊細0 瀹跺簵鎷垮埌
+  钀ヤ笟寮傚父锛? 鏉?
+  鍟嗗搧寮傚父锛? 鏉?
+  璇勪环寮傚父锛?3 鏉?
+  娲诲姩寮傚父锛? 鏉?
+  椋庨櫓绠℃帶锛? 鏉?
+鉁?宸茬敓鎴愶細D:\浜戞芳杈呭姪椹鹃┒_Windows姝ｆ湰_20260803\鏁版嵁\宸″簵鐘舵€乢20260805.csv锛?5 瀹跺簵锛?5 瀹舵湁宸″簵寮傚父锛?
+==== patrol end 2026-08-05 10:30:35 rc=0 ====
+==== patrol start 2026-08-05 11:00:03 ====
+鉁?钀ヤ笟鐘舵€侊細0 瀹跺簵鎷垮埌
+  钀ヤ笟寮傚父锛? 鏉?
+  鍟嗗搧寮傚父锛? 鏉?
+  璇勪环寮傚父锛?3 鏉?
+  娲诲姩寮傚父锛? 鏉?
+  椋庨櫓绠℃帶锛? 鏉?
+鉁?宸茬敓鎴愶細D:\浜戞芳杈呭姪椹鹃┒_Windows姝ｆ湰_20260803\鏁版嵁\宸″簵鐘舵€乢20260805.csv锛?5 瀹跺簵锛?5 瀹舵湁宸″簵寮傚父锛?
