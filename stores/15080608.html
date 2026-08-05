@@ -136,16 +136,16 @@ body{background:linear-gradient(180deg,#eaf3ef 0,#f7f9f8 320px)!important;color:
   <div class="sec"><h2>🏆 行业概况（804）</h2>
     <p style="font-size:14px;line-height:2">商圈：临邛社区 ｜ 排名：13/60 ｜ 超越同行：78.3% ｜ 评分：4.8</p>
     <table class="cmpt"><tr><th>对比对象</th><th>有效订单数</th><th>评分</th></tr><tr class="me"><td>本店</td><td>71</td><td>4.8</td></tr><tr><td>竞店1</td><td>10-</td><td>4.7</td></tr><tr><td>竞店2</td><td>10+</td><td>4.8</td></tr><tr><td>竞店3</td><td>60+</td><td>4.8</td></tr></table><p style="font-size:12px;color:#8a93a6;margin-top:8px">竞店为美团匿名展示：名称隐藏、订单数为区间值，与美团行业页口径一致。</p></div>
-  <div class="sec"><h2>😠 差评明细</h2><p style="color:#8a93a6;font-size:14px">暂无差评记录 🎉</p></div>
+  <div class="sec"><h2>😠 差评明细</h2><div class="review"><div class="meta">20260730 · ⭐星 · 2026-07-30</div>鸡杂，除了有几根鸡肠，几片鸡郡肝儿还30块钱！</div></div>
   <div class="footer">单店档案 · 数据随每日采集更新</div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
 <script>
-var dates=["20260804"];
+var dates=["20260720", "20260721", "20260722", "20260723", "20260724", "20260725", "20260726", "20260727", "20260728", "20260729", "20260730", "20260731", "20260801", "20260802", "20260803", "20260804"];
 function mk(id,opt){var c=echarts.init(document.getElementById(id));c.setOption(opt);window.addEventListener('resize',function(){c.resize();});}
 // 2026-07-24 改版：营收图加7/15/30/全部/自定义周期选择器；双转率拆成入店率/下单率两张图
 // （原来10条线挤一张图看不清）；曝光单独一张（原来还有个"入店/下单人数"图，炼总要求去掉）。
-var revFull=[917.97], ordFull=[71.0], revMeanFull=[596.44], datesFull=dates;
+var revFull=[891.53, 690.31, 827.94, 920.78, 866.52, 1097.82, 1115.54, 871.67, 776.92, 676.13, 742.73, 813.11, 781.52, 934.08, 1020.7, 917.97], ordFull=[65.0, 57.0, 59.0, 61.0, 57.0, 78.0, 77.0, 69.0, 60.0, 52.0, 56.0, 61.0, 60.0, 61.0, 73.0, 71.0], revMeanFull=[685.28, 637.26, 684.35, 639.33, 687.21, 822.22, 780.67, 638.93, 638.72, 607.49, 631.41, 693.91, 718.29, 723.52, 563.72, 596.44], datesFull=dates;
 var c1chart=echarts.init(document.getElementById('c1'));
 window.addEventListener('resize',function(){c1chart.resize();});
 function renderC1(n, start, end){
@@ -186,28 +186,28 @@ legend:{data:['入店率·本店','入店率·同行均值','入店率·商圈�
 selected:{'入店率·新客':false,'入店率·老客':false}},
 grid:{left:60,right:20,top:40,bottom:30},
 xAxis:{type:'category',data:dates},yAxis:{type:'value',axisLabel:{formatter:function(v){return (v*100).toFixed(0)+'%'}}},
-series:[{name:'入店率·本店',type:'line',smooth:true,data:[0.0643],lineStyle:{width:3,color:'#1a73e8'},itemStyle:{color:'#1a73e8'}},
-{name:'入店率·同行均值',type:'line',smooth:true,data:[0.0766],lineStyle:{width:2,color:'#f2994a',type:'dashed'},itemStyle:{color:'#f2994a'}},
-{name:'入店率·商圈前10%',type:'line',smooth:true,data:[0.0719],lineStyle:{width:2,color:'#18a058',type:'dashed'},itemStyle:{color:'#18a058'}},
-{name:'入店率·新客',type:'line',smooth:true,data:[0.0527],lineStyle:{width:2,color:'#17a2b8',type:'dashed'},itemStyle:{color:'#17a2b8'}},
-{name:'入店率·老客',type:'line',smooth:true,data:[0.1013],lineStyle:{width:2,color:'#8e5adf',type:'dashed'},itemStyle:{color:'#8e5adf'}}]});
+series:[{name:'入店率·本店',type:'line',smooth:true,data:[0.0622, 0.0627, 0.0609, 0.0599, 0.0587, 0.0576, 0.0585, 0.0622, 0.0488, 0.0573, 0.0534, 0.0614, 0.0554, 0.056, 0.0675, 0.0643],lineStyle:{width:3,color:'#1a73e8'},itemStyle:{color:'#1a73e8'}},
+{name:'入店率·同行均值',type:'line',smooth:true,data:[0.0766, 0.0774, 0.0762, 0.0731, 0.0761, 0.075, 0.0762, 0.0735, 0.0734, 0.0759, 0.0757, 0.0754, 0.0764, 0.0777, 0.0761, 0.0766],lineStyle:{width:2,color:'#f2994a',type:'dashed'},itemStyle:{color:'#f2994a'}},
+{name:'入店率·商圈前10%',type:'line',smooth:true,data:[0.0781, 0.0809, 0.0775, 0.0721, 0.0725, 0.0698, 0.0751, 0.0734, 0.0751, 0.0736, 0.0786, 0.0773, 0.0755, 0.0822, 0.072, 0.0719],lineStyle:{width:2,color:'#18a058',type:'dashed'},itemStyle:{color:'#18a058'}},
+{name:'入店率·新客',type:'line',smooth:true,data:[null, 0.0558, 0.0506, 0.048, 0.0508, 0.0494, 0.0493, 0.0539, 0.0345, 0.0445, 0.0433, 0.0516, 0.0454, 0.0482, 0.0539, 0.0527],lineStyle:{width:2,color:'#17a2b8',type:'dashed'},itemStyle:{color:'#17a2b8'}},
+{name:'入店率·老客',type:'line',smooth:true,data:[null, 0.0863, 0.0988, 0.1011, 0.0861, 0.0901, 0.092, 0.0897, 0.1014, 0.0979, 0.0864, 0.0922, 0.0875, 0.0807, 0.1078, 0.1013],lineStyle:{width:2,color:'#8e5adf',type:'dashed'},itemStyle:{color:'#8e5adf'}}]});
 mk('c2b',{tooltip:{trigger:'axis',valueFormatter:function(v){return v==null?'—':(v*100).toFixed(1)+'%'}},
 legend:{data:['下单率·本店','下单率·同行均值','下单率·商圈前10%','下单率·新客','下单率·老客'],
 selected:{'下单率·新客':false,'下单率·老客':false}},
 grid:{left:60,right:20,top:40,bottom:30},
 xAxis:{type:'category',data:dates},yAxis:{type:'value',axisLabel:{formatter:function(v){return (v*100).toFixed(0)+'%'}}},
-series:[{name:'下单率·本店',type:'line',smooth:true,data:[0.4121],lineStyle:{width:3,color:'#5e9bff'},itemStyle:{color:'#5e9bff'}},
-{name:'下单率·同行均值',type:'line',smooth:true,data:[0.2297],lineStyle:{width:2,color:'#f7c873',type:'dashed'},itemStyle:{color:'#f7c873'}},
-{name:'下单率·商圈前10%',type:'line',smooth:true,data:[0.2213],lineStyle:{width:2,color:'#7bc47f',type:'dashed'},itemStyle:{color:'#7bc47f'}},
-{name:'下单率·新客',type:'line',smooth:true,data:[0.1748],lineStyle:{width:2,color:'#5bc0de',type:'dashed'},itemStyle:{color:'#5bc0de'}},
-{name:'下单率·老客',type:'line',smooth:true,data:[0.8065],lineStyle:{width:2,color:'#9aa1b5',type:'dashed'},itemStyle:{color:'#9aa1b5'}}]});
+series:[{name:'下单率·本店',type:'line',smooth:true,data:[0.3652, 0.309, 0.3155, 0.3488, 0.322, 0.3842, 0.4205, 0.4146, 0.4603, 0.3562, 0.4167, 0.4255, 0.4173, 0.4296, 0.4286, 0.4121],lineStyle:{width:3,color:'#5e9bff'},itemStyle:{color:'#5e9bff'}},
+{name:'下单率·同行均值',type:'line',smooth:true,data:[0.2048, 0.1975, 0.2069, 0.2073, 0.2184, 0.2258, 0.2128, 0.225, 0.2152, 0.2125, 0.2179, 0.2368, 0.2143, 0.2, 0.2133, 0.2297],lineStyle:{width:2,color:'#f7c873',type:'dashed'},itemStyle:{color:'#f7c873'}},
+{name:'下单率·商圈前10%',type:'line',smooth:true,data:[0.2064, 0.1871, 0.2025, 0.205, 0.2222, 0.2396, 0.2076, 0.2266, 0.25, 0.2103, 0.2467, 0.2353, 0.2182, 0.1975, 0.2, 0.2213],lineStyle:{width:2,color:'#7bc47f',type:'dashed'},itemStyle:{color:'#7bc47f'}},
+{name:'下单率·新客',type:'line',smooth:true,data:[null, 0.1382, 0.1393, 0.1121, 0.1176, 0.1615, 0.1207, 0.1009, 0.1571, 0.0814, 0.1098, 0.1222, 0.1494, 0.2366, 0.16, 0.1748],lineStyle:{width:2,color:'#5bc0de',type:'dashed'},itemStyle:{color:'#5bc0de'}},
+{name:'下单率·老客',type:'line',smooth:true,data:[null, 0.6909, 0.6462, 0.7385, 0.7414, 0.8667, 1.0, 1.0364, 0.8393, 0.75, 0.92, 0.9608, 0.8654, 0.7959, 0.8235, 0.8065],lineStyle:{width:2,color:'#9aa1b5',type:'dashed'},itemStyle:{color:'#9aa1b5'}}]});
 mk('c4',{tooltip:{trigger:'axis'},legend:{data:['曝光·本店','曝光·商圈均值','曝光·商圈前10%']},grid:{left:60,right:20,top:40,bottom:30},
 xAxis:{type:'category',data:dates},yAxis:{type:'value',name:'曝光人数'},
-series:[{name:'曝光·本店',type:'line',smooth:true,data:[2566.0],lineStyle:{width:3,color:'#1a73e8'},itemStyle:{color:'#1a73e8'}},
-{name:'曝光·商圈均值',type:'line',smooth:true,data:[966.0],lineStyle:{width:2,color:'#f2994a',type:'dashed'},itemStyle:{color:'#f2994a'}},
-{name:'曝光·商圈前10%',type:'line',smooth:true,data:[3269.0],lineStyle:{width:2,color:'#18a058',type:'dashed'},itemStyle:{color:'#18a058'}}]});
+series:[{name:'曝光·本店',type:'line',smooth:true,data:[2864.0, 2840.0, 3070.0, 2872.0, 3015.0, 3299.0, 3007.0, 2636.0, 2581.0, 2546.0, 2473.0, 2297.0, 2509.0, 2535.0, 2488.0, 2566.0],lineStyle:{width:3,color:'#1a73e8'},itemStyle:{color:'#1a73e8'}},
+{name:'曝光·商圈均值',type:'line',smooth:true,data:[1084.0, 1047.0, 1141.0, 1121.0, 1143.0, 1240.0, 1234.0, 1089.0, 1077.0, 1054.0, 1030.0, 1008.0, 1100.0, 1094.0, 986.0, 966.0],lineStyle:{width:2,color:'#f2994a',type:'dashed'},itemStyle:{color:'#f2994a'}},
+{name:'曝光·商圈前10%',type:'line',smooth:true,data:[3598.0, 3438.0, 3124.0, 3313.0, 3601.0, 4128.0, 3848.0, 3488.0, 2823.0, 3426.0, 2889.0, 2639.0, 2914.0, 2894.0, 3333.0, 3269.0],lineStyle:{width:2,color:'#18a058',type:'dashed'},itemStyle:{color:'#18a058'}}]});
 mk('c3',{tooltip:{trigger:'axis'},grid:{left:60,right:20,top:20,bottom:30},
 xAxis:{type:'category',data:dates},yAxis:{type:'value',name:'花费(元)'},
-series:[{type:'bar',data:[null],itemStyle:{color:'#764ba2'}}]});
+series:[{type:'bar',data:[null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],itemStyle:{color:'#764ba2'}}]});
 </script>
 </body></html>
