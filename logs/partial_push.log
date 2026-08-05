@@ -156,3 +156,20 @@ pushed changes
 ==== partial push end 2026-08-05 10:00:33 ====
 ==== partial push start 2026-08-05 10:02:04 ====
 Cloning into 'D:\浜戞芳杈呭姪椹鹃┒_Windows姝ｆ湰_20260803\缃戠珯'...
+[main ca219cc] Windows鑷姩鏇存柊鎺ㄥ箍宸″簵 20260805
+ 10 files changed, 1551 insertions(+), 4970 deletions(-)
+ create mode 100644 "data/\345\267\241\345\272\227\347\212\266\346\200\201_20260805.csv"
+ create mode 100644 "data/\346\216\250\345\271\277\345\256\236\346\227\266_20260805.csv"
+ create mode 100644 "data/\346\216\250\345\271\277\346\216\222\345\220\215_20260805.csv"
+ create mode 100644 logs/daily_auto.log
+ create mode 100644 logs/latest_windows_push.html
+ create mode 100644 logs/partial_push.log
+ create mode 100644 logs/patrol_auto.log
+ create mode 100644 logs/promo_auto.log
+ create mode 100644 "logs/\346\211\213\345\212\250\344\270\212\344\274\240_\346\216\250\345\271\277\345\267\241\345\272\227_20260804_095716.log"
+To https://github.com/YM-ribao/meituan-ribao.git
+   2cca127..ca219cc  main -> main
+pushed changes
+==== partial push end 2026-08-05 10:02:29 ====
+==== partial push start 2026-08-05 10:30:17 ====
+Cloning into 'D:\浜戞芳杈呭姪椹鹃┒_Windows姝ｆ湰_20260803\缃戠珯'...
