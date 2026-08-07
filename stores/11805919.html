@@ -105,9 +105,9 @@ body{background:linear-gradient(180deg,#eaf3ef 0,#f7f9f8 320px)!important;color:
 <p>海亮国际 <span class="badge">负责人 颜毓恒</span><span class="badge">门店ID 11805919</span></p></div>
 <div class="wrap">
   <div class="kpis">
-    <div class="kpi"><div class="lb">营业收入(806)</div><div class="vl">¥—</div></div>
-    <div class="kpi"><div class="lb">订单量</div><div class="vl">—</div></div>
-    <div class="kpi"><div class="lb">实付单均价</div><div class="vl">¥—</div></div>
+    <div class="kpi"><div class="lb">营业收入(806)</div><div class="vl">¥0.00</div><div class="dl up">▲ 50 比前日</div></div>
+    <div class="kpi"><div class="lb">订单量</div><div class="vl">0</div></div>
+    <div class="kpi"><div class="lb">实付单均价</div><div class="vl">¥0.00</div></div>
     <div class="kpi"><div class="lb">曝光人数</div><div class="vl">65</div></div>
     <div class="kpi"><div class="lb">入店转化率</div><div class="vl">6.2%</div></div>
     <div class="kpi"><div class="lb">下单转化率</div><div class="vl">0.0%</div></div>
@@ -145,7 +145,7 @@ var dates=["20260720", "20260721", "20260722", "20260723", "20260724", "20260725
 function mk(id,opt){var c=echarts.init(document.getElementById(id));c.setOption(opt);window.addEventListener('resize',function(){c.resize();});}
 // 2026-07-24 改版：营收图加7/15/30/全部/自定义周期选择器；双转率拆成入店率/下单率两张图
 // （原来10条线挤一张图看不清）；曝光单独一张（原来还有个"入店/下单人数"图，炼总要求去掉）。
-var revFull=[370.18, 444.84, 615.8, 520.04, 914.93, 736.36, 1192.49, 725.6, 653.83, 440.96, 685.56, 1019.81, 759.69, 547.54, 623.24, 786.65, -49.57, null], ordFull=[23.0, 25.0, 24.0, 30.0, 39.0, 33.0, 44.0, 40.0, 32.0, 25.0, 34.0, 40.0, 42.0, 36.0, 35.0, 31.0, 0.0, null], revMeanFull=[402.0, 391.87, 414.42, 461.38, 486.5, 499.33, 507.92, 441.66, 438.98, 443.14, 451.2, 463.57, 451.71, 465.8, 432.18, 405.69, 0.0, null], datesFull=dates;
+var revFull=[370.18, 444.84, 615.8, 520.04, 914.93, 736.36, 1192.49, 725.6, 653.83, 440.96, 685.56, 1019.81, 759.69, 547.54, 623.24, 786.65, -49.57, 0.0], ordFull=[23.0, 25.0, 24.0, 30.0, 39.0, 33.0, 44.0, 40.0, 32.0, 25.0, 34.0, 40.0, 42.0, 36.0, 35.0, 31.0, 0.0, 0.0], revMeanFull=[402.0, 391.87, 414.42, 461.38, 486.5, 499.33, 507.92, 441.66, 438.98, 443.14, 451.2, 463.57, 451.71, 465.8, 432.18, 405.69, 0.0, 0.0], datesFull=dates;
 var c1chart=echarts.init(document.getElementById('c1'));
 window.addEventListener('resize',function(){c1chart.resize();});
 function renderC1(n, start, end){

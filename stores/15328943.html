@@ -105,9 +105,9 @@ body{background:linear-gradient(180deg,#eaf3ef 0,#f7f9f8 320px)!important;color:
 <p>缤纷广场 <span class="badge">负责人 颜毓恒</span><span class="badge">门店ID 15328943</span></p></div>
 <div class="wrap">
   <div class="kpis">
-    <div class="kpi"><div class="lb">营业收入(806)</div><div class="vl">¥—</div></div>
-    <div class="kpi"><div class="lb">订单量</div><div class="vl">—</div></div>
-    <div class="kpi"><div class="lb">实付单均价</div><div class="vl">¥—</div></div>
+    <div class="kpi"><div class="lb">营业收入(806)</div><div class="vl">¥306.71</div><div class="dl up">▲ 175 比前日</div></div>
+    <div class="kpi"><div class="lb">订单量</div><div class="vl">23</div></div>
+    <div class="kpi"><div class="lb">实付单均价</div><div class="vl">¥24.86</div></div>
     <div class="kpi"><div class="lb">曝光人数</div><div class="vl">1,177</div></div>
     <div class="kpi"><div class="lb">入店转化率</div><div class="vl">7.7%</div></div>
     <div class="kpi"><div class="lb">下单转化率</div><div class="vl">25.3%</div></div>
@@ -145,7 +145,7 @@ var dates=["20260720", "20260721", "20260722", "20260723", "20260724", "20260725
 function mk(id,opt){var c=echarts.init(document.getElementById(id));c.setOption(opt);window.addEventListener('resize',function(){c.resize();});}
 // 2026-07-24 改版：营收图加7/15/30/全部/自定义周期选择器；双转率拆成入店率/下单率两张图
 // （原来10条线挤一张图看不清）；曝光单独一张（原来还有个"入店/下单人数"图，炼总要求去掉）。
-var revFull=[642.75, 158.96, 391.2, 349.59, 459.59, 684.36, 321.16, 207.69, 432.95, 406.81, 220.71, 417.69, 288.18, 188.43, 339.84, 282.14, 131.99, null], ordFull=[36.0, 14.0, 28.0, 28.0, 25.0, 29.0, 18.0, 16.0, 22.0, 25.0, 18.0, 29.0, 18.0, 14.0, 15.0, 18.0, 11.0, null], revMeanFull=[1043.44, 1005.81, 988.09, 1020.57, 1052.01, 1024.28, 1061.67, 1036.99, 979.29, 1013.13, 1109.12, 1175.69, 1062.62, 955.99, 977.36, 951.37, 928.73, null], datesFull=dates;
+var revFull=[642.75, 158.96, 391.2, 349.59, 459.59, 684.36, 321.16, 207.69, 432.95, 406.81, 220.71, 417.69, 288.18, 188.43, 339.84, 282.14, 131.99, 306.71], ordFull=[36.0, 14.0, 28.0, 28.0, 25.0, 29.0, 18.0, 16.0, 22.0, 25.0, 18.0, 29.0, 18.0, 14.0, 15.0, 18.0, 11.0, 23.0], revMeanFull=[1043.44, 1005.81, 988.09, 1020.57, 1052.01, 1024.28, 1061.67, 1036.99, 979.29, 1013.13, 1109.12, 1175.69, 1062.62, 955.99, 977.36, 951.37, 928.73, 1002.22], datesFull=dates;
 var c1chart=echarts.init(document.getElementById('c1'));
 window.addEventListener('resize',function(){c1chart.resize();});
 function renderC1(n, start, end){
