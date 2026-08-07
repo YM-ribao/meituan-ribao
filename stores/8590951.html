@@ -105,9 +105,9 @@ body{background:linear-gradient(180deg,#eaf3ef 0,#f7f9f8 320px)!important;color:
 <p>南河 <span class="badge">负责人 韦炼</span><span class="badge">门店ID 8590951</span></p></div>
 <div class="wrap">
   <div class="kpis">
-    <div class="kpi"><div class="lb">营业收入(806)</div><div class="vl">¥—</div></div>
-    <div class="kpi"><div class="lb">订单量</div><div class="vl">—</div></div>
-    <div class="kpi"><div class="lb">实付单均价</div><div class="vl">¥—</div></div>
+    <div class="kpi"><div class="lb">营业收入(806)</div><div class="vl">¥0.00</div><div class="dl up">▲ 0 比前日</div></div>
+    <div class="kpi"><div class="lb">订单量</div><div class="vl">0</div></div>
+    <div class="kpi"><div class="lb">实付单均价</div><div class="vl">¥0.00</div></div>
     <div class="kpi"><div class="lb">曝光人数</div><div class="vl">65</div></div>
     <div class="kpi"><div class="lb">入店转化率</div><div class="vl">6.2%</div></div>
     <div class="kpi"><div class="lb">下单转化率</div><div class="vl">0.0%</div></div>
@@ -145,7 +145,7 @@ var dates=["20260720", "20260721", "20260722", "20260723", "20260724", "20260725
 function mk(id,opt){var c=echarts.init(document.getElementById(id));c.setOption(opt);window.addEventListener('resize',function(){c.resize();});}
 // 2026-07-24 改版：营收图加7/15/30/全部/自定义周期选择器；双转率拆成入店率/下单率两张图
 // （原来10条线挤一张图看不清）；曝光单独一张（原来还有个"入店/下单人数"图，炼总要求去掉）。
-var revFull=[260.51, 310.8, 474.54, 418.4, 690.58, 311.19, 350.6, 584.19, 401.72, 555.68, 572.9, 519.56, 506.65, -26.68, 0.0, 0.0, 0.0, null], ordFull=[17.0, 17.0, 19.0, 22.0, 27.0, 15.0, 15.0, 27.0, 17.0, 25.0, 24.0, 32.0, 28.0, 0.0, 0.0, 0.0, 0.0, null], revMeanFull=[421.46, 380.0, 410.54, 452.07, 407.96, 373.02, 436.27, 425.35, 383.26, 432.44, 408.12, 449.94, 439.52, 0.0, 0.0, 0.0, 0.0, null], datesFull=dates;
+var revFull=[260.51, 310.8, 474.54, 418.4, 690.58, 311.19, 350.6, 584.19, 401.72, 555.68, 572.9, 519.56, 506.65, -26.68, 0.0, 0.0, 0.0, 0.0], ordFull=[17.0, 17.0, 19.0, 22.0, 27.0, 15.0, 15.0, 27.0, 17.0, 25.0, 24.0, 32.0, 28.0, 0.0, 0.0, 0.0, 0.0, 0.0], revMeanFull=[421.46, 380.0, 410.54, 452.07, 407.96, 373.02, 436.27, 425.35, 383.26, 432.44, 408.12, 449.94, 439.52, 0.0, 0.0, 0.0, 0.0, 0.0], datesFull=dates;
 var c1chart=echarts.init(document.getElementById('c1'));
 window.addEventListener('resize',function(){c1chart.resize();});
 function renderC1(n, start, end){
