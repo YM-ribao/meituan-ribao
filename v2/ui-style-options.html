@@ -1,0 +1,1016 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>云淼日报 UI 视觉方案</title>
+    <style>
+      :root {
+        --blue: #165dff;
+        --green: #00b42a;
+        --red: #f53f3f;
+        --orange: #ff7d00;
+        --purple: #722ed1;
+        --text: #1d2129;
+        --muted: #86909c;
+        --line: #e5e8ef;
+        --bg: #f4f7fb;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: #eef3f8;
+        color: var(--text);
+        font: 14px/1.5 Inter, -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+      }
+
+      .page {
+        width: min(1000px, calc(100vw - 40px));
+        margin: 0 auto;
+        padding: 28px 0 52px;
+      }
+
+      .intro {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 20px;
+        margin-bottom: 22px;
+      }
+
+      .intro h1 {
+        margin: 0 0 6px;
+        font-size: 26px;
+        letter-spacing: 0;
+      }
+
+      .intro p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .hint {
+        padding: 8px 12px;
+        border: 1px solid #c9d7ff;
+        border-radius: 8px;
+        background: #eef4ff;
+        color: #1f4fc4;
+        font-weight: 600;
+        white-space: nowrap;
+      }
+
+      .options {
+        display: grid;
+        gap: 22px;
+      }
+
+      .option {
+        border: 1px solid #d8e1ee;
+        border-radius: 12px;
+        background: #fff;
+        box-shadow: 0 10px 28px rgb(29 33 41 / 8%);
+        overflow: hidden;
+      }
+
+      .option-label {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 14px 18px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .option-label h2 {
+        margin: 0;
+        font-size: 17px;
+      }
+
+      .option-label span {
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .mock {
+        padding: 18px;
+      }
+
+      .dashboard-a {
+        background: var(--bg);
+      }
+
+      .a-page-head {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 14px;
+      }
+
+      .a-page-head h3 {
+        margin: 0 0 4px;
+        font-size: 26px;
+        line-height: 32px;
+      }
+
+      .a-page-head p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .a-date {
+        height: 30px;
+        padding: 0 13px;
+        border: 1px solid #c9cdd4;
+        border-radius: 8px;
+        background: #fff;
+        color: var(--text);
+        font-weight: 600;
+      }
+
+      .a-hero {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+
+      .a-title {
+        display: grid;
+        grid-template-columns: 170px repeat(3, minmax(0, 1fr));
+        align-items: start;
+        gap: 10px;
+        min-height: 78px;
+        padding: 12px 16px;
+        border-radius: 10px 10px 0 0;
+        background: linear-gradient(135deg, #25456f, #3f75c8);
+        color: #fff;
+      }
+
+      .a-title small {
+        display: block;
+        opacity: 0.78;
+      }
+
+      .a-title h3 {
+        margin: 4px 0 0;
+        font-size: 20px;
+      }
+
+      .a-title p {
+        margin: 0;
+        opacity: 0.82;
+      }
+
+      .priority-main {
+        min-width: 0;
+      }
+
+      .kpis {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 8px;
+      }
+
+      .kpi {
+        min-height: 70px;
+        padding: 12px 14px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: #fff;
+      }
+
+      .kpi b {
+        display: block;
+        font-size: 21px;
+      }
+
+      .kpi span {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .kpi.blue {
+        border-color: #bed3ff;
+        background: linear-gradient(180deg, #f4f8ff, #fff);
+      }
+
+      .kpi.green b {
+        color: var(--green);
+      }
+
+      .kpi.red b {
+        color: var(--red);
+      }
+
+      .signal-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 10px;
+        margin-bottom: 12px;
+      }
+
+      .signal-card {
+        min-height: 86px;
+        padding: 12px 14px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: #fff;
+      }
+
+      .signal-card h4 {
+        margin: 0 0 8px;
+        color: #4e5969;
+        font-size: 13px;
+      }
+
+      .signal-card strong {
+        font-size: 20px;
+      }
+
+      .signal-list {
+        display: grid;
+        gap: 5px;
+        color: #4e5969;
+        font-size: 12px;
+      }
+
+      .signal-list span {
+        display: flex;
+        justify-content: space-between;
+        gap: 8px;
+      }
+
+      .signal-list b {
+        color: var(--text);
+      }
+
+      .teacher-board {
+        margin-top: -8px;
+        margin-bottom: 12px;
+        padding: 12px 16px 14px;
+        border-top: 1px solid rgb(255 255 255 / 14%);
+        border-radius: 0 0 10px 10px;
+        background: linear-gradient(135deg, #25456f, #3f75c8);
+        color: #fff;
+        box-shadow: 0 12px 26px rgb(39 69 111 / 16%);
+      }
+
+      .teacher-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 8px;
+      }
+
+      .teacher-head h4 {
+        margin: 0;
+        color: #fff;
+        font-size: 13px;
+        font-weight: 650;
+      }
+
+      .teacher-head span {
+        color: rgb(255 255 255 / 76%);
+        font-size: 12px;
+      }
+
+      .teacher-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .teacher-card {
+        padding: 9px 12px;
+        border: 1px solid rgb(255 255 255 / 14%);
+        border-radius: 8px;
+        background: rgb(255 255 255 / 12%);
+      }
+
+      .teacher-name {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 8px;
+        color: #fff;
+        font-weight: 650;
+      }
+
+      .teacher-name b {
+        color: #fff;
+        font-size: 16px;
+      }
+
+      .teacher-tasks {
+        display: grid;
+        gap: 5px;
+        color: rgb(255 255 255 / 84%);
+        font-size: 12px;
+      }
+
+      .teacher-tasks span {
+        display: flex;
+        justify-content: space-between;
+        gap: 8px;
+      }
+
+      .store-table {
+        border: 1px solid var(--line);
+        border-radius: 10px 10px 0 0;
+        background: #fff;
+        overflow: hidden;
+      }
+
+      .tr {
+        display: grid;
+        grid-template-columns: 220px 84px 54px 54px 62px 62px 70px 72px 60px;
+        align-items: center;
+        min-height: 39px;
+        padding: 0 14px;
+        gap: 6px;
+        border-top: 1px solid #f2f3f5;
+        color: #3f4a5a;
+        font-weight: 500;
+      }
+
+      .tr.head {
+        border-top: 0;
+        background: #f7f8fa;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 600;
+      }
+
+      .tr span:first-child {
+        color: #243042;
+        font-weight: 600;
+      }
+
+      .tr span:not(:first-child) {
+        font-weight: 500;
+      }
+
+      .tr span:not(:first-child) {
+        text-align: right;
+      }
+
+      .detail-preview {
+        display: grid;
+        gap: 12px;
+        padding: 12px;
+        border: 1px solid var(--line);
+        border-top: 0;
+        border-radius: 0 0 10px 10px;
+        background: #fff;
+      }
+
+      .compare-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .detail-card,
+      .compare-card {
+        padding: 12px;
+        border: 1px solid #edf1f7;
+        border-radius: 8px;
+        background: #fafcff;
+      }
+
+      .detail-card h4,
+      .compare-card h4 {
+        margin: 0 0 8px;
+        color: #334155;
+        font-size: 13px;
+        font-weight: 650;
+      }
+
+      .metric-section {
+        margin: 9px 0 4px;
+        padding: 3px 7px;
+        border-radius: 6px;
+        background: #f3f6fb;
+        color: #4d6c9f;
+        font-size: 12px;
+        font-weight: 650;
+      }
+
+      .metric-section:first-of-type {
+        margin-top: 0;
+      }
+
+      .mini-bars {
+        display: grid;
+        gap: 5px;
+      }
+
+      .mini-bar {
+        display: grid;
+        grid-template-columns: 64px 1fr 44px;
+        align-items: center;
+        gap: 8px;
+        color: #6b7585;
+        font-size: 12px;
+      }
+
+      .mini-bar i {
+        height: 8px;
+        overflow: hidden;
+        border-radius: 999px;
+        background: #edf1f7;
+      }
+
+      .mini-bar b {
+        display: block;
+        height: 100%;
+        border-radius: inherit;
+        background: #3f75c8;
+      }
+
+      .mini-bar strong {
+        color: #344054;
+        font-weight: 600;
+      }
+
+      .mini-bar b.gray {
+        background: #c9cdd4;
+      }
+
+      .mini-bar b.green {
+        background: var(--green);
+      }
+
+      .mini-bar b.purple {
+        background: var(--purple);
+      }
+
+      .detail-list {
+        display: grid;
+        gap: 6px;
+        color: #667085;
+        font-size: 12px;
+      }
+
+      .detail-list span {
+        display: flex;
+        justify-content: space-between;
+        gap: 8px;
+      }
+
+      .industry-line,
+      .peer-line,
+      .money-line {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        color: #667085;
+        font-size: 13px;
+        font-weight: 500;
+      }
+
+      .industry-line b,
+      .money-line b {
+        color: var(--text);
+      }
+
+      .peer-line {
+        color: #86909c;
+      }
+
+      .diagnosis-box,
+      .review-box {
+        padding: 12px 14px;
+        border: 1px solid #edf1f7;
+        border-radius: 8px;
+        background: #fff;
+      }
+
+      .diagnosis-box {
+        border-left: 4px solid var(--blue);
+      }
+
+      .diagnosis-box p,
+      .review-box p {
+        margin: 8px 0 0;
+        color: var(--text);
+        font-weight: 650;
+      }
+
+      .review-box {
+        border-color: #ffe4e4;
+        background: #fffafa;
+      }
+
+      .review-box strong {
+        color: var(--red);
+      }
+
+      .review-box h4 {
+        margin: 0 0 8px;
+        color: #334155;
+        font-size: 13px;
+        font-weight: 650;
+      }
+
+      .review-box p {
+        color: #4e5969;
+        font-size: 13px;
+        line-height: 1.55;
+      }
+
+      .priority-lines {
+        display: contents;
+      }
+
+      .priority-lines span {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        min-height: 46px;
+        padding: 7px 10px;
+        border-radius: 8px;
+        background: rgb(255 255 255 / 16%);
+        font-size: 12px;
+      }
+
+      .priority-lines b {
+        color: #fff;
+      }
+
+      .priority-lines em {
+        margin-left: 8px;
+        color: rgb(255 255 255 / 72%);
+        font-style: normal;
+        font-weight: 500;
+      }
+
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        height: 20px;
+        padding: 0 8px;
+        border-radius: 999px;
+        color: #fff;
+        font-size: 12px;
+        font-weight: 700;
+        font-style: normal;
+      }
+
+      .tag.ok {
+        background: var(--green);
+      }
+
+      .tag.watch {
+        background: var(--orange);
+      }
+
+      .tag.bad {
+        background: var(--red);
+      }
+
+      .up {
+        color: var(--red);
+        font-size: 12px;
+        font-style: normal;
+      }
+
+      .down {
+        color: var(--green);
+        font-size: 12px;
+        font-style: normal;
+      }
+
+      .danger {
+        color: var(--red);
+        font-weight: 800;
+      }
+
+      .dashboard-b {
+        background: #0f172a;
+        color: #e5eefb;
+      }
+
+      .b-grid {
+        display: grid;
+        grid-template-columns: 250px 1fr;
+        gap: 14px;
+      }
+
+      .b-panel {
+        border: 1px solid rgb(148 163 184 / 24%);
+        border-radius: 12px;
+        background: rgb(15 23 42 / 80%);
+        box-shadow: inset 0 1px 0 rgb(255 255 255 / 6%);
+      }
+
+      .b-main {
+        padding: 18px;
+        background: radial-gradient(circle at 20% 0%, rgb(22 93 255 / 28%), transparent 35%), #111827;
+      }
+
+      .b-main h3 {
+        margin: 0 0 14px;
+        font-size: 25px;
+      }
+
+      .b-score {
+        display: grid;
+        gap: 10px;
+      }
+
+      .b-score div {
+        padding: 12px;
+        border-radius: 10px;
+        background: rgb(255 255 255 / 7%);
+      }
+
+      .b-score b {
+        display: block;
+        font-size: 26px;
+      }
+
+      .b-table {
+        padding: 14px;
+      }
+
+      .b-row {
+        display: grid;
+        grid-template-columns: 1.4fr 80px 70px 70px 70px 64px;
+        gap: 10px;
+        padding: 11px 0;
+        border-bottom: 1px solid rgb(148 163 184 / 16%);
+        font-weight: 650;
+      }
+
+      .b-row:first-child {
+        color: #94a3b8;
+        font-size: 12px;
+      }
+
+      .dashboard-c {
+        background: linear-gradient(180deg, #eaf3ef, #f7f9f8);
+        color: #173f36;
+      }
+
+      .c-head {
+        display: grid;
+        grid-template-columns: 1fr 140px 140px;
+        gap: 12px;
+        margin-bottom: 12px;
+      }
+
+      .c-title,
+      .c-chip {
+        border-radius: 12px;
+        background: #fff;
+        box-shadow: 0 8px 24px rgb(39 77 67 / 7%);
+      }
+
+      .c-title {
+        padding: 18px;
+      }
+
+      .c-title h3 {
+        margin: 0 0 4px;
+        font-size: 25px;
+      }
+
+      .c-chip {
+        padding: 16px;
+      }
+
+      .c-chip b {
+        display: block;
+        font-size: 24px;
+      }
+
+      .c-table {
+        border-radius: 12px;
+        background: #fff;
+        box-shadow: 0 8px 24px rgb(39 77 67 / 7%);
+        overflow: hidden;
+      }
+
+      .c-row {
+        display: grid;
+        grid-template-columns: 280px 90px 60px 72px 72px 86px 76px;
+        align-items: center;
+        gap: 10px;
+        min-height: 42px;
+        padding: 0 14px;
+        border-top: 1px solid #edf3f0;
+        font-weight: 650;
+      }
+
+      .c-row:first-child {
+        border-top: 0;
+        background: #f6faf8;
+        color: #6f7f83;
+        font-size: 12px;
+      }
+
+      .c-row span:not(:first-child) {
+        text-align: right;
+      }
+
+      @media (max-width: 900px) {
+        .page {
+          width: calc(100vw - 24px);
+        }
+
+        .intro,
+        .a-hero,
+        .b-grid,
+        .c-head,
+        .signal-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .kpis {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .store-table,
+        .c-table {
+          overflow-x: auto;
+        }
+
+        .tr,
+        .c-row {
+          min-width: 900px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <section class="intro">
+        <div>
+          <h1>日报看板 UI 视觉方案</h1>
+          <p>先看方向，不看最终数据。选一个方向后，再把正式日报页按这个方向收口。</p>
+        </div>
+        <div class="hint">建议优先看 A：2.0 工作台</div>
+      </section>
+
+      <section class="options">
+        <article class="option">
+          <div class="option-label">
+            <div>
+              <h2>A. 2.0 工作台风格</h2>
+              <span>有重量的蓝色头部 + 紧凑表格 + 视觉化指标，适合内部系统长期使用。</span>
+            </div>
+            <span>推荐</span>
+          </div>
+          <div class="mock dashboard-a">
+            <div class="a-page-head">
+              <div>
+                <h3>云淼客户看板</h3>
+                <p>数据日期 2026-08-09 ｜ 共 42 家 ｜ 按诊断分组后按推广花费排序</p>
+              </div>
+              <button class="a-date" type="button">2026-08-09</button>
+            </div>
+            <div class="a-hero">
+              <section class="a-title">
+                <div class="priority-main">
+                  <small>今日重点</small>
+                  <h3>差评 7 条待处理</h3>
+                  <p>连续 3 日需关注 12 家</p>
+                </div>
+                <div class="priority-lines">
+                  <span>差评待处理 <b>5 店 / 7 条</b></span>
+                  <span>连续 3 日关注 <b>12 店<em>展开</em></b></span>
+                  <span>服务老师待办 <b>3 人</b></span>
+                </div>
+              </section>
+              <section class="teacher-board">
+                <div class="teacher-head">
+                  <h4>服务老师今日待办</h4>
+                </div>
+                <div class="teacher-grid">
+                  <div class="teacher-card">
+                    <div class="teacher-name"><span>颜毓衡</span><b>5 件</b></div>
+                    <div class="teacher-tasks">
+                      <span>差评待处理 <b>3 条</b></span>
+                      <span>连续3日关注 <b>1 店</b></span>
+                      <span>高推广未改善 <b>1 店</b></span>
+                    </div>
+                  </div>
+                  <div class="teacher-card">
+                    <div class="teacher-name"><span>唐杰</span><b>4 件</b></div>
+                    <div class="teacher-tasks">
+                      <span>差评待处理 <b>2 条</b></span>
+                      <span>连续3日关注 <b>2 店</b></span>
+                      <span>高推广未改善 <b>0 店</b></span>
+                    </div>
+                  </div>
+                  <div class="teacher-card">
+                    <div class="teacher-name"><span>门帆</span><b>5 件</b></div>
+                    <div class="teacher-tasks">
+                      <span>差评待处理 <b>2 条</b></span>
+                      <span>连续3日关注 <b>2 店</b></span>
+                      <span>高推广未改善 <b>1 店</b></span>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <section class="kpis">
+                <div class="kpi blue"><span>昨日总收入(元)</span><b>6,223.14</b></div>
+                <div class="kpi"><span>昨日总订单</span><b>588</b></div>
+                <div class="kpi"><span>昨日总推广(元)</span><b>1,061.69</b></div>
+                <div class="kpi green"><span>今日健康门店数量</span><b>1</b></div>
+                <div class="kpi red"><span>今日需关注门店数量</span><b>41</b></div>
+              </section>
+            </div>
+            <div class="signal-grid">
+              <section class="signal-card">
+                <h4>诊断分布</h4>
+                <div class="signal-list">
+                  <span>健康 <b style="color:var(--green)">1 家</b></span>
+                  <span>关注 <b style="color:var(--orange)">17 家</b></span>
+                  <span>紧急 <b style="color:var(--red)">24 家</b></span>
+                </div>
+              </section>
+              <section class="signal-card">
+                <h4>推广投入</h4>
+                <strong>1,062</strong>
+                <div class="signal-list">
+                  <span>高投入门店 <b>8 家</b></span>
+                  <span>未投放 <b>19 家</b></span>
+                </div>
+              </section>
+              <section class="signal-card">
+                <h4>转化异常</h4>
+                <div class="signal-list">
+                  <span>进店偏低 <b style="color:var(--red)">6 家</b></span>
+                  <span>下单偏低 <b style="color:var(--red)">18 家</b></span>
+                  <span>流量枯竭 <b>7 家</b></span>
+                </div>
+              </section>
+            </div>
+            <section class="store-table">
+              <div class="tr head"><span>门店</span><span>营收</span><span>订单</span><span>客单</span><span>进店</span><span>下单</span><span>推广</span><span>排名</span><span>诊断</span></div>
+              <div class="tr"><span>正宗上佳黄焖鸡米饭</span><span>148.17 <i class="up">↑2.05</i></span><span>14</span><span>15.49</span><span>7%</span><span>46%</span><span>31.62</span><span>28/108</span><span><i class="tag ok">健康</i></span></div>
+              <div class="tr"><span>龍门·柴火鸡</span><span>148.17 <i class="up">↑2.05</i></span><span>14</span><span>15.49</span><span>7%</span><span>29%</span><span>289.00</span><span>7/82</span><span><i class="tag watch">关注</i></span></div>
+              <div class="tr"><span>锡纸花甲米线</span><span>148.17 <i class="down">↓5.00</i></span><span>14</span><span>15.49</span><span class="danger">5%</span><span>30%</span><span>90.20</span><span>60/183</span><span><i class="tag watch">关注</i></span></div>
+            </section>
+            <section class="detail-preview">
+              <div class="compare-grid">
+                <div class="compare-card">
+                  <h4>本店对比</h4>
+                  <div class="mini-bars">
+                    <div class="metric-section">曝光</div>
+                    <div class="mini-bar"><span>商圈均值</span><i><b class="gray" style="width:30%"></b></i><strong>2,217</strong></div>
+                    <div class="mini-bar"><span>本店(全部)</span><i><b style="width:70%"></b></i><strong>5,201</strong></div>
+                    <div class="mini-bar"><span>商圈前10</span><i><b class="green" style="width:96%"></b></i><strong>7,268</strong></div>
+                    <div class="metric-section">入店转化</div>
+                    <div class="mini-bar"><span>商圈均值</span><i><b class="gray" style="width:60%"></b></i><strong>6%</strong></div>
+                    <div class="mini-bar"><span>本店</span><i><b style="width:60%"></b></i><strong>6%</strong></div>
+                    <div class="mini-bar"><span>商圈前10</span><i><b class="green" style="width:70%"></b></i><strong>7%</strong></div>
+                    <div class="metric-section">下单转化</div>
+                    <div class="mini-bar"><span>商圈均值</span><i><b class="gray" style="width:82%"></b></i><strong>34%</strong></div>
+                    <div class="mini-bar"><span>本店</span><i><b style="width:92%"></b></i><strong>39%</strong></div>
+                    <div class="mini-bar"><span>商圈前10</span><i><b class="green" style="width:85%"></b></i><strong>35%</strong></div>
+                  </div>
+                </div>
+
+                <div class="compare-card">
+                  <h4>新客对比</h4>
+                  <div class="mini-bars">
+                    <div class="metric-section">曝光</div>
+                    <div class="mini-bar"><span>商圈均值</span><i><b class="gray" style="width:31%"></b></i><strong>1,940</strong></div>
+                    <div class="mini-bar"><span>新客</span><i><b style="width:72%"></b></i><strong>4,427</strong></div>
+                    <div class="mini-bar"><span>商圈前10</span><i><b class="green" style="width:100%"></b></i><strong>6,293</strong></div>
+                    <div class="metric-section">入店转化</div>
+                    <div class="mini-bar"><span>商圈均值</span><i><b class="gray" style="width:60%"></b></i><strong>6%</strong></div>
+                    <div class="mini-bar"><span>新客</span><i><b style="width:50%"></b></i><strong>5%</strong></div>
+                    <div class="mini-bar"><span>商圈前10</span><i><b class="green" style="width:60%"></b></i><strong>6%</strong></div>
+                    <div class="metric-section">下单转化</div>
+                    <div class="mini-bar"><span>商圈均值</span><i><b class="gray" style="width:75%"></b></i><strong>21%</strong></div>
+                    <div class="mini-bar"><span>新客</span><i><b style="width:82%"></b></i><strong>23%</strong></div>
+                    <div class="mini-bar"><span>商圈前10</span><i><b class="green" style="width:79%"></b></i><strong>22%</strong></div>
+                  </div>
+                </div>
+
+                <div class="compare-card">
+                  <h4>老客对比</h4>
+                  <div class="mini-bars">
+                    <div class="metric-section">曝光</div>
+                    <div class="mini-bar"><span>商圈均值</span><i><b class="gray" style="width:28%"></b></i><strong>276</strong></div>
+                    <div class="mini-bar"><span>老客</span><i><b class="purple" style="width:79%"></b></i><strong>774</strong></div>
+                    <div class="mini-bar"><span>商圈前10</span><i><b class="green" style="width:100%"></b></i><strong>975</strong></div>
+                    <div class="metric-section">入店转化</div>
+                    <div class="mini-bar"><span>商圈均值</span><i><b class="gray" style="width:92%"></b></i><strong>12%</strong></div>
+                    <div class="mini-bar"><span>老客</span><i><b class="purple" style="width:100%"></b></i><strong>13%</strong></div>
+                    <div class="mini-bar"><span>商圈前10</span><i><b class="green" style="width:100%"></b></i><strong>13%</strong></div>
+                    <div class="metric-section">下单转化</div>
+                    <div class="mini-bar"><span>商圈均值</span><i><b class="gray" style="width:96%"></b></i><strong>71%</strong></div>
+                    <div class="mini-bar"><span>老客</span><i><b class="purple" style="width:100%"></b></i><strong>74%</strong></div>
+                    <div class="mini-bar"><span>商圈前10</span><i><b class="green" style="width:99%"></b></i><strong>73%</strong></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="industry-line">
+                <b>商圈 未来中心</b>
+                <span>排名 <b>14 / 99</b></span>
+                <span>超过同行 <b>85.86%</b></span>
+              </div>
+              <div class="peer-line">
+                <span>同行洞察：</span>
+                <span>我的门店：131单 / 4.7分</span>
+                <span>竞店1：10单 / 4.5分</span>
+                <span>竞店2：280+单 / 4.5分</span>
+              </div>
+
+              <div class="diagnosis-box">
+                <i class="tag watch">关注</i>
+                <p>进店率 6%、下单率 39%，需要对照商圈前10继续看承接差距。</p>
+                <p>今日关注：处理昨日差评，确认是否需要申诉或回复。</p>
+              </div>
+
+              <div class="review-box">
+                <h4>昨日差评</h4>
+                <p><strong>匿名用户</strong>　2026-08-09</p>
+                <p>不好吃，还贵</p>
+              </div>
+
+              <div class="money-line">
+                <span>订单实付 <b>216.82元</b></span>
+                <span>补贴及支出 <b>140.05元</b></span>
+                <span>佣金 <b>16.69元</b></span>
+                <span>活动成本 <b>33.00元</b></span>
+                <span>推广花费 <b>74.99元</b></span>
+              </div>
+            </section>
+          </div>
+        </article>
+
+        <article class="option">
+          <div class="option-label">
+            <div>
+              <h2>B. 经营驾驶舱风格</h2>
+              <span>更像大屏/战情室，视觉重量最强，但长期看日报会比较压迫。</span>
+            </div>
+            <span>偏管理驾驶舱</span>
+          </div>
+          <div class="mock dashboard-b">
+            <div class="b-grid">
+              <section class="b-panel b-main">
+                <small>DAILY COMMAND</small>
+                <h3>42 店经营巡检</h3>
+                <div class="b-score">
+                  <div><span>营收</span><b>6,223</b></div>
+                  <div><span>异常</span><b style="color:#fb7185">24</b></div>
+                  <div><span>推广</span><b style="color:#60a5fa">1,062</b></div>
+                </div>
+              </section>
+              <section class="b-panel b-table">
+                <div class="b-row"><span>门店</span><span>营收</span><span>进店</span><span>下单</span><span>推广</span><span>状态</span></div>
+                <div class="b-row"><span>正宗上佳黄焖鸡</span><span>148 ↑</span><span>7%</span><span>46%</span><span>31</span><span style="color:#4ade80">健康</span></div>
+                <div class="b-row"><span>龍门·柴火鸡</span><span>148 ↑</span><span>7%</span><span>29%</span><span>289</span><span style="color:#fb923c">关注</span></div>
+                <div class="b-row"><span>锡纸花甲米线</span><span>148 ↓</span><span style="color:#fb7185">5%</span><span>30%</span><span>90</span><span style="color:#fb923c">关注</span></div>
+              </section>
+            </div>
+          </div>
+        </article>
+
+        <article class="option">
+          <div class="option-label">
+            <div>
+              <h2>C. 旧日报轻复刻风格</h2>
+              <span>更接近你之前给过的旧看板截图，熟悉，但和 2.0 系统统一性弱。</span>
+            </div>
+            <span>偏旧版</span>
+          </div>
+          <div class="mock dashboard-c">
+            <div class="c-head">
+              <section class="c-title">
+                <h3>云淼客户看板</h3>
+                <span>数据日期 2026-08-09 ｜ 共 42 家</span>
+              </section>
+              <section class="c-chip"><b>6,223</b><span>营收</span></section>
+              <section class="c-chip"><b style="color:#dc2626">41</b><span>需关注</span></section>
+            </div>
+            <section class="c-table">
+              <div class="c-row"><span>门店</span><span>营收</span><span>订单</span><span>进店率</span><span>下单率</span><span>推广</span><span>诊断</span></div>
+              <div class="c-row"><span>正宗上佳黄焖鸡米饭</span><span>148 ↑2</span><span>14</span><span>7%</span><span>46%</span><span>31</span><span><i class="tag ok">健康</i></span></div>
+              <div class="c-row"><span>龍门·柴火鸡</span><span>148 ↑2</span><span>14</span><span>7%</span><span>29%</span><span>289</span><span><i class="tag watch">关注</i></span></div>
+              <div class="c-row"><span>锡纸花甲米线</span><span>148 ↓5</span><span>14</span><span class="danger">5%</span><span>30%</span><span>90</span><span><i class="tag watch">关注</i></span></div>
+            </section>
+          </div>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>

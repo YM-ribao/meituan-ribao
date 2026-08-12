@@ -1,0 +1,127 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>云淼外卖 · 辅助驾驶系统</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:linear-gradient(180deg,#eaf3ef 0,#f7f9f8 320px);color:#183f35}
+a{text-decoration:none;color:inherit}
+.hero{background:linear-gradient(135deg,#245849,#4d8a76);color:#fff;padding:44px 20px 60px;text-align:center}
+.hero h1{font-size:30px;letter-spacing:2px}
+.hero p{opacity:.85;margin-top:10px;font-size:14px}
+.wrap{max-width:1080px;margin:-36px auto 40px;padding:0 16px}
+.mods{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.mod{background:#fffffff2;border:1px solid #d7e4df;border-radius:16px;padding:22px;box-shadow:0 6px 20px rgba(24,63,53,.08);transition:.2s;display:block}
+.mod:hover{transform:translateY(-3px);border-color:#78a998;box-shadow:0 10px 26px rgba(24,63,53,.13)}
+.mod .ic{font-size:30px}
+.mod h3{margin:10px 0 6px;font-size:17px}
+.mod p{font-size:13px;color:#6b7280;line-height:1.6}
+.mod-head{display:flex;align-items:center;gap:8px}
+.mod-head .coming-tag{display:inline-flex;align-items:center;border:1px solid #e1a1a1;border-radius:10px;padding:2px 8px;font-size:12px;line-height:1.4;color:#b73939;background:#fff5f5}
+.tool-lines{margin-top:6px}
+.tool-lines span{display:block;font-size:13px;color:#6b7280;line-height:1.6}
+.mod-coming{opacity:.55;cursor:not-allowed;pointer-events:none;position:relative}
+.mod-coming .coming-tag{position:absolute;right:14px;top:14px;border:1px solid #aeb5c1;border-radius:10px;padding:2px 8px;font-size:11px;color:#747d8b;background:#f4f5f7}
+.mod-coming .tool-lines{margin-top:8px}
+.mod-coming .tool-lines span{display:block;font-size:12px;color:#6b7280;line-height:1.75}
+.sec{background:#fffffff2;border:1px solid #d7e4df;border-radius:16px;padding:22px;box-shadow:0 6px 20px rgba(24,63,53,.07);margin-top:20px}
+.sec h2{font-size:18px;margin-bottom:14px}
+.search{width:100%;padding:12px 16px;border:1px solid #e2e6f0;border-radius:12px;font-size:15px;margin-bottom:16px;outline:none}
+.search:focus{border-color:#4d8a76}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+.card{border:1px solid #edf0f7;border-radius:12px;padding:14px;display:block;transition:.15s}
+.card:hover{border-color:#4d8a76;background:#f2f8f5}
+.card .nm{font-weight:600;font-size:15px;margin-bottom:6px}
+.card .sub{font-size:12px;color:#8a93a6}
+.card .rev{margin-top:8px;font-size:14px;color:#245849;font-weight:600}
+.up{color:#e5484d}.down{color:#18a058}
+.chart{width:100%;height:280px}
+.periodbar{display:flex;align-items:center;gap:6px;margin-bottom:10px;flex-wrap:wrap}
+.periodbar button{border:1px solid #d8dee8;background:#fff;color:#4a5568;font-size:12px;padding:4px 10px;border-radius:6px;cursor:pointer}
+.periodbar button.active{background:#347a66;color:#fff;border-color:#347a66}
+.periodbar input[type=date]{border:1px solid #d8dee8;border-radius:6px;padding:3px 6px;font-size:12px;color:#4a5568}
+.periodbar span{font-size:12px;color:#8a93a6}
+.footer{text-align:center;color:#9aa1b5;font-size:12px;margin:30px 0 10px}
+.back{display:inline-block;color:#245849;font-size:15px;font-weight:800;padding:7px 13px;background:#e8f3ee;border:1px solid #cfe1da;border-radius:9px}
+.kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:16px}
+/* 2026-07-23 炼总要求：15个KPI卡6列排不满最后一行会左边挂3个孤零零的，
+   让最后这组（老客入店率/新客下单率/老客下单率）往右靠齐，视觉上填满右侧 */
+.kpis .kpi:nth-child(13){grid-column-start:4}
+@media(max-width:900px){.kpis{grid-template-columns:repeat(3,1fr)}.kpis .kpi:nth-child(13){grid-column-start:1}}
+@media(max-width:480px){.kpis{grid-template-columns:repeat(2,1fr)}.kpis .kpi:nth-child(13){grid-column-start:1}}
+.kpi{background:#fffffff2;border:1px solid #d7e4df;border-radius:14px;padding:14px;box-shadow:0 4px 18px rgba(24,63,53,.07)}
+.kpi .lb{font-size:12px;color:#8a93a6}
+.kpi .vl{font-size:22px;font-weight:700;margin-top:4px;color:#245849}
+.kpi .dl{font-size:12px;margin-top:2px}
+.badge{display:inline-block;background:#e8f3ee;color:#245849;border-radius:999px;padding:3px 10px;font-size:12px;margin:6px 6px 0 0}
+.review{border-left:3px solid #e5484d;background:#fff5f5;border-radius:0 10px 10px 0;padding:10px 14px;margin:10px 0;font-size:14px}
+.review .meta{font-size:12px;color:#8a93a6;margin-bottom:4px}
+.daylinks a{display:inline-block;margin:4px 8px 0 0;padding:6px 12px;background:#e8f3ee;border-radius:999px;font-size:13px;color:#245849}
+.cmpt{width:100%;border-collapse:collapse;font-size:14px;margin-top:8px}
+.cmpt th,.cmpt td{padding:8px 10px;border-bottom:1px solid #edf0f7;text-align:left}
+.cmpt th{color:#8a93a6;font-weight:500;font-size:12px}
+.cmpt .me{background:#e8f3ee;font-weight:600}
+/* 门口令 */
+#gate{position:fixed;inset:0;background:linear-gradient(135deg,#245849,#4d8a76);display:flex;align-items:center;justify-content:center;z-index:9999}
+#gate .box{background:#fff;border-radius:18px;padding:36px 32px;text-align:center;width:300px;box-shadow:0 12px 40px rgba(0,0,0,.25)}
+#gate h2{font-size:20px;margin-bottom:6px;color:#245849}
+#gate p{font-size:13px;color:#8a93a6;margin-bottom:18px}
+#gate input{width:100%;padding:12px;border:1px solid #e2e6f0;border-radius:10px;font-size:16px;text-align:center;letter-spacing:2px;outline:none}
+#gate button{width:100%;margin-top:12px;padding:12px;background:#245849;color:#fff;border:none;border-radius:10px;font-size:16px;cursor:pointer}
+#gate .err{color:#e5484d;font-size:13px;margin-top:10px;display:none}
+.shake{animation:sh .3s}@keyframes sh{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+</style><style>
+.hero{background:linear-gradient(135deg,#1e3c72,#2a5298)}
+.mod{border-color:#edf0f7;box-shadow:0 4px 18px rgba(30,60,114,.08)}
+.mod:hover{border-color:#2a5298;box-shadow:0 8px 24px rgba(30,60,114,.14)}
+.sec{border-color:#edf0f7;box-shadow:0 4px 18px rgba(30,60,114,.08)}
+.search:focus,.card:hover{border-color:#2a5298}.card:hover{background:#f8faff}
+.card .rev{color:#1e3c72}.daylinks a{background:#eef2ff;color:#2a5298}
+</style></head><body>
+
+<div id="gate"><div class="box" id="gatebox">
+<h2>云淼外卖 · 辅助驾驶系统</h2><p>内部数据平台 · 请输入门口令</p>
+<input id="gatein" type="password" placeholder="门口令" autocomplete="off">
+<button onclick="tryGate()">进入</button>
+<div class="err" id="gateerr">口令不对，再试一次</div>
+</div></div>
+<script>
+function tryGate(){
+  var v=document.getElementById('gatein').value;
+  if(v==='YM-001'){sessionStorage.setItem('ym_gate','1');document.getElementById('gate').style.display='none';}
+  else{document.getElementById('gateerr').style.display='block';var b=document.getElementById('gatebox');b.classList.remove('shake');void b.offsetWidth;b.classList.add('shake');}
+}
+document.getElementById('gatein').addEventListener('keydown',function(e){if(e.key==='Enter')tryGate();});
+if(sessionStorage.getItem('ym_gate'))document.getElementById('gate').style.display='none';
+</script>
+
+<div class="hero"><h1>云淼外卖 · 辅助驾驶系统</h1><p>内部数据平台 · 每日更新 · 数据日期 2026-08-07</p></div>
+<div class="wrap">
+  <div class="mods">
+    <a class="mod" href="days/20260807.html"><div class="ic">📊</div><h3>每日看板</h3><p>全部门店当日经营总览：营收、双转、推广、行业、差评。右上角可切换日期。</p></a>
+    <a class="mod" href="#stores"><div class="ic">🏪</div><h3>单店档案</h3><p>每家门店独立页面：趋势曲线、推广、行业排名、差评明细。</p></a>
+    <a class="mod" href="#trend"><div class="ic">📈</div><h3>汇总信息</h3><p>36 家门店营收合计走势，随每日采集逐渐成型。</p></a>
+    <a class="mod" href="推广实时.html"><div class="ic">📣</div><h3>推广实时监测</h3><p>10:45起每半小时刷新：今日花费/曝光/点击、出价、综合与搜索排名。</p></a>
+    <a class="mod" href="评分诊断器.html"><div class="ic">⭐</div><h3>评分诊断器</h3><p>填店铺评分明细和经营数据，输出短板、需补评价数、优先动作。</p></a>
+    <a class="mod" href="菜单定价工作台.html"><div class="ic">🧮</div><h3>菜单定价工作台</h3><p>按城市费率算单品毛利，按菜品角色给建议售价，导出菜单定价表。</p></a>
+    <a class="mod" href="http://127.0.0.1:8776"><div class="ic">🩺</div><h3>店铺诊断助手·内部采集版</h3><p>单门店授权采集，自动生成内部诊断和运营执行方案。</p></a>
+    <a class="mod" href="http://127.0.0.1:8766/"><div class="mod-head"><div class="ic">🧰</div><span class="coming-tag">仅本机</span></div><h3>日常运营辅助</h3><div class="tool-lines"><span>出餐上报</span><span>一分钟回复</span><span>评价回复</span><span>差评申诉参考</span></div></a>
+  </div>
+  <div class="sec" id="trend"><h2>📈 全店营收合计走势</h2><div id="trendchart" class="chart"></div></div>
+  <div class="sec" id="stores"><h2>🏪 单店档案（36 家）</h2>
+    <input class="search" id="q" placeholder="🔍 搜索门店名 / 商圈 / 负责人…" oninput="fq()">
+    <div class="grid" id="grid"><a class="card" href="stores/21952662.html" data-nm="大理清真-艺香园二分店（牛肉小碗菜）韦炼开发区商圈"><div class="nm">大理清真-艺香园二分店（牛肉小碗菜）</div><div class="sub">开发区商圈 · 韦炼</div><div class="rev">¥2,852 <span class="down" style="font-size:12px">▼245</span></div></a><a class="card" href="stores/4236843.html" data-nm="广东石磨肠粉（祥和里店）颜毓恒未来中心"><div class="nm">广东石磨肠粉（祥和里店）</div><div class="sub">未来中心 · 颜毓恒</div><div class="rev">¥2,427 <span class="up" style="font-size:12px">▲407</span></div></a><a class="card" href="stores/6142553.html" data-nm="老罗家烧烤大排档（南虹路店）韦炼南充嘉陵行政区蜂窝"><div class="nm">老罗家烧烤大排档（南虹路店）</div><div class="sub">南充嘉陵行政区蜂窝 · 韦炼</div><div class="rev">¥2,047 <span class="down" style="font-size:12px">▼10</span></div></a><a class="card" href="stores/32728790.html" data-nm="食禄记（牛肉面.豌杂面）韦炼大朗广场"><div class="nm">食禄记（牛肉面.豌杂面）</div><div class="sub">大朗广场 · 韦炼</div><div class="rev">¥1,850 <span class="up" style="font-size:12px">▲106</span></div></a><a class="card" href="stores/20867707.html" data-nm="螺会长螺蛳粉（汉峪光年店）颜毓恒汉峪金谷"><div class="nm">螺会长螺蛳粉（汉峪光年店）</div><div class="sub">汉峪金谷 · 颜毓恒</div><div class="rev">¥1,572 <span class="down" style="font-size:12px">▼121</span></div></a><a class="card" href="stores/9265933.html" data-nm="正宗上佳黄焖鸡米饭（西昌店）颜毓恒时代广场"><div class="nm">正宗上佳黄焖鸡米饭（西昌店）</div><div class="sub">时代广场 · 颜毓恒</div><div class="rev">¥1,292 <span class="up" style="font-size:12px">▲113</span></div></a><a class="card" href="stores/16653155.html" data-nm="祖母的向日葵厨房颜毓恒伏龙小区"><div class="nm">祖母的向日葵厨房</div><div class="sub">伏龙小区 · 颜毓恒</div><div class="rev">¥1,155 <span class="up" style="font-size:12px">▲38</span></div></a><a class="card" href="stores/15080608.html" data-nm="重庆走外婆鸡杂颜毓恒临邛社区"><div class="nm">重庆走外婆鸡杂</div><div class="sub">临邛社区 · 颜毓恒</div><div class="rev">¥1,055 <span class="up" style="font-size:12px">▲63</span></div></a><a class="card" href="stores/16372246.html" data-nm="祖母的厨房西餐厅颜毓恒东部新城"><div class="nm">祖母的厨房西餐厅</div><div class="sub">东部新城 · 颜毓恒</div><div class="rev">¥973 <span class="down" style="font-size:12px">▼124</span></div></a><a class="card" href="stores/31990667.html" data-nm="厨邻里社区食堂(东北菜）韦炼哈一四组金爵万象"><div class="nm">厨邻里社区食堂(东北菜）</div><div class="sub">哈一四组金爵万象 · 韦炼</div><div class="rev">¥740 <span class="down" style="font-size:12px">▼510</span></div></a><a class="card" href="stores/27231616.html" data-nm="荷苑韦炼五羊邨CBD"><div class="nm">荷苑</div><div class="sub">五羊邨CBD · 韦炼</div><div class="rev">¥719 <span class="down" style="font-size:12px">▼6</span></div></a><a class="card" href="stores/27540527.html" data-nm="铭记大排档（曙光路店）颜毓恒"><div class="nm">铭记大排档（曙光路店）</div><div class="sub">— · 颜毓恒</div><div class="rev">¥710 <span class="down" style="font-size:12px">▼836</span></div></a><a class="card" href="stores/18800065.html" data-nm="娟子黄焖鸡米饭颜毓恒中海花港蜂窝"><div class="nm">娟子黄焖鸡米饭</div><div class="sub">中海花港蜂窝 · 颜毓恒</div><div class="rev">¥605 <span class="up" style="font-size:12px">▲360</span></div></a><a class="card" href="stores/27458091.html" data-nm="坨坨牛肉(烧菜·盖饭·拌面·花径路店)韦炼四区二组龙湖北城天街商圈"><div class="nm">坨坨牛肉(烧菜·盖饭·拌面·花径路店)</div><div class="sub">四区二组龙湖北城天街商圈 · 韦炼</div><div class="rev">¥558 <span class="up" style="font-size:12px">▲85</span></div></a><a class="card" href="stores/28704739.html" data-nm="欢喜麻辣烫韦炼金色梦想"><div class="nm">欢喜麻辣烫</div><div class="sub">金色梦想 · 韦炼</div><div class="rev">¥419 <span class="down" style="font-size:12px">▼300</span></div></a><a class="card" href="stores/30407368.html" data-nm="7号隆江猪脚饭（水井沟店）韦炼泸州-水井沟商圈"><div class="nm">7号隆江猪脚饭（水井沟店）</div><div class="sub">泸州-水井沟商圈 · 韦炼</div><div class="rev">¥405 <span class="down" style="font-size:12px">▼272</span></div></a><a class="card" href="stores/15328943.html" data-nm="煮小篓盘盘麻辣烫·鲜货冒菜(紫荆店)颜毓恒缤纷广场"><div class="nm">煮小篓盘盘麻辣烫·鲜货冒菜(紫荆店)</div><div class="sub">缤纷广场 · 颜毓恒</div><div class="rev">¥307 <span class="up" style="font-size:12px">▲175</span></div></a><a class="card" href="stores/8890042.html" data-nm="滴油水饺(东北市店)颜毓恒城区北"><div class="nm">滴油水饺(东北市店)</div><div class="sub">城区北 · 颜毓恒</div><div class="rev">¥259 <span class="up" style="font-size:12px">▲70</span></div></a><a class="card" href="stores/20539153.html" data-nm="杨记烧腊（拌卤菜-套饭-大悦城店）韦炼兴隆湖蜂窝"><div class="nm">杨记烧腊（拌卤菜-套饭-大悦城店）</div><div class="sub">兴隆湖蜂窝 · 韦炼</div><div class="rev">¥230 <span class="down" style="font-size:12px">▼76</span></div></a><a class="card" href="stores/31401195.html" data-nm="漾濞卷粉（二分店）韦炼正阳商圈"><div class="nm">漾濞卷粉（二分店）</div><div class="sub">正阳商圈 · 韦炼</div><div class="rev">¥230 <span class="up" style="font-size:12px">▲66</span></div></a><a class="card" href="stores/23764376.html" data-nm="尚膳唐食纯鸡汤米线（天合丽景店）韦炼七里开发区商圈"><div class="nm">尚膳唐食纯鸡汤米线（天合丽景店）</div><div class="sub">七里开发区商圈 · 韦炼</div><div class="rev">¥181 <span class="up" style="font-size:12px">▲63</span></div></a><a class="card" href="stores/25058981.html" data-nm="食屋（现炒盒饭，盖浇饭）韦炼一区二组蜀新天街商圈"><div class="nm">食屋（现炒盒饭，盖浇饭）</div><div class="sub">一区二组蜀新天街商圈 · 韦炼</div><div class="rev">¥158 <span class="down" style="font-size:12px">▼161</span></div></a><a class="card" href="stores/11197147.html" data-nm="鲜烧牛肉面米线（饺子王）韦炼淮口镇"><div class="nm">鲜烧牛肉面米线（饺子王）</div><div class="sub">淮口镇 · 韦炼</div><div class="rev">¥101 <span class="down" style="font-size:12px">▼62</span></div></a><a class="card" href="stores/27146186.html" data-nm="鹏鹏砂锅地摊火锅韦炼白云米兰春天蜂窝"><div class="nm">鹏鹏砂锅地摊火锅</div><div class="sub">白云米兰春天蜂窝 · 韦炼</div><div class="rev">¥69 <span class="up" style="font-size:12px">▲40</span></div></a><a class="card" href="stores/30363746.html" data-nm="白螺湾螺蛳粉颜毓恒一区五组红牌楼商圈"><div class="nm">白螺湾螺蛳粉</div><div class="sub">一区五组红牌楼商圈 · 颜毓恒</div><div class="rev">¥36 <span class="down" style="font-size:12px">▼65</span></div></a><a class="card" href="stores/15160724.html" data-nm="漾濞卷粉韦炼正阳商圈"><div class="nm">漾濞卷粉</div><div class="sub">正阳商圈 · 韦炼</div><div class="rev">¥28 <span class="down" style="font-size:12px">▼56</span></div></a><a class="card" href="stores/8590951.html" data-nm="先锋冒菜（总店）韦炼南河"><div class="nm">先锋冒菜（总店）</div><div class="sub">南河 · 韦炼</div><div class="rev">¥0 <span class="up" style="font-size:12px">▲0</span></div></a><a class="card" href="stores/11805919.html" data-nm="家福居汉餐·盖浇饭·小炒颜毓恒海亮国际"><div class="nm">家福居汉餐·盖浇饭·小炒</div><div class="sub">海亮国际 · 颜毓恒</div><div class="rev">¥0 <span class="up" style="font-size:12px">▲50</span></div></a><a class="card" href="stores/29444355.html" data-nm="渝滋味颜毓恒"><div class="nm">渝滋味</div><div class="sub">— · 颜毓恒</div><div class="rev">¥0 <span class="up" style="font-size:12px">▲0</span></div></a><a class="card" href="stores/27530562.html" data-nm="蓉妹冒菜冒烤鸭颜毓恒"><div class="nm">蓉妹冒菜冒烤鸭</div><div class="sub">— · 颜毓恒</div><div class="rev">¥0 <span class="up" style="font-size:12px">▲0</span></div></a><a class="card" href="stores/1817509.html" data-nm="锅盔女王（南充米粉.玉林店）颜毓恒玉林商圈"><div class="nm">锅盔女王（南充米粉.玉林店）</div><div class="sub">玉林商圈 · 颜毓恒</div><div class="rev">—</div></a><a class="card" href="stores/27039738.html" data-nm="阿卜力江羊肉·牛肉烧烤店颜毓恒文殊院"><div class="nm">阿卜力江羊肉·牛肉烧烤店</div><div class="sub">文殊院 · 颜毓恒</div><div class="rev">—</div></a><a class="card" href="stores/21013419.html" data-nm="龍门·柴火鸡（桐梓林店）颜毓恒桐梓林"><div class="nm">龍门·柴火鸡（桐梓林店）</div><div class="sub">桐梓林 · 颜毓恒</div><div class="rev">—</div></a><a class="card" href="stores/33548287.html" data-nm="雾屿寻茶唐杰洛阳师范学院（伊滨校区）"><div class="nm">雾屿寻茶</div><div class="sub">洛阳师范学院（伊滨校区） · 唐杰</div><div class="rev">—</div></a><a class="card" href="stores/27775863.html" data-nm="霸旺鸭铁板烤鸭唐杰天门大润发中心商圈"><div class="nm">霸旺鸭铁板烤鸭</div><div class="sub">天门大润发中心商圈 · 唐杰</div><div class="rev">—</div></a><a class="card" href="stores/34000034.html" data-nm="潘记干拌烤鸭门帆火车站蜂窝"><div class="nm">潘记干拌烤鸭</div><div class="sub">火车站蜂窝 · 门帆</div><div class="rev">—</div></a></div>
+  </div>
+  <div class="sec"><h2>🗓 最近看板</h2><div class="daylinks"><a href="days/20260807.html">2026-08-07</a><a href="days/20260806.html">2026-08-06</a><a href="days/20260805.html">2026-08-05</a><a href="days/20260804.html">2026-08-04</a><a href="days/20260803.html">2026-08-03</a><a href="days/20260802.html">2026-08-02</a><a href="days/20260801.html">2026-08-01</a><a href="days/20260731.html">2026-07-31</a><a href="days/20260730.html">2026-07-30</a><a href="days/20260729.html">2026-07-29</a></div></div>
+  <div class="footer">云淼外卖 · 辅助驾驶系统 · 内部使用 · 每日自动更新</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+<script>
+function fq(){var q=document.getElementById('q').value.trim();
+document.querySelectorAll('#grid .card').forEach(function(c){
+c.style.display=c.getAttribute('data-nm').indexOf(q)>-1?'':'none';});}
+var tc=echarts.init(document.getElementById('trendchart'));
+tc.setOption({tooltip:{trigger:'axis'},grid:{left:60,right:20,top:20,bottom:30},
+xAxis:{type:'category',data:["20260720", "20260721", "20260722", "20260723", "20260724", "20260725", "20260726", "20260727", "20260728", "20260729", "20260730", "20260731", "20260801", "20260802", "20260803", "20260804", "20260805", "20260806", "20260807"]},yAxis:{type:'value',name:'营收(元)'},
+series:[{type:'line',smooth:true,data:[28720.41, 24651.24, 28692.57, 30017.05, 30138.78, 31405.85, 31069.73, 26551.59, 26715.94, 26948.16, 26509.39, 29929.49, 25231.54, 27359.74, 29922.94, 29356.34, 28841.65, 22292.13, 20975.59],areaStyle:{opacity:.15},lineStyle:{width:3,color:'#2a5298'},itemStyle:{color:'#2a5298'}}]});
+window.addEventListener('resize',function(){tc.resize();});
+</script>
+</body></html>

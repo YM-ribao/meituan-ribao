@@ -1,0 +1,213 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>杨记烧腊（拌卤菜-套饭-大悦城店） · 单店档案</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:linear-gradient(180deg,#eaf3ef 0,#f7f9f8 320px);color:#183f35}
+a{text-decoration:none;color:inherit}
+.hero{background:linear-gradient(135deg,#245849,#4d8a76);color:#fff;padding:44px 20px 60px;text-align:center}
+.hero h1{font-size:30px;letter-spacing:2px}
+.hero p{opacity:.85;margin-top:10px;font-size:14px}
+.wrap{max-width:1080px;margin:-36px auto 40px;padding:0 16px}
+.mods{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.mod{background:#fffffff2;border:1px solid #d7e4df;border-radius:16px;padding:22px;box-shadow:0 6px 20px rgba(24,63,53,.08);transition:.2s;display:block}
+.mod:hover{transform:translateY(-3px);border-color:#78a998;box-shadow:0 10px 26px rgba(24,63,53,.13)}
+.mod .ic{font-size:30px}
+.mod h3{margin:10px 0 6px;font-size:17px}
+.mod p{font-size:13px;color:#6b7280;line-height:1.6}
+.mod-head{display:flex;align-items:center;gap:8px}
+.mod-head .coming-tag{display:inline-flex;align-items:center;border:1px solid #e1a1a1;border-radius:10px;padding:2px 8px;font-size:12px;line-height:1.4;color:#b73939;background:#fff5f5}
+.tool-lines{margin-top:6px}
+.tool-lines span{display:block;font-size:13px;color:#6b7280;line-height:1.6}
+.mod-coming{opacity:.55;cursor:not-allowed;pointer-events:none;position:relative}
+.mod-coming .coming-tag{position:absolute;right:14px;top:14px;border:1px solid #aeb5c1;border-radius:10px;padding:2px 8px;font-size:11px;color:#747d8b;background:#f4f5f7}
+.mod-coming .tool-lines{margin-top:8px}
+.mod-coming .tool-lines span{display:block;font-size:12px;color:#6b7280;line-height:1.75}
+.sec{background:#fffffff2;border:1px solid #d7e4df;border-radius:16px;padding:22px;box-shadow:0 6px 20px rgba(24,63,53,.07);margin-top:20px}
+.sec h2{font-size:18px;margin-bottom:14px}
+.search{width:100%;padding:12px 16px;border:1px solid #e2e6f0;border-radius:12px;font-size:15px;margin-bottom:16px;outline:none}
+.search:focus{border-color:#4d8a76}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+.card{border:1px solid #edf0f7;border-radius:12px;padding:14px;display:block;transition:.15s}
+.card:hover{border-color:#4d8a76;background:#f2f8f5}
+.card .nm{font-weight:600;font-size:15px;margin-bottom:6px}
+.card .sub{font-size:12px;color:#8a93a6}
+.card .rev{margin-top:8px;font-size:14px;color:#245849;font-weight:600}
+.up{color:#e5484d}.down{color:#18a058}
+.chart{width:100%;height:280px}
+.periodbar{display:flex;align-items:center;gap:6px;margin-bottom:10px;flex-wrap:wrap}
+.periodbar button{border:1px solid #d8dee8;background:#fff;color:#4a5568;font-size:12px;padding:4px 10px;border-radius:6px;cursor:pointer}
+.periodbar button.active{background:#347a66;color:#fff;border-color:#347a66}
+.periodbar input[type=date]{border:1px solid #d8dee8;border-radius:6px;padding:3px 6px;font-size:12px;color:#4a5568}
+.periodbar span{font-size:12px;color:#8a93a6}
+.footer{text-align:center;color:#9aa1b5;font-size:12px;margin:30px 0 10px}
+.back{display:inline-block;color:#245849;font-size:15px;font-weight:800;padding:7px 13px;background:#e8f3ee;border:1px solid #cfe1da;border-radius:9px}
+.kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:16px}
+/* 2026-07-23 炼总要求：15个KPI卡6列排不满最后一行会左边挂3个孤零零的，
+   让最后这组（老客入店率/新客下单率/老客下单率）往右靠齐，视觉上填满右侧 */
+.kpis .kpi:nth-child(13){grid-column-start:4}
+@media(max-width:900px){.kpis{grid-template-columns:repeat(3,1fr)}.kpis .kpi:nth-child(13){grid-column-start:1}}
+@media(max-width:480px){.kpis{grid-template-columns:repeat(2,1fr)}.kpis .kpi:nth-child(13){grid-column-start:1}}
+.kpi{background:#fffffff2;border:1px solid #d7e4df;border-radius:14px;padding:14px;box-shadow:0 4px 18px rgba(24,63,53,.07)}
+.kpi .lb{font-size:12px;color:#8a93a6}
+.kpi .vl{font-size:22px;font-weight:700;margin-top:4px;color:#245849}
+.kpi .dl{font-size:12px;margin-top:2px}
+.badge{display:inline-block;background:#e8f3ee;color:#245849;border-radius:999px;padding:3px 10px;font-size:12px;margin:6px 6px 0 0}
+.review{border-left:3px solid #e5484d;background:#fff5f5;border-radius:0 10px 10px 0;padding:10px 14px;margin:10px 0;font-size:14px}
+.review .meta{font-size:12px;color:#8a93a6;margin-bottom:4px}
+.daylinks a{display:inline-block;margin:4px 8px 0 0;padding:6px 12px;background:#e8f3ee;border-radius:999px;font-size:13px;color:#245849}
+.cmpt{width:100%;border-collapse:collapse;font-size:14px;margin-top:8px}
+.cmpt th,.cmpt td{padding:8px 10px;border-bottom:1px solid #edf0f7;text-align:left}
+.cmpt th{color:#8a93a6;font-weight:500;font-size:12px}
+.cmpt .me{background:#e8f3ee;font-weight:600}
+/* 门口令 */
+#gate{position:fixed;inset:0;background:linear-gradient(135deg,#245849,#4d8a76);display:flex;align-items:center;justify-content:center;z-index:9999}
+#gate .box{background:#fff;border-radius:18px;padding:36px 32px;text-align:center;width:300px;box-shadow:0 12px 40px rgba(0,0,0,.25)}
+#gate h2{font-size:20px;margin-bottom:6px;color:#245849}
+#gate p{font-size:13px;color:#8a93a6;margin-bottom:18px}
+#gate input{width:100%;padding:12px;border:1px solid #e2e6f0;border-radius:10px;font-size:16px;text-align:center;letter-spacing:2px;outline:none}
+#gate button{width:100%;margin-top:12px;padding:12px;background:#245849;color:#fff;border:none;border-radius:10px;font-size:16px;cursor:pointer}
+#gate .err{color:#e5484d;font-size:13px;margin-top:10px;display:none}
+.shake{animation:sh .3s}@keyframes sh{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+</style></head><body>
+<script>if(!sessionStorage.getItem('ym_gate'))location.replace('../index.html')</script>
+
+<style>
+:root{--ym-deep:#245849;--ym-green:#4d8a76;--ym-pale:#e8f3ee;--ym-line:#d7e4df}
+body{background:linear-gradient(180deg,#eaf3ef 0,#f7f9f8 320px)!important;color:#183f35!important;padding-top:58px!important}
+.ym-topnav{position:fixed;top:0;left:0;right:0;z-index:99999;display:flex;align-items:center;gap:18px;padding:11px max(18px,calc((100vw - 1080px)/2));background:#f8fbfaf2;border-bottom:1px solid var(--ym-line);box-shadow:0 3px 14px rgba(24,63,53,.08);font:14px/1.5 -apple-system,sans-serif;backdrop-filter:blur(12px)}
+.ym-topnav a{color:var(--ym-deep)!important;font-weight:800;text-decoration:none}.ym-topnav label{display:flex;align-items:center;gap:7px;color:#6d8179}.ym-topnav select{border:1px solid #bfd2ca;border-radius:8px;padding:5px 9px;background:#fff;color:var(--ym-deep)}
+.card,.kpi,.panel,.section,.box,.bar,.funnel-card,.f3card,.diag,.store-card,.summary-card{border-color:var(--ym-line)!important;box-shadow:0 5px 18px rgba(24,63,53,.07)!important;background-color:#fffffff2!important}.dwrap{background:#f2f8f5!important}.fbar{background:linear-gradient(180deg,#347a66,#78ad99)!important}.fbar.s2{background:linear-gradient(180deg,#4d8a76,#9bc6b6)!important}.fbar.s3{background:linear-gradient(180deg,#7cac9b,#c5ddd4)!important}.farrow .frate,.diag .a{color:var(--ym-green)!important}tr.store:hover{background:#f2f8f5!important}
+.back{color:var(--ym-deep)!important;background:var(--ym-pale)!important;border-color:#cfe1da!important}
+@media(max-width:600px){.ym-topnav{gap:9px;padding:9px 12px}.ym-topnav a{font-size:13px}.ym-topnav label{font-size:0}.ym-topnav select{font-size:13px}}
+</style>
+
+<!-- 日期切换条 -->
+<div class="ym-topnav">
+<a href="../index.html">← 返回辅助驾驶首页</a><label>日期 <select id="ym-datebar" onchange="if(this.value)location.href=this.value"><option value="">选择日期…</option></select></label></div>
+<script>
+(function(){
+  var base = location.pathname.replace(/\/(days|stores)\/.*/, '');
+  fetch(base + '/days.json').then(function(r){return r.json()}).then(function(d){
+    var sel = document.getElementById('ym-datebar');
+    if(!sel) return;
+    d.days.slice().reverse().forEach(function(day){
+      var o = document.createElement('option');
+      o.value = base + '/days/' + day + '.html';
+      o.text = day.slice(0,4) + '-' + day.slice(4,6) + '-' + day.slice(6,8);
+      if (location.pathname.indexOf(day) > -1) o.selected = true;
+      sel.appendChild(o);
+    });
+  }).catch(function(){});
+})();
+</script>
+
+<div class="hero" style="padding:20px 20px 50px"><h1 style="font-size:24px">杨记烧腊（拌卤菜-套饭-大悦城店）</h1>
+<p>兴隆湖蜂窝 <span class="badge">负责人 韦炼</span><span class="badge">门店ID 20539153</span></p></div>
+<div class="wrap">
+  <div class="kpis">
+    <div class="kpi"><div class="lb">营业收入(807)</div><div class="vl">¥230.19</div><div class="dl down">▼ 76 比前日</div></div>
+    <div class="kpi"><div class="lb">订单量</div><div class="vl">11</div></div>
+    <div class="kpi"><div class="lb">实付单均价</div><div class="vl">¥31.44</div></div>
+    <div class="kpi"><div class="lb">曝光人数</div><div class="vl">859</div></div>
+    <div class="kpi"><div class="lb">入店转化率</div><div class="vl">8.5%</div></div>
+    <div class="kpi"><div class="lb">下单转化率</div><div class="vl">15.1%</div></div>
+    <div class="kpi"><div class="lb">推广花费(三线合计)</div><div class="vl">¥0.0</div></div>
+    <div class="kpi"><div class="lb">商圈排名</div><div class="vl" style="font-size:18px">65/120</div></div>
+    <div class="kpi"><div class="lb">差评条数</div><div class="vl">0</div></div>
+    <div class="kpi"><div class="lb">新客曝光</div><div class="vl">700</div></div>
+    <div class="kpi"><div class="lb">老客曝光</div><div class="vl">159</div></div>
+    <div class="kpi"><div class="lb">新客入店率</div><div class="vl">7.4%</div></div>
+    <div class="kpi"><div class="lb">老客入店率</div><div class="vl">13.2%</div></div>
+    <div class="kpi"><div class="lb">新客下单率</div><div class="vl">9.6%</div></div>
+    <div class="kpi"><div class="lb">老客下单率</div><div class="vl">28.6%</div></div>
+  </div>
+  <div class="sec"><h2>📈 营收 & 订单量走势</h2>
+    <div class="periodbar">
+      <button data-days="7">近7天</button><button data-days="15">近15天</button>
+      <button data-days="30">近30天</button><button data-days="0" class="active">全部</button>
+      <input type="date" id="cstart"><span>至</span><input type="date" id="cend"><button id="cApply">自定义</button>
+      <span id="periodLabel" style="color:#8a93a6;font-size:12px;margin-left:8px"></span>
+    </div>
+    <div id="c1" class="chart"></div></div>
+  <div class="sec"><h2>🔄 入店率走势（本店 vs 同行）</h2><div id="c2a" class="chart"></div></div>
+  <div class="sec"><h2>🔄 下单率走势（本店 vs 同行）</h2><div id="c2b" class="chart"></div></div>
+  <div class="sec"><h2>👀 曝光走势（本店 vs 商圈均值 vs 商圈前10%）</h2><div id="c4" class="chart"></div></div>
+  <div class="sec"><h2>💰 推广花费走势</h2><div id="c3" class="chart"></div></div>
+  <div class="sec"><h2>🏆 行业概况（807）</h2>
+    <p style="font-size:14px;line-height:2">商圈：兴隆湖蜂窝 ｜ 排名：65/120 ｜ 超越同行：45.8% ｜ 评分：4.5</p>
+    <table class="cmpt"><tr><th>对比对象</th><th>有效订单数</th><th>评分</th></tr><tr class="me"><td>本店</td><td>11</td><td>4.5</td></tr><tr><td>竞店1</td><td>40+</td><td>4.6</td></tr><tr><td>竞店2</td><td>10-</td><td>4.8</td></tr><tr><td>竞店3</td><td>10-</td><td>4.8</td></tr></table><p style="font-size:12px;color:#8a93a6;margin-top:8px">竞店为美团匿名展示：名称隐藏、订单数为区间值，与美团行业页口径一致。</p></div>
+  <div class="sec"><h2>😠 差评明细</h2><div class="review"><div class="meta">20260805 · ⭐星 · 2026-08-05</div>这家店的外卖包装不卫生，吃了拉肚子</div><div class="review"><div class="meta">20260806 · ⭐星 · 2026-08-06</div>这份卤牛肉，分量少得可怜，肉块全是边角料，没一块是完整的，感觉被“坑”了！价格倒是不便宜，性价比真心低。颜色暗淡，毫无食欲，味道估计也好不到哪去。避雷避雷，别浪费钱了！</div></div>
+  <div class="footer">单店档案 · 数据随每日采集更新</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+<script>
+var dates=["20260720", "20260721", "20260722", "20260723", "20260724", "20260725", "20260726", "20260727", "20260728", "20260729", "20260730", "20260731", "20260801", "20260802", "20260803", "20260804", "20260805", "20260806", "20260807"];
+function mk(id,opt){var c=echarts.init(document.getElementById(id));c.setOption(opt);window.addEventListener('resize',function(){c.resize();});}
+// 2026-07-24 改版：营收图加7/15/30/全部/自定义周期选择器；双转率拆成入店率/下单率两张图
+// （原来10条线挤一张图看不清）；曝光单独一张（原来还有个"入店/下单人数"图，炼总要求去掉）。
+var revFull=[187.95, 513.62, 344.85, 402.44, 379.09, 411.91, 613.92, 350.86, 390.84, 478.57, 272.81, 490.89, 398.8, 682.61, 269.03, 591.95, 558.58, 306.43, 230.19], ordFull=[10.0, 22.0, 14.0, 16.0, 15.0, 15.0, 25.0, 17.0, 16.0, 19.0, 12.0, 19.0, 16.0, 21.0, 12.0, 15.0, 24.0, 13.0, 11.0], revMeanFull=[881.99, 868.65, 860.06, 831.1, 932.84, 1032.45, 1167.88, 826.43, 814.62, 824.81, 902.26, 933.8, 1304.87, 1122.0, 966.85, 878.94, 882.7, 924.58, 928.42], datesFull=dates;
+var c1chart=echarts.init(document.getElementById('c1'));
+window.addEventListener('resize',function(){c1chart.resize();});
+function renderC1(n, start, end){
+  var i0=0, i1=datesFull.length, label='全部（'+datesFull.length+'天）';
+  if(start && end){
+    i0=datesFull.indexOf(start); i1=datesFull.indexOf(end);
+    if(i0<0)i0=0; if(i1<0)i1=datesFull.length-1; if(i1<i0){var t=i0;i0=i1;i1=t;}
+    i1=i1+1; label=start+' 至 '+end;
+  } else if(n>0){
+    i0=Math.max(0,datesFull.length-n); i1=datesFull.length; label='近'+n+'天';
+  }
+  var d=datesFull.slice(i0,i1), rev=revFull.slice(i0,i1), ord=ordFull.slice(i0,i1), revMean=revMeanFull.slice(i0,i1);
+  var revWeek=d.map(function(_,i){var gi=i0+i-7; return gi>=0?revFull[gi]:null;});
+  document.getElementById('periodLabel').textContent=label;
+  c1chart.setOption({tooltip:{trigger:'axis'},legend:{data:['本店营收','同行均值','上周同日(环比)','订单量']},grid:{left:60,right:60,top:40,bottom:30},
+  xAxis:{type:'category',data:d},yAxis:[{type:'value',name:'营收(元)'},{type:'value',name:'订单量'}],
+  series:[{name:'本店营收',type:'line',smooth:true,data:rev,areaStyle:{opacity:.12},lineStyle:{width:3,color:'#1a73e8'},itemStyle:{color:'#1a73e8'}},
+  {name:'同行均值',type:'line',smooth:true,data:revMean,lineStyle:{width:2,color:'#f2994a',type:'dashed'},itemStyle:{color:'#f2994a'}},
+  {name:'上周同日(环比)',type:'line',smooth:true,data:revWeek,lineStyle:{width:2,color:'#9aa1b5',type:'dashed'},itemStyle:{color:'#9aa1b5'}},
+  {name:'订单量',type:'bar',yAxisIndex:1,data:ord,itemStyle:{color:'#c7d9f5'}}]},true);
+}
+renderC1(0);
+document.querySelectorAll('.periodbar button[data-days]').forEach(function(btn){
+  btn.onclick=function(){
+    document.querySelectorAll('.periodbar button').forEach(function(b){b.classList.remove('active');});
+    btn.classList.add('active'); renderC1(+btn.dataset.days);
+  };
+});
+document.getElementById('cApply').onclick=function(){
+  var s=document.getElementById('cstart').value, e=document.getElementById('cend').value;
+  if(s && e){
+    document.querySelectorAll('.periodbar button[data-days]').forEach(function(b){b.classList.remove('active');});
+    renderC1(0, s, e);
+  }
+};
+mk('c2a',{tooltip:{trigger:'axis',valueFormatter:function(v){return v==null?'—':(v*100).toFixed(1)+'%'}},
+legend:{data:['入店率·本店','入店率·同行均值','入店率·商圈前10%','入店率·新客','入店率·老客'],
+selected:{'入店率·新客':false,'入店率·老客':false}},
+grid:{left:60,right:20,top:40,bottom:30},
+xAxis:{type:'category',data:dates},yAxis:{type:'value',axisLabel:{formatter:function(v){return (v*100).toFixed(0)+'%'}}},
+series:[{name:'入店率·本店',type:'line',smooth:true,data:[0.0701, 0.089, 0.0823, 0.0821, 0.0874, 0.0788, 0.0751, 0.0899, 0.0909, 0.0901, 0.0743, 0.0881, 0.0721, 0.0917, 0.0879, 0.0929, 0.0895, 0.0846, 0.085],lineStyle:{width:3,color:'#1a73e8'},itemStyle:{color:'#1a73e8'}},
+{name:'入店率·同行均值',type:'line',smooth:true,data:[0.0827, 0.0855, 0.0828, 0.0818, 0.0821, 0.0827, 0.0851, 0.0857, 0.0849, 0.0847, 0.0861, 0.0827, 0.0855, 0.0843, 0.0838, 0.0857, 0.0846, 0.0864, 0.0788],lineStyle:{width:2,color:'#f2994a',type:'dashed'},itemStyle:{color:'#f2994a'}},
+{name:'入店率·商圈前10%',type:'line',smooth:true,data:[0.094, 0.0955, 0.0903, 0.0903, 0.0886, 0.0885, 0.0933, 0.0931, 0.0917, 0.0935, 0.1021, 0.0928, 0.0919, 0.0899, 0.0934, 0.0991, 0.0887, 0.0927, 0.0834],lineStyle:{width:2,color:'#18a058',type:'dashed'},itemStyle:{color:'#18a058'}},
+{name:'入店率·新客',type:'line',smooth:true,data:[null, 0.0803, 0.0741, 0.0715, 0.0821, 0.0655, 0.0667, 0.0741, 0.0871, 0.0766, 0.0591, 0.0728, 0.0581, 0.0818, 0.0682, 0.0781, 0.0694, 0.0722, 0.0743],lineStyle:{width:2,color:'#17a2b8',type:'dashed'},itemStyle:{color:'#17a2b8'}},
+{name:'入店率·老客',type:'line',smooth:true,data:[null, 0.1421, 0.1326, 0.1407, 0.1168, 0.1602, 0.1263, 0.1768, 0.1087, 0.1592, 0.1436, 0.1561, 0.1534, 0.1479, 0.1765, 0.1592, 0.1686, 0.142, 0.1321],lineStyle:{width:2,color:'#8e5adf',type:'dashed'},itemStyle:{color:'#8e5adf'}}]});
+mk('c2b',{tooltip:{trigger:'axis',valueFormatter:function(v){return v==null?'—':(v*100).toFixed(1)+'%'}},
+legend:{data:['下单率·本店','下单率·同行均值','下单率·商圈前10%','下单率·新客','下单率·老客'],
+selected:{'下单率·新客':false,'下单率·老客':false}},
+grid:{left:60,right:20,top:40,bottom:30},
+xAxis:{type:'category',data:dates},yAxis:{type:'value',axisLabel:{formatter:function(v){return (v*100).toFixed(0)+'%'}}},
+series:[{name:'下单率·本店',type:'line',smooth:true,data:[0.1064, 0.1826, 0.1321, 0.1402, 0.1339, 0.1471, 0.2095, 0.1771, 0.1684, 0.2184, 0.1467, 0.2289, 0.2, 0.2414, 0.1486, 0.1875, 0.3026, 0.1548, 0.1507],lineStyle:{width:3,color:'#5e9bff'},itemStyle:{color:'#5e9bff'}},
+{name:'下单率·同行均值',type:'line',smooth:true,data:[0.1951, 0.2048, 0.2024, 0.2, 0.2093, 0.1895, 0.1961, 0.1975, 0.1975, 0.2125, 0.2, 0.2195, 0.1909, 0.1939, 0.2045, 0.2024, 0.2073, 0.2045, 0.2105],lineStyle:{width:2,color:'#f7c873',type:'dashed'},itemStyle:{color:'#f7c873'}},
+{name:'下单率·商圈前10%',type:'line',smooth:true,data:[0.2439, 0.226, 0.2222, 0.2191, 0.2407, 0.2012, 0.2087, 0.2263, 0.2182, 0.2254, 0.2444, 0.2332, 0.2141, 0.2133, 0.2112, 0.223, 0.2344, 0.2287, 0.2397],lineStyle:{width:2,color:'#7bc47f',type:'dashed'},itemStyle:{color:'#7bc47f'}},
+{name:'下单率·新客',type:'line',smooth:true,data:[null, 0.1236, 0.061, 0.0506, 0.0674, 0.137, 0.1125, 0.1194, 0.0667, 0.1613, 0.1429, 0.0893, 0.0727, 0.197, 0.0638, 0.1091, 0.2979, 0.1356, 0.0962],lineStyle:{width:2,color:'#5bc0de',type:'dashed'},itemStyle:{color:'#5bc0de'}},
+{name:'下单率·老客',type:'line',smooth:true,data:[null, 0.3846, 0.375, 0.3929, 0.3913, 0.1724, 0.52, 0.3103, 0.55, 0.36, 0.1538, 0.5185, 0.48, 0.381, 0.2963, 0.36, 0.3103, 0.2, 0.2857],lineStyle:{width:2,color:'#9aa1b5',type:'dashed'},itemStyle:{color:'#9aa1b5'}}]});
+mk('c4',{tooltip:{trigger:'axis'},legend:{data:['曝光·本店','曝光·商圈均值','曝光·商圈前10%']},grid:{left:60,right:20,top:40,bottom:30},
+xAxis:{type:'category',data:dates},yAxis:{type:'value',name:'曝光人数'},
+series:[{name:'曝光·本店',type:'line',smooth:true,data:[1340.0, 1292.0, 1288.0, 1304.0, 1281.0, 1295.0, 1398.0, 1068.0, 1045.0, 966.0, 1010.0, 942.0, 1109.0, 949.0, 842.0, 861.0, 849.0, 993.0, 859.0],lineStyle:{width:3,color:'#1a73e8'},itemStyle:{color:'#1a73e8'}},
+{name:'曝光·商圈均值',type:'line',smooth:true,data:[992.0, 971.0, 1014.0, 978.0, 1048.0, 1149.0, 1198.0, 945.0, 954.0, 945.0, 1045.0, 992.0, 1287.0, 1163.0, 1050.0, 980.0, 969.0, 1018.0, 964.0],lineStyle:{width:2,color:'#f2994a',type:'dashed'},itemStyle:{color:'#f2994a'}},
+{name:'曝光·商圈前10%',type:'line',smooth:true,data:[3053.0, 3057.0, 3189.0, 3133.0, 3328.0, 3820.0, 3953.0, 2943.0, 2998.0, 3038.0, 3046.0, 3049.0, 4168.0, 3861.0, 3245.0, 3079.0, 3078.0, 3162.0, 3202.0],lineStyle:{width:2,color:'#18a058',type:'dashed'},itemStyle:{color:'#18a058'}}]});
+mk('c3',{tooltip:{trigger:'axis'},grid:{left:60,right:20,top:20,bottom:30},
+xAxis:{type:'category',data:dates},yAxis:{type:'value',name:'花费(元)'},
+series:[{type:'bar',data:[24.48, 30.11, 27.48, 28.89, 38.55, 37.91, 37.53, 33.91, 32.23, 9.74, 0.02, null, 0.0, null, 0.0, null, 0.0, null, 0.0],itemStyle:{color:'#764ba2'}}]});
+</script>
+</body></html>

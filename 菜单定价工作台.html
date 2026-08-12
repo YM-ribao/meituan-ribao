@@ -1,0 +1,1518 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>菜单定价工作台</title>
+  <style>
+    :root {
+      --bg: #f3f8f5;
+      --panel: #ffffff;
+      --ink: #232323;
+      --muted: #6c6a63;
+      --line: #d7e4df;
+      --soft: #eef6f2;
+      --brand: #4d8a76;
+      --brand-dark: #245849;
+      --good: #0f7a55;
+      --warn: #a96700;
+      --bad: #b3342d;
+      --shadow: 0 10px 30px rgba(24, 63, 53, 0.08);
+      font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-size: 15px;
+      height: 100vh; display: flex;
+    }
+
+    /* ===== 左侧菜单 ===== */
+    .sidebar {
+      width: 210px; background: #fcfdfc;
+      display: flex; flex-direction: column; flex-shrink: 0;
+      border-right: 1px solid rgba(36,88,73,0.08);
+    }
+    .sidebar-logo {
+      padding: 18px 16px; display: flex; align-items: center; gap: 8px;
+    }
+    .sidebar-logo .icon {
+      width: 34px; height: 34px; border-radius: 10px;
+      background: linear-gradient(135deg, #4d8a76, #347a66);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; color: #fff;
+    }
+    .sidebar-logo .name {
+      font-size: 15px; font-weight: 600; color: #4d8a76; letter-spacing: 1px;
+    }
+    .nav { flex: 1; padding: 8px 0; }
+    .nav-item {
+      display: flex; align-items: center; gap: 8px;
+      padding: 9px 16px; margin: 1px 8px; border-radius: 8px;
+      font-size: 14px; color: #6c6a63; cursor: pointer;
+      transition: all 0.15s; text-decoration: none;
+    }
+    .nav-item:hover { color: #4d8a76; background: rgba(77,138,118,0.06); }
+    .nav-item.active {
+      color: #4d8a76; background: rgba(77,138,118,0.10);
+      font-weight: 600;
+    }
+    .nav-item .dot { font-size: 15px; width: 18px; text-align: center; }
+    .nav-item .coming-soon {
+      font-size: 9px; background: #e2ece6; color: #6c6a63;
+      padding: 1px 6px; border-radius: 8px; margin-left: auto;
+    }
+    .nav-divider {
+      font-size: 11px; color: #b7bdb8; padding: 14px 16px 4px;
+      letter-spacing: 1px;
+    }
+    .sidebar-footer {
+      padding: 14px 16px; border-bottom: 1px solid rgba(36,88,73,0.06);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .sidebar-footer .user { font-size: 13px; color: #6c6a63; }
+    .sidebar-footer .logout {
+      font-size: 11px; color: #b7bdb8; cursor: pointer;
+    }
+    .main { flex: 1; display: flex; flex-direction: column; overflow-y: auto; }
+
+    .ym-topnav{position:sticky;top:0;z-index:100;display:flex;align-items:center;padding:12px max(22px,calc((100vw - 1320px)/2));background:rgba(248,251,250,.94);border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}
+    .ym-topnav a{color:var(--brand-dark);font-weight:800;text-decoration:none}
+
+    button, input, select {
+      font: inherit;
+    }
+
+    .lock {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+
+    .lock-box {
+      width: min(420px, 100%);
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      padding: 28px;
+    }
+
+    .lock-box h1 {
+      margin: 0 0 8px;
+      font-size: 24px;
+      letter-spacing: 0;
+    }
+
+    .lock-box p {
+      margin: 0 0 22px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .app {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 22px;
+    }
+
+    header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    h1, h2, h3 {
+      letter-spacing: 0;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+
+    .subtitle {
+      margin: 6px 0 0;
+      color: var(--muted);
+    }
+
+    .toolbar {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(340px, 0.82fr) minmax(420px, 1.18fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      padding: 18px;
+    }
+
+    .panel h2 {
+      margin: 0 0 4px;
+      font-size: 20px;
+    }
+
+    .panel-note {
+      color: var(--muted);
+      margin: 0 0 14px;
+      line-height: 1.6;
+    }
+
+    .notice-box {
+      margin-bottom: 18px;
+      padding: 14px 16px;
+      border: 2px solid var(--brand);
+      border-radius: 8px;
+      background: #fff9dc;
+      color: #5f4600;
+      font-weight: 700;
+      line-height: 1.7;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .grid.three {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    label {
+      display: grid;
+      gap: 6px;
+      color: var(--muted);
+      min-width: 0;
+    }
+
+    .field-title {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.3;
+    }
+
+    input, select {
+      width: 100%;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      border-radius: 6px;
+      padding: 10px 11px;
+      min-height: 42px;
+      outline: none;
+    }
+
+    input:focus, select:focus {
+      border-color: var(--brand-dark);
+      box-shadow: 0 0 0 3px rgba(244, 196, 49, 0.22);
+    }
+
+    .section {
+      border-top: 1px solid var(--line);
+      padding-top: 16px;
+      margin-top: 16px;
+    }
+
+    .section h3 {
+      margin: 0 0 10px;
+      font-size: 16px;
+    }
+
+    .roles {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .role-btn, .btn {
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fff;
+      color: var(--ink);
+      padding: 10px 12px;
+      min-height: 42px;
+      cursor: pointer;
+      transition: 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .role-btn:hover, .btn:hover {
+      border-color: var(--brand-dark);
+    }
+
+    .role-btn.active {
+      background: var(--brand);
+      border-color: var(--brand-dark);
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .role-help {
+      margin-top: 9px;
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 10px 12px;
+      color: var(--muted);
+      line-height: 1.6;
+      min-height: 44px;
+    }
+
+    .switch-line {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 10px 12px;
+      margin-bottom: 12px;
+    }
+
+    .switch-line input {
+      width: 22px;
+      min-height: 22px;
+      accent-color: var(--brand-dark);
+    }
+
+    .btn.primary {
+      background: var(--brand-dark);
+      border-color: var(--brand-dark);
+      color: #fff;
+    }
+
+    .btn.yellow {
+      background: var(--brand);
+      border-color: var(--brand-dark);
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .btn.ghost {
+      background: transparent;
+    }
+
+    .result-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .metric {
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 13px;
+      min-height: 92px;
+    }
+
+    .metric span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+
+    .metric strong {
+      font-size: 24px;
+      line-height: 1.1;
+    }
+
+    .metric small {
+      display: block;
+      color: var(--muted);
+      margin-top: 7px;
+      line-height: 1.45;
+    }
+
+    input:disabled, select:disabled {
+      background: #f0eee8;
+      color: #777168;
+      cursor: not-allowed;
+    }
+
+    .judgement {
+      margin-top: 12px;
+      border-radius: 8px;
+      padding: 13px 14px;
+      line-height: 1.7;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .judgement.good { border-color: rgba(15, 122, 85, .25); color: var(--good); background: #f1faf6; }
+    .judgement.warn { border-color: rgba(169, 103, 0, .25); color: var(--warn); background: #fff8e8; }
+    .judgement.bad { border-color: rgba(179, 52, 45, .25); color: var(--bad); background: #fff3f1; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      display: table;
+    }
+
+    th, td {
+      text-align: left;
+      border-bottom: 1px solid var(--line);
+      padding: 10px;
+      vertical-align: top;
+      white-space: nowrap;
+    }
+
+    th {
+      background: var(--soft);
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    tr:last-child td { border-bottom: 0; }
+
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    .row-actions {
+      display: flex;
+      gap: 6px;
+    }
+
+    .small-btn {
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fff;
+      padding: 6px 8px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .empty {
+      margin: 12px 0 0;
+      color: var(--muted);
+      background: var(--soft);
+      border: 1px dashed var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      text-align: center;
+    }
+
+    .hidden { display: none !important; }
+
+    @media (max-width: 1060px) {
+      .layout { grid-template-columns: 1fr; }
+      .roles { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .result-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 640px) {
+      .app { padding: 14px; }
+      header { align-items: flex-start; flex-direction: column; }
+      .toolbar { justify-content: flex-start; }
+      .grid, .grid.three { grid-template-columns: 1fr; }
+      .roles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .result-grid { grid-template-columns: 1fr; }
+      h1 { font-size: 23px; }
+      .metric strong { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+<!-- ===== 左侧菜单 ===== -->
+<div class="sidebar">
+  <div class="sidebar-logo">
+    <div class="icon">🍽️</div>
+    <div class="name">云淼食策</div>
+  </div>
+  <div class="nav">
+    <a href="/" class="nav-item" style="text-decoration:none;color:inherit;"><span class="dot">🏠</span> 首页概览</a>
+    <div class="nav-divider">客户</div>
+    <a href="/customers" class="nav-item" style="text-decoration:none;color:inherit;"><span class="dot">📋</span> 客户列表</a>
+    <a href="/customers" class="nav-item" style="text-decoration:none;color:inherit;"><span class="dot">➕</span> 新增客户</a>
+    <div class="nav-divider">数据</div>
+    <a href="/dashboard" class="nav-item" style="text-decoration:none;color:inherit;"><span class="dot">📊</span> 每日看板</a>
+    <a href="/promotion" class="nav-item" style="text-decoration:none;color:inherit;"><span class="dot">📈</span> 推广实时</a>
+    <div class="nav-divider">工具</div>
+    <a href="/rating" class="nav-item" style="text-decoration:none;color:inherit;"><span class="dot">⭐</span> 评分诊断</a>
+    <a href="/pricing" class="nav-item active" style="text-decoration:none;color:inherit;"><span class="dot">💰</span> 菜单定价</a>
+    <a href="http://127.0.0.1:8776" class="nav-item" target="_blank" style="text-decoration:none;color:inherit;"><span class="dot">🤖</span> 内部诊断</a>
+    <div class="nav-divider">管理</div>
+    <div class="nav-item"><span class="dot">📚</span> 学习中心 <span class="coming-soon">待开放</span></div>
+    <div class="nav-item"><span class="dot">📊</span> 扣费监控 <span class="coming-soon">待开发</span></div>
+    <div class="nav-item"><span class="dot">⚙️</span> 系统设置 <span class="coming-soon">待开发</span></div>
+  </div>
+  <div class="sidebar-footer">
+    <span class="user">👤 炼总</span>
+    <span class="logout" onclick="location.href='/logout'">退出</span>
+  </div>
+</div>
+
+<!-- ===== 右侧主内容 ===== -->
+<div class="main">
+  <nav class="ym-topnav"><a href="index.html">← 返回辅助驾驶首页</a></nav>
+  <main id="lock" class="lock">
+    <section class="lock-box">
+      <h1>菜单定价工作台</h1>
+      <p>输入激活码后使用。当前版本的使用次数记录在这台电脑的浏览器里。</p>
+      <label>
+        <span class="field-title">激活码</span>
+        <input id="accessCode" type="password" placeholder="请输入激活码">
+      </label>
+      <div style="height:12px"></div>
+      <button class="btn yellow" id="unlockBtn" type="button">进入工具</button>
+      <p id="lockMsg" style="margin-top:12px;color:#b3342d"></p>
+    </section>
+  </main>
+
+  <main id="app" class="app hidden">
+    <header>
+      <div>
+        <h1>菜单定价工作台</h1>
+        <p class="subtitle">先算清一份可独立成单的套餐，再整理整张菜单。本工具不替代完整经营利润表。</p>
+      </div>
+      <div class="toolbar">
+        <button class="btn" id="resetFormBtn" type="button">清空当前套餐</button>
+        <button class="btn primary" id="saveBtn" type="button">保存到菜单</button>
+        <button class="btn yellow" id="exportBtn" type="button">导出菜单建议表</button>
+      </div>
+    </header>
+
+    <div class="notice-box">
+      重要提示：本菜单定价工作台适合计算能够独立成单的套餐或主品套餐，不适合计算单点不送的提单品、凑单品、加料等单品。此类商品只能作为加购成本参考，不能直接用这里的“顾客到手、老板到手、建议售价”作为最终定价结论。
+    </div>
+
+    <div class="layout">
+      <section class="panel">
+        <h2>店铺默认参数</h2>
+        <p class="panel-note">这些参数通常整店共用，先填一次。单个菜如果有特殊活动，可以在下面单独加减。</p>
+
+        <div class="grid">
+          <label>
+            <span class="field-title">省份</span>
+            <select id="province"></select>
+          </label>
+          <label>
+            <span class="field-title">城市</span>
+            <select id="city"></select>
+          </label>
+          <label>
+            <span class="field-title">配送方式</span>
+            <select id="deliveryMode">
+              <option value="fast">快送/美配</option>
+              <option value="self">自配</option>
+            </select>
+          </label>
+          <label>
+              <span class="field-title">佣金率</span>
+            <input id="commissionRate" type="number" step="0.1" min="0" value="6.4">
+          </label>
+          <label>
+            <span class="field-title">佣金保底</span>
+            <input id="commissionMin" type="number" step="0.01" min="0" value="1.4">
+          </label>
+          <label>
+            <span class="field-title">默认配送服务费</span>
+            <input id="defaultDeliveryFee" type="number" step="0.1" min="0" value="0">
+          </label>
+          <label>
+            <span class="field-title">本店预计起送价</span>
+            <input id="startPrice" type="number" step="0.1" min="0" value="0">
+          </label>
+          <label>
+            <span class="field-title">商圈常见起送价（可不填）</span>
+            <input id="marketStartPrice" type="number" step="0.1" min="0" value="0">
+          </label>
+        </div>
+        <div class="role-help" id="commissionInfo" style="margin-top:12px"></div>
+
+        <div class="section">
+          <h3>新阶梯神券</h3>
+          <div class="switch-line">
+            <span>是否报名新阶梯神券</span>
+            <input id="tierEnabled" type="checkbox">
+          </div>
+          <div class="grid">
+            <label>
+              <span class="field-title">老板追补金额（额外承担，填正数）</span>
+              <input id="tierSubsidy" type="number" step="0.1" min="0" value="0">
+            </label>
+            <label>
+              <span class="field-title">业务经理神券追补（不是配送补贴）</span>
+              <input id="managerTierSubsidy" type="number" step="0.1" min="0" value="0">
+            </label>
+          </div>
+          <p class="panel-note" style="margin:10px 0 0">报名后按后台固定档位自动计算：20以下6，满20减7，满28减9，满38减11，满48减13，满58减15，满68减17，满88减19，满128减22。老板追补会增加老板承担和顾客优惠；业务经理神券追补只降低顾客到手价，不计入老板成本。</p>
+        </div>
+
+        <div class="section">
+          <h3>店铺默认活动成本</h3>
+          <div class="grid">
+            <label>
+              <span class="field-title">进店领券</span>
+              <input id="entryCoupon" type="number" step="0.1" min="0" value="0">
+            </label>
+            <label>
+              <span class="field-title">新客立减</span>
+              <input id="newCustomerDiscount" type="number" step="0.1" min="0" value="0">
+            </label>
+            <label>
+              <span class="field-title">满减 1：满多少</span>
+              <input id="fullThreshold1" type="number" step="0.1" min="0" value="0">
+            </label>
+            <label>
+              <span class="field-title">满减 1：减多少</span>
+              <input id="fullReduction1" type="number" step="0.1" min="0" value="0">
+            </label>
+            <label>
+              <span class="field-title">满减 2：满多少</span>
+              <input id="fullThreshold2" type="number" step="0.1" min="0" value="0">
+            </label>
+            <label>
+              <span class="field-title">满减 2：减多少</span>
+              <input id="fullReduction2" type="number" step="0.1" min="0" value="0">
+            </label>
+            <label>
+              <span class="field-title">顾客免配金额（老板承担）</span>
+              <input id="deliveryDiscount" type="number" step="0.1" min="0" value="0">
+            </label>
+            <label>
+              <span class="field-title">下单返券金额</span>
+              <input id="returnCouponReserve" type="number" step="0.1" min="0" value="0">
+            </label>
+            <label>
+              <span class="field-title">集点返券金额</span>
+              <input id="pointsReserve" type="number" step="0.1" min="0" value="0">
+            </label>
+          </div>
+          <p class="panel-note" style="margin:10px 0 0">按后台实际金额填写，系统会根据顾客类型自动判断，不需要自己计算。</p>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>单个套餐/主品计算</h2>
+        <p class="panel-note">选身份、填整份套餐的成本和售价。保存后可以继续算下一份套餐，最后统一导出。</p>
+
+        <div class="section" style="border-top:0;padding-top:0;margin-top:0">
+          <h3>菜品基础信息</h3>
+          <div class="grid">
+            <label>
+              <span class="field-title">套餐/主品名称</span>
+              <input id="itemName" placeholder="例如：招牌鸡腿饭套餐">
+            </label>
+            <label>
+              <span class="field-title">菜单分类</span>
+              <select id="menuCategory">
+                <option value="主食/套餐">主食/套餐</option>
+                <option value="小吃/加购">小吃/加购</option>
+                <option value="饮品/甜品">饮品/甜品</option>
+                <option value="配菜/加料">配菜/加料</option>
+                <option value="双人餐/多人餐">双人餐/多人餐</option>
+                <option value="其他">其他</option>
+              </select>
+            </label>
+            <label>
+              <span class="field-title">当前售价/测试售价</span>
+              <input id="salePrice" type="number" step="0.1" min="0" value="0">
+            </label>
+            <label>
+              <span class="field-title">商圈同类参考价</span>
+              <input id="marketRefPrice" type="number" step="0.1" min="0" value="0">
+            </label>
+            <label>
+              <span class="field-title">实际包材成本</span>
+              <input id="packageCost" type="number" step="0.1" min="0" value="0">
+            </label>
+            <label>
+              <span class="field-title">食材成本</span>
+              <input id="foodCost" type="number" step="0.1" min="0" value="0">
+            </label>
+            <label>
+              <span class="field-title">向顾客收取的打包费</span>
+              <input id="customerPackageFee" type="number" step="0.1" min="0" value="0">
+            </label>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>活动灵活调配</h3>
+          <div class="grid" style="margin-bottom:12px">
+            <label>
+              <span class="field-title">本次按哪类顾客计算</span>
+              <select id="customerType">
+                <option value="new">新客</option>
+                <option value="old">老客</option>
+              </select>
+            </label>
+            <label id="oldCouponTypeWrap" class="hidden">
+              <span class="field-title">老客本单使用哪一种券</span>
+              <select id="oldCouponType">
+                <option value="none">不使用</option>
+                <option value="entry">进店领券</option>
+                <option value="return">下单返券</option>
+                <option value="points">集点返券</option>
+              </select>
+            </label>
+          </div>
+          <div class="switch-line">
+            <span>沿用店铺默认活动</span>
+            <input id="useDefaultActivity" type="checkbox" checked>
+          </div>
+          <div class="switch-line">
+            <span>把本单完成后的复购预留成本计入毛利判断</span>
+            <input id="includeReserve" type="checkbox">
+          </div>
+          <label id="reserveTypeWrap" class="hidden" style="margin:12px 0">
+            <span class="field-title">下一次复购预留选择哪一种</span>
+            <select id="reserveType">
+              <option value="return">下单返券</option>
+              <option value="points">集点返券</option>
+            </select>
+          </label>
+          <div class="grid">
+            <label>
+              <span class="field-title">调高让利 ↑</span>
+              <input id="extraActivityCost" type="number" step="0.1" min="0" value="0">
+            </label>
+            <label>
+              <span class="field-title">调低让利 ↓</span>
+              <input id="lessActivityCost" type="number" step="0.1" min="0" value="0">
+            </label>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>这份套餐/主品在菜单里承担什么任务？</h3>
+          <div class="roles" id="roleButtons"></div>
+          <div class="role-help" id="roleHelp"></div>
+        </div>
+
+        <div class="section">
+          <h3>计算结果</h3>
+          <div class="result-grid">
+            <div class="metric">
+              <span>老板测试售价</span>
+              <strong id="testPrice">¥0.00</strong>
+              <small>你在上方输入、想要测试的价格</small>
+            </div>
+            <div class="metric">
+              <span id="testCustomerPayLabel">测试价｜新客到手</span>
+              <strong id="testCustomerPay">¥0.00</strong>
+              <small>含打包费，不含顾客配送费</small>
+            </div>
+            <div class="metric">
+              <span>测试价｜老板到手</span>
+              <strong id="testMerchantReceive">¥0.00</strong>
+              <small>扣除活动、佣金、配送服务费</small>
+            </div>
+            <div class="metric">
+              <span>测试价｜套餐毛利率</span>
+              <strong id="testMarginRate">0%</strong>
+              <small id="targetRange">身份建议区间：-</small>
+            </div>
+            <div class="metric">
+              <span>系统建议售价</span>
+              <strong id="suggestedPrice">¥0.00</strong>
+              <small id="suggestedNote">按当前菜品身份的毛利区间估算</small>
+            </div>
+            <div class="metric">
+              <span id="suggestedCustomerPayLabel">建议价｜新客到手</span>
+              <strong id="suggestedCustomerPay">¥0.00</strong>
+              <small>按建议售价重新计算</small>
+            </div>
+            <div class="metric">
+              <span>建议价｜老板到手</span>
+              <strong id="suggestedMerchantReceive">¥0.00</strong>
+              <small>按建议售价重新计算</small>
+            </div>
+            <div class="metric">
+              <span>建议价｜套餐毛利率</span>
+              <strong id="suggestedMarginRate">0%</strong>
+              <small>用于和测试价直接比较</small>
+            </div>
+          </div>
+          <div class="judgement" id="judgeBox">请先填写售价和成本。</div>
+        </div>
+      </section>
+    </div>
+
+    <section class="panel" style="margin-top:18px">
+      <h2>菜单定价表</h2>
+      <p class="panel-note" id="startPriceJudge">起送价判断：填写本店预计起送价和商圈常见起送价后显示。</p>
+      <div id="emptyState" class="empty">还没有保存套餐。先在上方算一份套餐，再点“保存到菜单”。</div>
+      <div class="table-wrap hidden" id="tableWrap">
+        <table>
+          <thead>
+            <tr>
+              <th>分类</th>
+              <th>建议位置</th>
+              <th>菜品</th>
+              <th>身份</th>
+              <th>售价</th>
+              <th>建议售价</th>
+              <th>顾客到手</th>
+              <th>老板到手</th>
+              <th>食材</th>
+              <th>包材</th>
+              <th>套餐毛利润</th>
+              <th>毛利率</th>
+              <th>判断</th>
+              <th>排序建议</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody id="menuBody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    window.CITY_RATE_DATA = [{"province":"北京市","city":"北京市","selfRate":9.4,"selfMin":1.4,"fastRate":6.4,"fastMin":1.4},{"province":"上海市","city":"上海市","selfRate":10.2,"selfMin":1.4,"fastRate":7.2,"fastMin":1.4},{"province":"天津市","city":"天津市","selfRate":9.2,"selfMin":1.08,"fastRate":7,"fastMin":1.08},{"province":"重庆市","city":"重庆市","selfRate":8.5,"selfMin":1.02,"fastRate":5,"fastMin":1.02},{"province":"广东省","city":"广州市","selfRate":9.6,"selfMin":1.34,"fastRate":6,"fastMin":1.34},{"province":"广东省","city":"深圳市","selfRate":9.6,"selfMin":1.12,"fastRate":5,"fastMin":1.12},{"province":"广东省","city":"东莞市","selfRate":9,"selfMin":1.44,"fastRate":6.6,"fastMin":1.44},{"province":"广东省","city":"佛山市","selfRate":10.2,"selfMin":1.28,"fastRate":6.2,"fastMin":1.28},{"province":"广东省","city":"惠州市","selfRate":8.1,"selfMin":1.02,"fastRate":6,"fastMin":1.02},{"province":"广东省","city":"中山市","selfRate":11,"selfMin":0.88,"fastRate":7,"fastMin":0.88},{"province":"广东省","city":"汕头市","selfRate":9.2,"selfMin":0.98,"fastRate":7.2,"fastMin":0.98},{"province":"广东省","city":"珠海市","selfRate":10,"selfMin":1.1,"fastRate":6.8,"fastMin":1.1},{"province":"广东省","city":"江门市","selfRate":9.6,"selfMin":1.02,"fastRate":8.4,"fastMin":1.02},{"province":"广东省","city":"湛江市","selfRate":10.2,"selfMin":0.84,"fastRate":6.4,"fastMin":0.84},{"province":"广东省","city":"揭阳市","selfRate":11,"selfMin":1.08,"fastRate":7.8,"fastMin":1.08},{"province":"广东省","city":"肇庆市","selfRate":9.4,"selfMin":0.9,"fastRate":7.2,"fastMin":0.9},{"province":"广东省","city":"清远市","selfRate":8.2,"selfMin":0.76,"fastRate":6.4,"fastMin":0.76},{"province":"广东省","city":"茂名市","selfRate":9.2,"selfMin":0.94,"fastRate":6.8,"fastMin":0.94},{"province":"广东省","city":"韶关市","selfRate":10,"selfMin":0.88,"fastRate":9.6,"fastMin":0.88},{"province":"广东省","city":"潮州市","selfRate":8.8,"selfMin":0.86,"fastRate":6.6,"fastMin":0.86},{"province":"江苏省","city":"苏州市","selfRate":10.2,"selfMin":1.26,"fastRate":6.8,"fastMin":1.26},{"province":"江苏省","city":"南京市","selfRate":9.8,"selfMin":1.38,"fastRate":6.4,"fastMin":1.38},{"province":"江苏省","city":"无锡市","selfRate":11.4,"selfMin":1.08,"fastRate":7.8,"fastMin":1.08},{"province":"江苏省","city":"常州市","selfRate":9.5,"selfMin":1.34,"fastRate":7,"fastMin":1.34},{"province":"江苏省","city":"徐州市","selfRate":11.4,"selfMin":1.14,"fastRate":8,"fastMin":1.14},{"province":"江苏省","city":"南通市","selfRate":10,"selfMin":1.42,"fastRate":7.8,"fastMin":1.42},{"province":"江苏省","city":"盐城市","selfRate":9,"selfMin":1.18,"fastRate":8.6,"fastMin":1.18},{"province":"江苏省","city":"扬州市","selfRate":9,"selfMin":1.48,"fastRate":8.2,"fastMin":1.48},{"province":"江苏省","city":"淮安市","selfRate":9.5,"selfMin":1.14,"fastRate":6.4,"fastMin":1.14},{"province":"江苏省","city":"镇江市","selfRate":7.4,"selfMin":1.22,"fastRate":6.6,"fastMin":1.22},{"province":"江苏省","city":"连云港市","selfRate":9.4,"selfMin":1.28,"fastRate":7.4,"fastMin":1.28},{"province":"江苏省","city":"泰州市","selfRate":8.2,"selfMin":1.06,"fastRate":6,"fastMin":1.06},{"province":"江苏省","city":"宿迁市","selfRate":8,"selfMin":1.12,"fastRate":6,"fastMin":1.12},{"province":"山东省","city":"威海市","selfRate":7.4,"selfMin":1.08,"fastRate":6.4,"fastMin":1.08},{"province":"山东省","city":"青岛市","selfRate":9.8,"selfMin":1.06,"fastRate":7.6,"fastMin":1.06},{"province":"山东省","city":"济南市","selfRate":7.6,"selfMin":1.2,"fastRate":6.4,"fastMin":1.2},{"province":"山东省","city":"临沂市","selfRate":8.8,"selfMin":1.12,"fastRate":6,"fastMin":1.12},{"province":"山东省","city":"潍坊市","selfRate":9.8,"selfMin":1.3,"fastRate":8.8,"fastMin":1.3},{"province":"山东省","city":"烟台市","selfRate":9,"selfMin":1.32,"fastRate":7,"fastMin":1.32},{"province":"山东省","city":"济宁市","selfRate":8.2,"selfMin":1,"fastRate":5.2,"fastMin":1},{"province":"山东省","city":"淄博市","selfRate":10.6,"selfMin":1.2,"fastRate":7.6,"fastMin":1.2},{"province":"山东省","city":"泰安市","selfRate":9.4,"selfMin":1.06,"fastRate":7.4,"fastMin":1.06},{"province":"山东省","city":"枣庄市","selfRate":9.8,"selfMin":0.84,"fastRate":7.4,"fastMin":0.84},{"province":"山东省","city":"日照市","selfRate":9,"selfMin":1.1,"fastRate":7.6,"fastMin":1.1},{"province":"浙江省","city":"杭州市","selfRate":9.6,"selfMin":0.96,"fastRate":4.8,"fastMin":0.96},{"province":"浙江省","city":"宁波市","selfRate":9.6,"selfMin":0.94,"fastRate":7.6,"fastMin":0.94},{"province":"浙江省","city":"温州市","selfRate":9.5,"selfMin":1.22,"fastRate":7.5,"fastMin":1.22},{"province":"浙江省","city":"金华市","selfRate":9.4,"selfMin":1.02,"fastRate":5.6,"fastMin":1.02},{"province":"浙江省","city":"嘉兴市","selfRate":8.2,"selfMin":1.18,"fastRate":6.6,"fastMin":1.18},{"province":"浙江省","city":"台州市","selfRate":10,"selfMin":1.1,"fastRate":7.2,"fastMin":1.1},{"province":"浙江省","city":"绍兴市","selfRate":9.6,"selfMin":1.22,"fastRate":8.2,"fastMin":1.22},{"province":"浙江省","city":"湖州市","selfRate":8,"selfMin":1.16,"fastRate":6.4,"fastMin":1.16},{"province":"浙江省","city":"丽水市","selfRate":9.2,"selfMin":1.18,"fastRate":8.2,"fastMin":1.18},{"province":"浙江省","city":"衢州市","selfRate":7.2,"selfMin":1.04,"fastRate":6,"fastMin":1.04},{"province":"浙江省","city":"舟山市","selfRate":9.4,"selfMin":0.94,"fastRate":7.6,"fastMin":0.94},{"province":"河南省","city":"郑州市","selfRate":11.4,"selfMin":1.14,"fastRate":8.2,"fastMin":1.14},{"province":"河南省","city":"洛阳市","selfRate":9.2,"selfMin":1.24,"fastRate":6.8,"fastMin":1.24},{"province":"河南省","city":"南阳市","selfRate":8.2,"selfMin":1,"fastRate":5.8,"fastMin":1},{"province":"河南省","city":"商丘市","selfRate":8.2,"selfMin":1.16,"fastRate":6.8,"fastMin":1.16},{"province":"河南省","city":"新乡市","selfRate":9.2,"selfMin":1.3,"fastRate":8.6,"fastMin":1.3},{"province":"河南省","city":"信阳市","selfRate":10.4,"selfMin":1,"fastRate":5.4,"fastMin":1},{"province":"河南省","city":"开封市","selfRate":8.2,"selfMin":1.14,"fastRate":7,"fastMin":1.14},{"province":"河南省","city":"安阳市","selfRate":8.2,"selfMin":1.1,"fastRate":6.4,"fastMin":1.1},{"province":"河南省","city":"许昌市","selfRate":9,"selfMin":1.04,"fastRate":7.2,"fastMin":1.04},{"province":"河南省","city":"平顶山市","selfRate":9.4,"selfMin":0.92,"fastRate":7.6,"fastMin":0.92},{"province":"河南省","city":"焦作市","selfRate":8.2,"selfMin":1,"fastRate":7.2,"fastMin":1},{"province":"四川省","city":"成都市","selfRate":9.6,"selfMin":1.12,"fastRate":6.2,"fastMin":1.12},{"province":"四川省","city":"绵阳市","selfRate":10.8,"selfMin":0.92,"fastRate":5.8,"fastMin":0.92},{"province":"四川省","city":"南充市","selfRate":9.6,"selfMin":0.96,"fastRate":5.4,"fastMin":0.96},{"province":"四川省","city":"宜宾市","selfRate":8.2,"selfMin":0.92,"fastRate":5.8,"fastMin":0.92},{"province":"四川省","city":"乐山市","selfRate":8.4,"selfMin":0.98,"fastRate":6,"fastMin":0.98},{"province":"四川省","city":"德阳市","selfRate":9.2,"selfMin":0.84,"fastRate":7.2,"fastMin":0.84},{"province":"四川省","city":"泸州市","selfRate":8.6,"selfMin":0.96,"fastRate":5.6,"fastMin":0.96},{"province":"四川省","city":"眉山市","selfRate":8,"selfMin":0.98,"fastRate":6.2,"fastMin":0.98},{"province":"四川省","city":"遂宁市","selfRate":12.6,"selfMin":1.02,"fastRate":6.4,"fastMin":1.02},{"province":"四川省","city":"自贡市","selfRate":9.2,"selfMin":0.98,"fastRate":5.6,"fastMin":0.98},{"province":"河北省","city":"石家庄市","selfRate":10.8,"selfMin":1.32,"fastRate":7.2,"fastMin":1.32},{"province":"河北省","city":"廊坊市","selfRate":8.2,"selfMin":1.16,"fastRate":6.2,"fastMin":1.16},{"province":"河北省","city":"唐山市","selfRate":11.5,"selfMin":0.98,"fastRate":5.8,"fastMin":0.98},{"province":"河北省","city":"邯郸市","selfRate":9.4,"selfMin":1.16,"fastRate":6.8,"fastMin":1.16},{"province":"河北省","city":"张家口市","selfRate":12.2,"selfMin":1.06,"fastRate":7.2,"fastMin":1.06},{"province":"河北省","city":"秦皇岛市","selfRate":8.6,"selfMin":1.2,"fastRate":7,"fastMin":1.2},{"province":"河北省","city":"保定市","selfRate":8,"selfMin":1.2,"fastRate":6.4,"fastMin":1.2},{"province":"湖南省","city":"长沙市","selfRate":9.2,"selfMin":1.04,"fastRate":5.8,"fastMin":1.04},{"province":"湖南省","city":"衡阳市","selfRate":9.2,"selfMin":1.02,"fastRate":6.4,"fastMin":1.02},{"province":"湖南省","city":"常德市","selfRate":9.8,"selfMin":0.92,"fastRate":5,"fastMin":0.92},{"province":"湖南省","city":"岳阳市","selfRate":8,"selfMin":0.96,"fastRate":5,"fastMin":0.96},{"province":"湖南省","city":"株洲市","selfRate":9.6,"selfMin":1.04,"fastRate":5.4,"fastMin":1.04},{"province":"湖南省","city":"郴州市","selfRate":8.6,"selfMin":0.94,"fastRate":6,"fastMin":0.94},{"province":"湖南省","city":"湘潭市","selfRate":11.6,"selfMin":1.04,"fastRate":5.6,"fastMin":1.04},{"province":"安徽省","city":"合肥市","selfRate":10,"selfMin":1.28,"fastRate":6.4,"fastMin":1.28},{"province":"安徽省","city":"阜阳市","selfRate":8.8,"selfMin":1.22,"fastRate":8,"fastMin":1.22},{"province":"安徽省","city":"芜湖市","selfRate":10,"selfMin":1.18,"fastRate":7.6,"fastMin":1.18},{"province":"安徽省","city":"滁州市","selfRate":9.4,"selfMin":0.98,"fastRate":8.2,"fastMin":0.98},{"province":"安徽省","city":"六安市","selfRate":8.4,"selfMin":0.92,"fastRate":6.6,"fastMin":0.92},{"province":"安徽省","city":"宿州市","selfRate":9.2,"selfMin":1.1,"fastRate":7.6,"fastMin":1.1},{"province":"安徽省","city":"蚌埠市","selfRate":10,"selfMin":1.14,"fastRate":7,"fastMin":1.14},{"province":"安徽省","city":"安庆市","selfRate":9.4,"selfMin":1.1,"fastRate":9,"fastMin":1.1},{"province":"安徽省","city":"马鞍山市","selfRate":9.2,"selfMin":1.3,"fastRate":9,"fastMin":1.3},{"province":"安徽省","city":"铜陵市","selfRate":8.8,"selfMin":0.94,"fastRate":8.2,"fastMin":0.94},{"province":"安徽省","city":"淮北市","selfRate":9.2,"selfMin":0.9,"fastRate":8,"fastMin":0.9},{"province":"安徽省","city":"黄山市","selfRate":9,"selfMin":1.06,"fastRate":8.4,"fastMin":1.06},{"province":"湖北省","city":"武汉市","selfRate":8.6,"selfMin":1.22,"fastRate":5.8,"fastMin":1.22},{"province":"湖北省","city":"襄阳市","selfRate":9.2,"selfMin":0.88,"fastRate":6.2,"fastMin":0.88},{"province":"湖北省","city":"宜昌市","selfRate":7.8,"selfMin":1.08,"fastRate":6.4,"fastMin":1.08},{"province":"湖北省","city":"荆州市","selfRate":9.4,"selfMin":0.96,"fastRate":6.8,"fastMin":0.96},{"province":"湖北省","city":"孝感市","selfRate":10.8,"selfMin":0.94,"fastRate":6.8,"fastMin":0.94},{"province":"湖北省","city":"黄石市","selfRate":9.8,"selfMin":0.98,"fastRate":8.4,"fastMin":0.98},{"province":"湖北省","city":"荆门市","selfRate":9.2,"selfMin":1,"fastRate":5.6,"fastMin":1},{"province":"湖北省","city":"神农架林区","selfRate":8.2,"selfMin":1.2,"fastRate":5.6,"fastMin":1.04},{"province":"湖北省","city":"十堰市","selfRate":9.4,"selfMin":1.04,"fastRate":5.6,"fastMin":1.04},{"province":"福建省","city":"莆田市","selfRate":10.6,"selfMin":1.04,"fastRate":7.8,"fastMin":1.04},{"province":"福建省","city":"泉州市","selfRate":11.2,"selfMin":1.16,"fastRate":7.5,"fastMin":1.16},{"province":"福建省","city":"福州市","selfRate":10.5,"selfMin":1.24,"fastRate":6.4,"fastMin":1.24},{"province":"福建省","city":"厦门市","selfRate":10.7,"selfMin":1.14,"fastRate":7.3,"fastMin":1.14},{"province":"福建省","city":"漳州市","selfRate":8,"selfMin":1.08,"fastRate":5.8,"fastMin":1.08},{"province":"福建省","city":"龙岩市","selfRate":9.8,"selfMin":1,"fastRate":6,"fastMin":1},{"province":"辽宁省","city":"沈阳市","selfRate":9.4,"selfMin":1.18,"fastRate":7.4,"fastMin":1.18},{"province":"辽宁省","city":"大连市","selfRate":10.4,"selfMin":1.14,"fastRate":7.4,"fastMin":1.14},{"province":"辽宁省","city":"鞍山市","selfRate":7.8,"selfMin":1.18,"fastRate":7,"fastMin":1.18},{"province":"辽宁省","city":"锦州市","selfRate":8.6,"selfMin":0.94,"fastRate":7.6,"fastMin":0.94},{"province":"辽宁省","city":"营口市","selfRate":10.2,"selfMin":0.98,"fastRate":7.8,"fastMin":0.98},{"province":"辽宁省","city":"葫芦岛市","selfRate":10.4,"selfMin":0.88,"fastRate":7.6,"fastMin":0.88},{"province":"辽宁省","city":"丹东市","selfRate":9.8,"selfMin":1.24,"fastRate":7,"fastMin":1.24},{"province":"辽宁省","city":"抚顺市","selfRate":9.4,"selfMin":1.06,"fastRate":7.2,"fastMin":1.06},{"province":"辽宁省","city":"辽阳市","selfRate":9.6,"selfMin":1.06,"fastRate":7.2,"fastMin":1.06},{"province":"辽宁省","city":"阜新市","selfRate":11,"selfMin":0.96,"fastRate":8,"fastMin":0.96},{"province":"辽宁省","city":"本溪市","selfRate":9.6,"selfMin":1.16,"fastRate":9.2,"fastMin":1.16},{"province":"辽宁省","city":"铁岭市","selfRate":8.2,"selfMin":1.12,"fastRate":6.8,"fastMin":1.12},{"province":"辽宁省","city":"盘锦市","selfRate":9.4,"selfMin":1.02,"fastRate":7,"fastMin":1.02},{"province":"云南省","city":"昆明市","selfRate":10.6,"selfMin":1.04,"fastRate":5.6,"fastMin":1.04},{"province":"云南省","city":"曲靖市","selfRate":13.8,"selfMin":1.3,"fastRate":8.2,"fastMin":1.3},{"province":"云南省","city":"玉溪市","selfRate":10.6,"selfMin":0.98,"fastRate":7.4,"fastMin":0.98},{"province":"云南省","city":"大理市","selfRate":11.8,"selfMin":0.82,"fastRate":8.4,"fastMin":0.98},{"province":"云南省","city":"丽江市","selfRate":10.4,"selfMin":0.82,"fastRate":5.6,"fastMin":0.82},{"province":"陕西省","city":"西安市","selfRate":10.2,"selfMin":1.02,"fastRate":7.6,"fastMin":1.02},{"province":"陕西省","city":"咸阳市","selfRate":8.8,"selfMin":1.02,"fastRate":7.6,"fastMin":1.02},{"province":"陕西省","city":"宝鸡市","selfRate":10,"selfMin":0.92,"fastRate":8.2,"fastMin":0.92},{"province":"陕西省","city":"汉中市","selfRate":9,"selfMin":1.02,"fastRate":6,"fastMin":1.02},{"province":"陕西省","city":"安康市","selfRate":9.4,"selfMin":0.92,"fastRate":6.2,"fastMin":0.92},{"province":"陕西省","city":"商洛市","selfRate":8.2,"selfMin":1.2,"fastRate":5.6,"fastMin":1.04},{"province":"广西壮族自治区","city":"南宁市","selfRate":11.2,"selfMin":1.04,"fastRate":6.4,"fastMin":1.04},{"province":"广西壮族自治区","city":"桂林市","selfRate":11,"selfMin":0.96,"fastRate":6.8,"fastMin":0.96},{"province":"广西壮族自治区","city":"柳州市","selfRate":9,"selfMin":0.92,"fastRate":6.2,"fastMin":0.92},{"province":"广西壮族自治区","city":"北海市","selfRate":10,"selfMin":0.86,"fastRate":7,"fastMin":0.86},{"province":"江西省","city":"南昌市","selfRate":8.5,"selfMin":1.06,"fastRate":5.6,"fastMin":1.06},{"province":"江西省","city":"赣州市","selfRate":8,"selfMin":0.78,"fastRate":5,"fastMin":0.96},{"province":"江西省","city":"九江市","selfRate":9.2,"selfMin":0.96,"fastRate":5.6,"fastMin":0.96},{"province":"黑龙江省","city":"哈尔滨市","selfRate":9.8,"selfMin":1.42,"fastRate":7.2,"fastMin":1.42},{"province":"黑龙江省","city":"齐齐哈尔市","selfRate":7.6,"selfMin":1.04,"fastRate":6.4,"fastMin":1.04},{"province":"黑龙江省","city":"大庆市","selfRate":9.2,"selfMin":1.1,"fastRate":5.6,"fastMin":1},{"province":"黑龙江省","city":"双鸭山市","selfRate":8.2,"selfMin":1.2,"fastRate":5.6,"fastMin":1.04},{"province":"贵州省","city":"贵阳市","selfRate":11,"selfMin":1,"fastRate":6,"fastMin":1},{"province":"贵州省","city":"遵义市","selfRate":10.4,"selfMin":0.9,"fastRate":6.4,"fastMin":0.9},{"province":"贵州省","city":"铜仁市","selfRate":8.2,"selfMin":1.2,"fastRate":5.6,"fastMin":1.04},{"province":"山西省","city":"大同市","selfRate":9,"selfMin":0.96,"fastRate":6.8,"fastMin":0.96},{"province":"山西省","city":"太原市","selfRate":10.6,"selfMin":1.16,"fastRate":6.8,"fastMin":1.16},{"province":"山西省","city":"运城市","selfRate":9.8,"selfMin":0.96,"fastRate":5.4,"fastMin":0.96},{"province":"山西省","city":"临汾市","selfRate":8.8,"selfMin":0.86,"fastRate":5.8,"fastMin":0.86},{"province":"吉林省","city":"长春市","selfRate":8.2,"selfMin":1.26,"fastRate":5.8,"fastMin":1.26},{"province":"吉林省","city":"吉林市","selfRate":8.8,"selfMin":1.18,"fastRate":7.4,"fastMin":1.18},{"province":"吉林省","city":"松原市","selfRate":10.4,"selfMin":1.14,"fastRate":6.4,"fastMin":1.14},{"province":"吉林省","city":"四平市","selfRate":8.6,"selfMin":1.12,"fastRate":7.4,"fastMin":1.12},{"province":"内蒙古自治区","city":"呼和浩特市","selfRate":11.4,"selfMin":1,"fastRate":5.2,"fastMin":1},{"province":"内蒙古自治区","city":"赤峰市","selfRate":9.6,"selfMin":0.98,"fastRate":5.6,"fastMin":0.98},{"province":"内蒙古自治区","city":"包头市","selfRate":9,"selfMin":1.08,"fastRate":6,"fastMin":1.08},{"province":"内蒙古自治区","city":"通辽市","selfRate":8.2,"selfMin":0.94,"fastRate":5.8,"fastMin":1.26},{"province":"内蒙古自治区","city":"呼伦贝尔市","selfRate":8.8,"selfMin":0.74,"fastRate":4.6,"fastMin":0.74},{"province":"内蒙古自治区","city":"鄂尔多斯市","selfRate":8.2,"selfMin":1.2,"fastRate":5.8,"fastMin":1.26},{"province":"新疆维吾尔自治区","city":"乌鲁木齐市","selfRate":12.2,"selfMin":1.2,"fastRate":7.2,"fastMin":1.2},{"province":"甘肃省","city":"兰州市","selfRate":9.6,"selfMin":0.98,"fastRate":8,"fastMin":0.98},{"province":"海南省","city":"海口市","selfRate":8.6,"selfMin":0.98,"fastRate":7.2,"fastMin":0.98},{"province":"海南省","city":"三亚市","selfRate":10.4,"selfMin":0.88,"fastRate":6.4,"fastMin":0.88},{"province":"海南省","city":"三沙市","selfRate":8.2,"selfMin":1.2,"fastRate":5.6,"fastMin":1.04},{"province":"宁夏回族自治区","city":"银川市","selfRate":10.6,"selfMin":0.96,"fastRate":8.6,"fastMin":0.96},{"province":"青海省","city":"西宁市","selfRate":9.6,"selfMin":0.88,"fastRate":6.2,"fastMin":0.88}];
+window.PROXY_CITY_NAMES = ["淮南","亳州","池州","宣城","攀枝花","广元","内江","广安","达州","雅安","巴中","资阳","阿坝藏族羌族自治州","甘孜藏族自治州","凉山彝族自治州","三明","南平","宁德","鹤壁","濮阳","漯河","三门峡","周口","驻马店","济源","鸡西","鹤岗","双鸭山","伊春市","佳木斯","七台河","牡丹江","黑河","绥化","大兴安岭地区","辽源","通化","白山","白城","鄂尔多斯","巴彦淖尔","乌兰察布","兴安盟","锡林郭勒盟","乌海","阿拉善盟","恩施土家族苗族自治州","鄂州","黄冈","咸宁","随州","仙桃","潜江","天门","邢台","承德","沧州","衡水","朝阳","德州","聊城","滨州","莱芜","菏泽","梧州","防城港","贵港","玉林","百色","河池","来宾","崇左","安顺","毕节","铜仁","黔西南布依族苗族自治州","黔东南苗族侗族自治州","黔南布依族苗族自治州","保山","昭通","普洱","临沧","楚雄彝族自治州","红河州","文山州","西双版纳傣族自治州","德宏傣族景颇族自治州","迪庆藏族自治州","钦州","贺州","六盘水","怒江傈僳族自治州","萍乡","吉安","宜春","抚州","上饶","邵阳","益阳","永州","怀化","娄底","湘西土家族苗族自治州","景德镇","新余","鹰潭","张家界","梅州","汕尾","河源","阳江","云浮","东方市","万宁","临高县","陵水黎族自治县","文昌市","屯昌县","保亭黎族苗族自治县","琼中黎族苗族自治县","五指山市","琼海市","儋州市","定安县","白沙黎族自治县","昌江黎族自治县","乐东黎族自治县","果洛藏族自治州","嘉峪关","白银","天水","武威","张掖","平凉","酒泉","定西","陇南","临夏回族自治州","甘南藏族自治州","金昌","庆阳","阳泉","长治市","晋城","朔州","晋中","忻州","吕梁","拉萨","昌都","山南地区","日喀则","那曲地区","林芝","铜川","渭南","延安","榆林","商洛","海东市","海北藏族自治州","海南藏族自治州","玉树藏族自治州","石嘴山","吴忠","固原","中卫","海西蒙古族藏族自治州","黄南藏族自治州","克孜勒苏柯尔克孜自治州","克拉玛依","昌吉回族自治州","巴音郭楞蒙古自治州","阿克苏地区","喀什地区","和田地区","阿里地区","伊犁哈萨克自治州","塔城地区","阿勒泰地区","北屯市","吐鲁番","博尔塔拉蒙古自治州","石河子","五家渠市","哈密地区","阿拉尔市"];
+
+    const ACTIVATION_CODES = {
+      "YM-DJ-03": 3,
+      "YM-DJ-10": 10,
+      "YM-NEIBU": null
+    };
+    const STORAGE_KEY = "menuPricingWorkbench.v1";
+    const UNLOCK_KEY = "menuPricingWorkbench.unlocked";
+    const ACTIVE_CODE_KEY = "menuPricingWorkbench.activeCode";
+    const CODE_USAGE_KEY = "menuPricingWorkbench.codeUsage";
+    const cityRates = Array.isArray(window.CITY_RATE_DATA) ? window.CITY_RATE_DATA : [];
+    const proxyCityNames = Array.isArray(window.PROXY_CITY_NAMES) ? window.PROXY_CITY_NAMES : [];
+    const proxyCitySet = new Set(proxyCityNames);
+    const proxyProvinceGroups = {
+      "安徽省":"淮南,亳州,池州,宣城", "四川省":"攀枝花,广元,内江,广安,达州,雅安,巴中,资阳,阿坝藏族羌族自治州,甘孜藏族自治州,凉山彝族自治州",
+      "福建省":"三明,南平,宁德", "河南省":"鹤壁,濮阳,漯河,三门峡,周口,驻马店,济源", "黑龙江省":"鸡西,鹤岗,双鸭山,伊春市,佳木斯,七台河,牡丹江,黑河,绥化,大兴安岭地区",
+      "吉林省":"辽源,通化,白山,白城", "内蒙古自治区":"鄂尔多斯,巴彦淖尔,乌兰察布,兴安盟,锡林郭勒盟,乌海,阿拉善盟", "湖北省":"恩施土家族苗族自治州,鄂州,黄冈,咸宁,随州,仙桃,潜江,天门",
+      "河北省":"邢台,承德,沧州,衡水", "辽宁省":"朝阳", "山东省":"德州,聊城,滨州,莱芜,菏泽", "广西壮族自治区":"梧州,防城港,贵港,玉林,百色,河池,来宾,崇左,钦州,贺州",
+      "贵州省":"安顺,毕节,铜仁,黔西南布依族苗族自治州,黔东南苗族侗族自治州,黔南布依族苗族自治州,六盘水", "云南省":"保山,昭通,普洱,临沧,楚雄彝族自治州,红河州,文山州,西双版纳傣族自治州,德宏傣族景颇族自治州,迪庆藏族自治州,怒江傈僳族自治州",
+      "江西省":"萍乡,吉安,宜春,抚州,上饶,景德镇,新余,鹰潭", "湖南省":"邵阳,益阳,永州,怀化,娄底,湘西土家族苗族自治州,张家界", "广东省":"梅州,汕尾,河源,阳江,云浮",
+      "海南省":"东方市,万宁,临高县,陵水黎族自治县,文昌市,屯昌县,保亭黎族苗族自治县,琼中黎族苗族自治县,五指山市,琼海市,儋州市,定安县,白沙黎族自治县,昌江黎族自治县,乐东黎族自治县",
+      "青海省":"果洛藏族自治州,海东市,海北藏族自治州,海南藏族自治州,玉树藏族自治州,海西蒙古族藏族自治州,黄南藏族自治州", "甘肃省":"嘉峪关,白银,天水,武威,张掖,平凉,酒泉,定西,陇南,临夏回族自治州,甘南藏族自治州,金昌,庆阳",
+      "山西省":"阳泉,长治市,晋城,朔州,晋中,忻州,吕梁", "西藏自治区":"拉萨,昌都,山南地区,日喀则,那曲地区,林芝,阿里地区", "陕西省":"铜川,渭南,延安,榆林,商洛",
+      "宁夏回族自治区":"石嘴山,吴忠,固原,中卫", "新疆维吾尔自治区":"克孜勒苏柯尔克孜自治州,克拉玛依,昌吉回族自治州,巴音郭楞蒙古自治州,阿克苏地区,喀什地区,和田地区,伊犁哈萨克自治州,塔城地区,阿勒泰地区,北屯市,吐鲁番,博尔塔拉蒙古自治州,石河子,五家渠市,哈密地区,阿拉尔市"
+    };
+    const proxyProvinceByCity = new Map();
+    Object.entries(proxyProvinceGroups).forEach(([province, names]) => names.split(",").forEach((name) => proxyProvinceByCity.set(name, province)));
+    const tierRules = [
+      { threshold: 128, discount: 22 },
+      { threshold: 88, discount: 19 },
+      { threshold: 68, discount: 17 },
+      { threshold: 58, discount: 15 },
+      { threshold: 48, discount: 13 },
+      { threshold: 38, discount: 11 },
+      { threshold: 28, discount: 9 },
+      { threshold: 20, discount: 7 },
+      { threshold: 0, discount: 6 }
+    ];
+
+    const roles = {
+      引流: { range: [15, 25], desc: "用来吸引顾客下第一单，毛利可以薄，但不能亏。" },
+      爆款: { range: [40, 50], desc: "用来降低选择成本，要能长期稳定卖，毛利不能太薄。" },
+      常规: { range: [45, 55], desc: "日常正常售卖的产品，按基础利润线判断。" },
+      利润: { range: [55, 65], desc: "明确承担赚钱任务，毛利要高一些。" },
+      提单: { range: [30, 40], desc: "负责把客单价推上去，毛利不用特别高，但不能拖后腿。" },
+      凑单: { range: [20, 30], desc: "方便加购、凑满减、凑神券档，单价轻但不能亏。" },
+      锚定: { range: [45, 55], desc: "负责拉宽价格带和价值感，毛利接近常规品即可。" }
+    };
+
+    let currentRole = "常规";
+    let menuItems = [];
+    let editingId = null;
+
+    const $ = (id) => document.getElementById(id);
+    const money = (n) => "¥" + Number(n || 0).toFixed(2);
+    const pct = (n) => (Number(n || 0)).toFixed(1) + "%";
+    const num = (id) => Number($(id).value || 0);
+
+    function init() {
+      const provinces = [...new Set([...cityRates.map((row) => row.province), ...Object.keys(proxyProvinceGroups)])].sort((a, b) => a.localeCompare(b, "zh-CN"));
+      provinces.forEach((province) => $("province").add(new Option(province, province)));
+      $("province").add(new Option("其他/手动校准", "其他/手动校准"));
+      populateCities();
+
+      Object.keys(roles).forEach((role) => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "role-btn";
+        btn.textContent = role;
+        btn.addEventListener("click", () => selectRole(role));
+        $("roleButtons").appendChild(btn);
+      });
+
+      $("unlockBtn").addEventListener("click", unlock);
+      $("accessCode").addEventListener("keydown", (event) => {
+        if (event.key === "Enter") unlock();
+      });
+
+      $("province").addEventListener("change", () => { populateCities(); updateCommissionByCity(); });
+      $("city").addEventListener("change", updateCommissionByCity);
+      $("deliveryMode").addEventListener("change", updateCommissionByCity);
+
+      document.querySelectorAll("input, select").forEach((el) => {
+        el.addEventListener("input", recalc);
+        el.addEventListener("change", recalc);
+      });
+
+      $("saveBtn").addEventListener("click", saveCurrentItem);
+      $("resetFormBtn").addEventListener("click", resetItemForm);
+      $("exportBtn").addEventListener("click", exportCsv);
+
+      selectRole(currentRole, false);
+      loadData();
+      updateCommissionByCity(false);
+      renderMenuTable();
+      recalc();
+
+      if (sessionStorage.getItem(UNLOCK_KEY) === "1") showApp();
+    }
+
+    function unlock() {
+      const code = $("accessCode").value.trim().toUpperCase();
+      const usage = getCodeUsage();
+      if (Object.prototype.hasOwnProperty.call(ACTIVATION_CODES, code)) {
+        const used = usage[code] || 0;
+        const total = ACTIVATION_CODES[code];
+        if (total !== null && used >= total) {
+          $("lockMsg").textContent = "这个激活码次数已用完。";
+          return;
+        }
+        if (total !== null) {
+          usage[code] = used + 1;
+          localStorage.setItem(CODE_USAGE_KEY, JSON.stringify(usage));
+        }
+        localStorage.setItem(ACTIVE_CODE_KEY, code);
+        sessionStorage.setItem(UNLOCK_KEY, "1");
+        showApp();
+        return;
+      }
+      $("lockMsg").textContent = "激活码不正确。";
+    }
+
+    function showApp() {
+      $("lock").classList.add("hidden");
+      $("app").classList.remove("hidden");
+    }
+
+    function getCodeUsage() {
+      try {
+        return JSON.parse(localStorage.getItem(CODE_USAGE_KEY) || "{}");
+      } catch {
+        return {};
+      }
+    }
+
+    function selectRole(role, shouldRecalc = true) {
+      currentRole = role;
+      document.querySelectorAll(".role-btn").forEach((btn) => {
+        btn.classList.toggle("active", btn.textContent === role);
+      });
+      const roleInfo = roles[role];
+      $("roleHelp").textContent = `${role}品：${roleInfo.desc} 建议毛利率 ${roleInfo.range[0]}%-${roleInfo.range[1]}%。`;
+      if (shouldRecalc) recalc();
+    }
+
+    function normalizeCityName(name) {
+      return String(name || "").replace(/市$/, "").trim();
+    }
+
+    function populateCities(selectedCity = "") {
+      const province = $("province").value;
+      $("city").innerHTML = "";
+      if (province === "其他/手动校准") {
+        $("city").add(new Option("其他/手动校准", "其他/手动校准"));
+        return;
+      }
+      const directNames = cityRates.filter((row) => row.province === province).map((row) => row.city);
+      const proxyNames = (proxyProvinceGroups[province] || "").split(",").filter(Boolean);
+      const normalizedDirect = new Set(directNames.map(normalizeCityName));
+      directNames.sort((a,b) => a.localeCompare(b,"zh-CN")).forEach((name) => $("city").add(new Option(`${name}（直营）`, name)));
+      proxyNames.filter((name) => !normalizedDirect.has(normalizeCityName(name))).sort((a,b) => a.localeCompare(b,"zh-CN")).forEach((name) => $("city").add(new Option(`${name}（代理）`, name)));
+      if (selectedCity && [...$("city").options].some((option) => option.value === selectedCity)) $("city").value = selectedCity;
+    }
+
+    function findCityRate(cityName) {
+      const normalized = normalizeCityName(cityName);
+      return cityRates.find((row) => row.city === cityName || normalizeCityName(row.city) === normalized);
+    }
+
+    function isProxyCity(cityName) {
+      const normalized = normalizeCityName(cityName);
+      return proxyCitySet.has(cityName) || proxyCitySet.has(normalized);
+    }
+
+    function currentCommissionMeta() {
+      const cityName = $("city").value;
+      const mode = $("deliveryMode").value;
+      const direct = findCityRate(cityName);
+      if (direct) {
+        return {
+          type: "直营",
+          base: "优惠后金额",
+          rate: mode === "self" ? direct.selfRate : direct.fastRate,
+          min: mode === "self" ? direct.selfMin : direct.fastMin,
+          source: `${direct.province}${direct.city}`
+        };
+      }
+      if (isProxyCity(cityName)) {
+        return {
+          type: "代理",
+          base: "挂牌价",
+          rate: 23,
+          min: 0,
+          source: cityName
+        };
+      }
+      return {
+        type: "手动校准",
+        base: "手动填写",
+        rate: Number($("commissionRate").value || 0),
+        min: Number($("commissionMin").value || 0),
+        source: cityName || "未选择"
+      };
+    }
+
+    function updateCommissionByCity(shouldRecalc = true) {
+      const meta = currentCommissionMeta();
+      $("commissionRate").value = meta.rate;
+      $("commissionMin").value = meta.min;
+      const locked = meta.type !== "手动校准";
+      $("commissionRate").disabled = locked;
+      $("commissionMin").disabled = locked;
+      $("deliveryMode").disabled = meta.type === "代理";
+      $("defaultDeliveryFee").disabled = meta.type === "代理";
+      if (meta.type === "代理") $("defaultDeliveryFee").value = 0;
+      $("commissionInfo").textContent = meta.type === "代理"
+        ? "代理商城市按挂牌价 × 23% 计算，23%已包含佣金与配送服务费；相关费率和配送服务费已锁定，避免重复扣费。"
+        : `当前佣金口径：${meta.type}城市，佣金基数按${meta.base}；默认费率 ${meta.rate}%，保底 ${money(meta.min)}。实际以订单截图校准为准。`;
+      if (shouldRecalc) recalc();
+    }
+
+    function getStoreParams() {
+      return {
+        commissionRate: num("commissionRate") / 100,
+        commissionMin: num("commissionMin"),
+        commissionMeta: currentCommissionMeta(),
+        deliveryFee: currentCommissionMeta().type === "代理" ? 0 : num("defaultDeliveryFee"),
+        startPrice: num("startPrice"),
+        marketStartPrice: num("marketStartPrice"),
+        tierEnabled: $("tierEnabled").checked,
+        tierSubsidy: Math.max(num("tierSubsidy"), 0),
+        managerTierSubsidy: Math.max(num("managerTierSubsidy"), 0),
+        entryCoupon: num("entryCoupon"),
+        newCustomerDiscount: num("newCustomerDiscount"),
+        fullThreshold1: num("fullThreshold1"),
+        fullReduction1: num("fullReduction1"),
+        fullThreshold2: num("fullThreshold2"),
+        fullReduction2: num("fullReduction2"),
+        deliveryDiscount: num("deliveryDiscount"),
+        returnCouponReserve: num("returnCouponReserve"),
+        pointsReserve: num("pointsReserve")
+      };
+    }
+
+    function getItemInputs() {
+      return {
+        name: $("itemName").value.trim(),
+        category: $("menuCategory").value.trim(),
+        role: currentRole,
+        salePrice: num("salePrice"),
+        marketRefPrice: num("marketRefPrice"),
+        packageCost: num("packageCost"),
+        foodCost: num("foodCost"),
+        customerPackageFee: num("customerPackageFee"),
+        customerType: $("customerType").value,
+        oldCouponType: $("oldCouponType").value,
+        useDefaultActivity: $("useDefaultActivity").checked,
+        includeReserve: $("includeReserve").checked,
+        reserveType: $("reserveType").value,
+        extraActivityCost: num("extraActivityCost"),
+        lessActivityCost: num("lessActivityCost")
+      };
+    }
+
+    function triggeredTierDiscount(orderAmount, store) {
+      if (!store.tierEnabled) return { threshold: 0, discount: 0, cost: 0 };
+      const hit = tierRules.find((tier) => orderAmount >= tier.threshold);
+      if (!hit) return { threshold: 0, discount: 0, cost: 0 };
+      const merchantSupplement = Math.max(store.tierSubsidy, 0);
+      const managerSupplement = Math.max(store.managerTierSubsidy, 0);
+      return {
+        threshold: hit.threshold,
+        discount: hit.discount + merchantSupplement + managerSupplement,
+        cost: hit.discount + merchantSupplement,
+        baseDiscount: hit.discount,
+        merchantSupplement,
+        managerSupplement
+      };
+    }
+
+    function triggeredFullReduction(orderAmount, store) {
+      const reductions = [
+        { threshold: store.fullThreshold1, amount: store.fullReduction1 },
+        { threshold: store.fullThreshold2, amount: store.fullReduction2 }
+      ].filter((item) => item.threshold > 0 && item.amount > 0 && orderAmount >= item.threshold);
+      if (!reductions.length) return { threshold: 0, amount: 0 };
+      reductions.sort((a, b) => b.threshold - a.threshold);
+      return reductions[0];
+    }
+
+    function selectedCustomerActivity(store, item) {
+      if (!item.useDefaultActivity) {
+        return { label: "未沿用店铺默认券", amount: 0 };
+      }
+      if (item.customerType === "old") {
+        const oldCouponMap = {
+          entry: { label: "老客进店领券", amount: store.entryCoupon },
+          return: { label: "老客下单返券", amount: store.returnCouponReserve },
+          points: { label: "老客集点返券", amount: store.pointsReserve },
+          none: { label: "老客本单不使用券", amount: 0 }
+        };
+        return oldCouponMap[item.oldCouponType] || oldCouponMap.none;
+      }
+      return {
+        label: "新客进店领券＋新客立减",
+        amount: store.entryCoupon + store.newCustomerDiscount
+      };
+    }
+
+    function selectedReserveCost(store, item) {
+      if (!item.includeReserve) {
+        return { label: "未计复购预留", amount: 0 };
+      }
+      if (item.reserveType === "points") {
+        return { label: "集点返券预留", amount: store.pointsReserve };
+      }
+      return { label: "下单返券预留", amount: store.returnCouponReserve };
+    }
+
+    function calculateWithPrice(price, itemOverride) {
+      const store = getStoreParams();
+      const item = itemOverride || getItemInputs();
+      item.salePrice = price;
+      const orderAmount = price;
+      const fullReduction = item.useDefaultActivity
+        ? triggeredFullReduction(orderAmount, store)
+        : { threshold: 0, amount: 0 };
+      const customerActivity = selectedCustomerActivity(store, item);
+      const defaultActivity = customerActivity.amount + fullReduction.amount;
+      const directActivity = Math.max(defaultActivity + item.extraActivityCost - item.lessActivityCost, 0);
+      const tier = triggeredTierDiscount(orderAmount, store);
+      const reserveSelection = selectedReserveCost(store, item);
+      const reserve = reserveSelection.amount;
+      const deliveryCost = item.useDefaultActivity ? store.deliveryDiscount : 0;
+      const commissionBase = store.commissionMeta.type === "代理"
+        ? price
+        : Math.max(price - directActivity - tier.cost, 0);
+      const commissionRaw = commissionBase * store.commissionRate;
+      const commission = Math.max(commissionRaw, store.commissionMin || 0);
+      const customerPay = Math.max(price + item.customerPackageFee - directActivity - tier.discount, 0);
+      const merchantReceive = price + item.customerPackageFee - directActivity - tier.cost - commission - store.deliveryFee - deliveryCost;
+      const rawProfit = merchantReceive - item.foodCost - item.packageCost;
+      const judgedProfit = rawProfit - (item.includeReserve ? reserve : 0);
+      const marginRate = merchantReceive > 0 ? judgedProfit / merchantReceive * 100 : -999;
+
+      return {
+        store, item, orderAmount, fullReduction, customerActivity, directActivity, tier,
+        reserveSelection, reserve, deliveryCost, commission,
+        customerPay, merchantReceive, rawProfit, judgedProfit, marginRate
+      };
+    }
+
+    function suggestPrice() {
+      const item = getItemInputs();
+      const [minRate, maxRate] = roles[item.role].range;
+      const target = (minRate + maxRate) / 2;
+      let best = null;
+      const lower = Math.max(1, item.foodCost + item.packageCost);
+      for (let p = lower; p <= 199.9; p += 0.1) {
+        const calc = calculateWithPrice(Number(p.toFixed(1)), { ...item });
+        if (calc.merchantReceive <= 0) continue;
+        if (calc.marginRate >= target) {
+          best = calc;
+          break;
+        }
+      }
+      return best;
+    }
+
+    function makeJudgement(calc) {
+      const [minRate, maxRate] = roles[calc.item.role].range;
+      const box = $("judgeBox");
+      box.className = "judgement";
+
+      if (!calc.item.salePrice || (!calc.item.foodCost && !calc.item.packageCost)) {
+        box.textContent = "请先填写售价和成本。";
+        return "信息不足";
+      }
+
+      let result = "";
+      if (calc.judgedProfit < 0) {
+        box.classList.add("bad");
+        result = "不合理：当前套餐会亏，售价和活动力度压不住成本。";
+      } else if (calc.marginRate < minRate) {
+        box.classList.add("bad");
+        result = "不合理：当前利润偏低，售价偏低或让利偏重。";
+      } else if (calc.marginRate > maxRate + 12) {
+        box.classList.add("warn");
+        result = "需要关注：利润空间足够，但顾客可能会觉得价格偏高。";
+      } else {
+        box.classList.add("good");
+        result = "合理：当前利润和售价基本匹配，可以进入菜单测试。";
+      }
+
+      if (calc.item.marketRefPrice > 0) {
+        const ratio = calc.item.salePrice / calc.item.marketRefPrice;
+        if (ratio > 1.15) result += " 同时售价明显高于商圈，需要有足够的分量或套餐价值支撑。";
+        if (ratio < 0.85) result += " 同时售价明显低于商圈，要留意利润被压薄。";
+      }
+      if (["提单", "凑单"].includes(calc.item.role)) {
+        box.classList.add("warn");
+        result += " 如果这是单点不送商品，本结果只能作加购成本参考。";
+      }
+
+      box.textContent = result;
+      return result;
+    }
+
+    function updateStartPriceJudge() {
+      const store = getStoreParams();
+      let text = "起送价判断：填写本店预计起送价和商圈常见起送价后显示。";
+      if (store.startPrice > 0 && store.marketStartPrice > 0) {
+        const ratio = store.startPrice / store.marketStartPrice;
+        if (ratio > 1.3) {
+          text = `起送价判断：本店起送价高于商圈常见起送价 30% 以上，属于明显偏高，可能影响下单转化。`;
+        } else if (ratio < 0.8) {
+          text = `起送价判断：本店起送价明显低于商圈，门槛低，但要注意低价单利润。`;
+        } else {
+          text = `起送价判断：本店起送价接近商圈常见水平，整体比较合理。`;
+        }
+      }
+      $("startPriceJudge").textContent = text;
+    }
+
+    function recalc() {
+      if (!$("suggestedPrice")) return;
+      updateActivityControls();
+      const calc = calculateWithPrice(num("salePrice"));
+      const suggested = suggestPrice();
+      $("testPrice").textContent = money(calc.item.salePrice);
+      $("suggestedPrice").textContent = suggested ? money(suggested.item.salePrice) : "暂无";
+      $("testCustomerPay").textContent = money(calc.customerPay);
+      $("testMerchantReceive").textContent = money(calc.merchantReceive);
+      $("testMarginRate").textContent = calc.marginRate < -100 ? "无效" : pct(calc.marginRate);
+      $("suggestedCustomerPay").textContent = suggested ? money(suggested.customerPay) : "暂无";
+      $("suggestedMerchantReceive").textContent = suggested ? money(suggested.merchantReceive) : "暂无";
+      $("suggestedMarginRate").textContent = suggested ? pct(suggested.marginRate) : "暂无";
+      const customerLabel = calc.item.customerType === "old" ? "老客" : "新客";
+      $("testCustomerPayLabel").textContent = `测试价｜${customerLabel}到手`;
+      $("suggestedCustomerPayLabel").textContent = `建议价｜${customerLabel}到手`;
+      $("targetRange").textContent = `身份建议区间：${roles[currentRole].range[0]}%-${roles[currentRole].range[1]}%`;
+      $("suggestedNote").textContent = suggested ? "按当前菜品身份的毛利区间估算" : "请补充成本和活动参数";
+      makeJudgement(calc, suggested);
+      updateStartPriceJudge();
+      persistData();
+    }
+
+    function updateActivityControls() {
+      const isOld = $("customerType").value === "old";
+      $("oldCouponTypeWrap").classList.toggle("hidden", !isOld);
+      $("oldCouponType").disabled = !isOld;
+      const hasReserve = $("includeReserve").checked;
+      $("reserveTypeWrap").classList.toggle("hidden", !hasReserve);
+      $("reserveType").disabled = !hasReserve;
+    }
+
+    function menuPositionForRole(role) {
+      const map = {
+        爆款: ["前两屏主推位", "靠前展示，作为顾客默认选择"],
+        引流: ["前两屏引流位", "靠前展示，用来承接商圈热销心智"],
+        利润: ["前两屏利润承接位", "放在爆款/引流附近，形成利润承接"],
+        提单: ["主品旁/加购区", "穿插在主品旁边，服务凑单和提客单"],
+        凑单: ["加购/凑单区", "方便顾客补差价，不抢主推位"],
+        锚定: ["前两屏锚定位", "前两屏最多放 1 个，用来拉宽价格带"],
+        常规: ["常规菜单区", "按品类归类，不优先占前两屏"]
+      };
+      return map[role] || ["常规菜单区", "按品类归类"];
+    }
+
+    function sortRankForRole(role) {
+      const ranks = { 爆款: 1, 引流: 2, 利润: 3, 提单: 4, 凑单: 5, 锚定: 6, 常规: 7 };
+      return ranks[role] || 9;
+    }
+
+    function sortedMenuItems() {
+      return [...menuItems].sort((a, b) => {
+        const roleDiff = sortRankForRole(a.role) - sortRankForRole(b.role);
+        if (roleDiff !== 0) return roleDiff;
+        return Number(a.createdOrder || 0) - Number(b.createdOrder || 0);
+      });
+    }
+
+    function currentRecord() {
+      const calc = calculateWithPrice(num("salePrice"));
+      const suggested = suggestPrice();
+      const judgement = $("judgeBox").textContent;
+      const position = menuPositionForRole(calc.item.role);
+      return {
+        id: editingId || String(Date.now()),
+        createdOrder: editingId ? (menuItems.find((item) => item.id === editingId)?.createdOrder || Date.now()) : Date.now(),
+        category: calc.item.category || "-",
+        name: calc.item.name || "未命名菜品",
+        role: calc.item.role,
+        suggestedPosition: position[0],
+        sortingAdvice: position[1],
+        salePrice: calc.item.salePrice,
+        suggestedPrice: suggested ? suggested.item.salePrice : "",
+        customerPay: calc.customerPay,
+        merchantReceive: calc.merchantReceive,
+        foodCost: calc.item.foodCost,
+        packageCost: calc.item.packageCost,
+        profit: calc.judgedProfit,
+        marginRate: calc.marginRate,
+        judgement,
+        inputs: {
+          ...calc.item,
+          city: $("city").value,
+          deliveryMode: $("deliveryMode").value
+        }
+      };
+    }
+
+    function saveCurrentItem() {
+      const record = currentRecord();
+      if (!record.name || record.name === "未命名菜品") {
+        alert("先填套餐/主品名称，再保存。");
+        return;
+      }
+      const index = menuItems.findIndex((item) => item.id === record.id);
+      if (index >= 0) {
+        menuItems[index] = record;
+      } else {
+        menuItems.push(record);
+      }
+      editingId = null;
+      renderMenuTable();
+      persistData();
+    }
+
+    function renderMenuTable() {
+      const body = $("menuBody");
+      body.innerHTML = "";
+      $("emptyState").classList.toggle("hidden", menuItems.length > 0);
+      $("tableWrap").classList.toggle("hidden", menuItems.length === 0);
+
+      sortedMenuItems().forEach((item) => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${escapeHtml(item.category)}</td>
+          <td>${escapeHtml(item.suggestedPosition || menuPositionForRole(item.role)[0])}</td>
+          <td>${escapeHtml(item.name)}</td>
+          <td>${escapeHtml(item.role)}</td>
+          <td>${money(item.salePrice)}</td>
+          <td>${item.suggestedPrice === "" ? "-" : money(item.suggestedPrice)}</td>
+          <td>${money(item.customerPay)}</td>
+          <td>${money(item.merchantReceive)}</td>
+          <td>${money(item.foodCost)}</td>
+          <td>${money(item.packageCost)}</td>
+          <td>${money(item.profit)}</td>
+          <td>${item.marginRate < -100 ? "无效" : pct(item.marginRate)}</td>
+          <td style="white-space:normal;min-width:220px">${escapeHtml(item.judgement)}</td>
+          <td style="white-space:normal;min-width:180px">${escapeHtml(item.sortingAdvice || menuPositionForRole(item.role)[1])}</td>
+          <td><div class="row-actions">
+            <button class="small-btn" data-action="edit" data-id="${item.id}">编辑</button>
+            <button class="small-btn" data-action="copy" data-id="${item.id}">复制</button>
+            <button class="small-btn" data-action="delete" data-id="${item.id}">删除</button>
+          </div></td>
+        `;
+        body.appendChild(tr);
+      });
+
+      body.querySelectorAll("button").forEach((btn) => {
+        btn.addEventListener("click", () => handleRowAction(btn.dataset.action, btn.dataset.id));
+      });
+    }
+
+    function handleRowAction(action, id) {
+      const record = menuItems.find((item) => item.id === id);
+      if (!record) return;
+      if (action === "delete") {
+        menuItems = menuItems.filter((item) => item.id !== id);
+        renderMenuTable();
+        persistData();
+        return;
+      }
+      loadRecordIntoForm(record, action === "edit" ? record.id : null);
+      if (action === "copy") {
+        $("itemName").value = record.name + " 副本";
+      }
+    }
+
+    function loadRecordIntoForm(record, editId) {
+      editingId = editId;
+      const input = record.inputs;
+      selectRole(input.role || record.role || "常规");
+      $("itemName").value = input.name || record.name || "";
+      $("menuCategory").value = input.category || record.category || "";
+      $("salePrice").value = input.salePrice || record.salePrice || 0;
+      $("marketRefPrice").value = input.marketRefPrice || 0;
+      $("packageCost").value = input.packageCost || 0;
+      $("foodCost").value = input.foodCost || 0;
+      $("customerPackageFee").value = input.customerPackageFee || 0;
+      $("customerType").value = input.customerType || "new";
+      $("oldCouponType").value = input.oldCouponType || "none";
+      $("useDefaultActivity").checked = input.useDefaultActivity !== false;
+      $("includeReserve").checked = !!input.includeReserve;
+      $("reserveType").value = input.reserveType || "return";
+      $("extraActivityCost").value = input.extraActivityCost || 0;
+      $("lessActivityCost").value = input.lessActivityCost || 0;
+      recalc();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function resetItemForm() {
+      editingId = null;
+      ["itemName", "menuCategory"].forEach((id) => $(id).value = "");
+      $("menuCategory").value = "主食/套餐";
+      ["salePrice", "marketRefPrice", "packageCost", "foodCost", "customerPackageFee", "extraActivityCost", "lessActivityCost"].forEach((id) => $(id).value = 0);
+      $("useDefaultActivity").checked = true;
+      $("includeReserve").checked = false;
+      $("customerType").value = "new";
+      $("oldCouponType").value = "none";
+      $("reserveType").value = "return";
+      selectRole("常规");
+      recalc();
+    }
+
+    function exportCsv() {
+      if (!menuItems.length) {
+        alert("还没有保存套餐。");
+        return;
+      }
+      const headers = ["菜单分类", "建议菜单位置", "套餐/主品名称", "菜品身份", "当前售价", "建议售价", "顾客预计到手", "老板预计到手", "食材成本", "包材成本", "套餐毛利润", "毛利率", "判断结果", "排序建议"];
+      const rows = sortedMenuItems().map((item) => [
+        item.category, item.suggestedPosition || menuPositionForRole(item.role)[0], item.name, item.role, item.salePrice, item.suggestedPrice,
+        item.customerPay, item.merchantReceive, item.foodCost, item.packageCost,
+        item.profit, item.marginRate < -100 ? "无效" : pct(item.marginRate), item.judgement, item.sortingAdvice || menuPositionForRole(item.role)[1]
+      ]);
+      const csv = [headers, ...rows].map((row) => row.map(csvCell).join(",")).join("\n");
+      const blob = new Blob(["\ufeff" + csv], { type: "text/csv;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "菜单定价建议表.csv";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    function csvCell(value) {
+      const text = String(value ?? "");
+      return `"${text.replace(/"/g, '""')}"`;
+    }
+
+    function escapeHtml(value) {
+      return String(value ?? "").replace(/[&<>"']/g, (ch) => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#039;"
+      }[ch]));
+    }
+
+    function persistData() {
+      const data = {
+        menuItems,
+        store: {
+          province: $("province").value,
+          city: $("city").value,
+          deliveryMode: $("deliveryMode").value,
+          commissionRate: $("commissionRate").value,
+          commissionMin: $("commissionMin").value,
+          defaultDeliveryFee: $("defaultDeliveryFee").value,
+          startPrice: $("startPrice").value,
+          marketStartPrice: $("marketStartPrice").value,
+          tierEnabled: $("tierEnabled").checked,
+          tierSubsidy: $("tierSubsidy").value,
+          managerTierSubsidy: $("managerTierSubsidy").value,
+          entryCoupon: $("entryCoupon").value,
+          newCustomerDiscount: $("newCustomerDiscount").value,
+          fullThreshold1: $("fullThreshold1").value,
+          fullReduction1: $("fullReduction1").value,
+          fullThreshold2: $("fullThreshold2").value,
+          fullReduction2: $("fullReduction2").value,
+          deliveryDiscount: $("deliveryDiscount").value,
+          returnCouponReserve: $("returnCouponReserve").value,
+          pointsReserve: $("pointsReserve").value
+        }
+      };
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    }
+
+    function loadData() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return;
+        const data = JSON.parse(raw);
+        menuItems = Array.isArray(data.menuItems) ? data.menuItems : [];
+        const store = data.store || {};
+        if (store.province) {
+          $("province").value = store.province;
+          populateCities(store.city || "");
+        } else if (store.city) {
+          const direct = findCityRate(store.city);
+          const inferredProvince = direct?.province || proxyProvinceByCity.get(store.city);
+          if (inferredProvince) {
+            $("province").value = inferredProvince;
+            populateCities(store.city);
+          }
+        }
+        Object.keys(store).forEach((id) => {
+          if (id === "province" || id === "city") return;
+          if (!$(id)) return;
+          if ($(id).type === "checkbox") {
+            $(id).checked = !!store[id];
+          } else {
+            $(id).value = store[id];
+          }
+        });
+        ["tierSubsidy", "managerTierSubsidy"].forEach((id) => {
+          if ($(id) && Number($(id).value) < 0) $(id).value = 0;
+        });
+      } catch (error) {
+        console.warn("读取本地数据失败", error);
+      }
+    }
+
+    init();
+  </script>
+</div>
+</body>
+</html>
