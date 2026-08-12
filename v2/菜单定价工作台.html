@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
@@ -6,18 +6,18 @@
   <title>菜单定价工作台</title>
   <style>
     :root {
-      --bg: #f3f8f5;
+      --bg: #f4f7fb;
       --panel: #ffffff;
       --ink: #232323;
-      --muted: #6c6a63;
-      --line: #d7e4df;
-      --soft: #eef6f2;
-      --brand: #4d8a76;
-      --brand-dark: #245849;
-      --good: #0f7a55;
+      --muted: #4e5969;
+      --line: #e5e8ef;
+      --soft: #eef4ff;
+      --brand: #165dff;
+      --brand-dark: #25456f;
+      --good: #1c9a63;
       --warn: #a96700;
       --bad: #b3342d;
-      --shadow: 0 10px 30px rgba(24, 63, 53, 0.08);
+      --shadow: 0 10px 30px rgba(29, 33, 41, 0.06);
       font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
     }
 
@@ -33,55 +33,56 @@
 
     /* ===== 左侧菜单 ===== */
     .sidebar {
-      width: 210px; background: #fcfdfc;
-      display: flex; flex-direction: column; flex-shrink: 0;
-      border-right: 1px solid rgba(36,88,73,0.08);
+      width: 210px; background: #ffffff;
+      display: none; flex-direction: column; flex-shrink: 0;
+      border-right: 1px solid #e5e8ef;
     }
     .sidebar-logo {
       padding: 18px 16px; display: flex; align-items: center; gap: 8px;
     }
     .sidebar-logo .icon {
       width: 34px; height: 34px; border-radius: 10px;
-      background: linear-gradient(135deg, #4d8a76, #347a66);
+      background: linear-gradient(135deg, #165dff, #165dff);
       display: flex; align-items: center; justify-content: center;
       font-size: 16px; color: #fff;
     }
     .sidebar-logo .name {
-      font-size: 15px; font-weight: 600; color: #4d8a76; letter-spacing: 1px;
+      font-size: 15px; font-weight: 600; color: #165dff; letter-spacing: 0;
     }
     .nav { flex: 1; padding: 8px 0; }
     .nav-item {
       display: flex; align-items: center; gap: 8px;
       padding: 9px 16px; margin: 1px 8px; border-radius: 8px;
-      font-size: 14px; color: #6c6a63; cursor: pointer;
+      font-size: 14px; color: #4e5969; cursor: pointer;
       transition: all 0.15s; text-decoration: none;
     }
-    .nav-item:hover { color: #4d8a76; background: rgba(77,138,118,0.06); }
+    .nav-item:hover { color: #165dff; background: #eef4ff; }
     .nav-item.active {
-      color: #4d8a76; background: rgba(77,138,118,0.10);
+      color: #165dff; background: #eef4ff;
       font-weight: 600;
     }
     .nav-item .dot { font-size: 15px; width: 18px; text-align: center; }
     .nav-item .coming-soon {
-      font-size: 9px; background: #e2ece6; color: #6c6a63;
+      font-size: 9px; background: #f2f3f5; color: #4e5969;
       padding: 1px 6px; border-radius: 8px; margin-left: auto;
     }
     .nav-divider {
-      font-size: 11px; color: #b7bdb8; padding: 14px 16px 4px;
-      letter-spacing: 1px;
+      font-size: 11px; color: #86909c; padding: 14px 16px 4px;
+      letter-spacing: 0;
     }
     .sidebar-footer {
-      padding: 14px 16px; border-bottom: 1px solid rgba(36,88,73,0.06);
+      padding: 14px 16px; border-bottom: 1px solid #e5e8ef;
       display: flex; align-items: center; justify-content: space-between;
     }
-    .sidebar-footer .user { font-size: 13px; color: #6c6a63; }
+    .sidebar-footer .user { font-size: 13px; color: #4e5969; }
     .sidebar-footer .logout {
-      font-size: 11px; color: #b7bdb8; cursor: pointer;
+      font-size: 11px; color: #86909c; cursor: pointer;
     }
-    .main { flex: 1; display: flex; flex-direction: column; overflow-y: auto; }
+    .main { flex: 1; width: 100%; display: flex; flex-direction: column; overflow-y: auto; }
 
-    .ym-topnav{position:sticky;top:0;z-index:100;display:flex;align-items:center;padding:12px max(22px,calc((100vw - 1320px)/2));background:rgba(248,251,250,.94);border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}
+    .ym-topnav{position:sticky;top:0;z-index:100;display:flex;align-items:center;gap:10px;padding:18px max(22px,calc((100vw - 1320px)/2)) 14px;background:rgba(248,251,250,.94);border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}
     .ym-topnav a{color:var(--brand-dark);font-weight:800;text-decoration:none}
+    .ym-topnav span{color:var(--muted);font-size:13px;font-weight:600}
 
     button, input, select {
       font: inherit;
@@ -444,36 +445,36 @@
 <!-- ===== 左侧菜单 ===== -->
 <div class="sidebar">
   <div class="sidebar-logo">
-    <div class="icon">🍽️</div>
+    <div class="icon">Y</div>
     <div class="name">云淼食策</div>
   </div>
   <div class="nav">
-    <a href="/" class="nav-item" style="text-decoration:none;color:inherit;"><span class="dot">🏠</span> 首页概览</a>
+    <a href="./" class="nav-item" style="text-decoration:none;color:inherit;"><span class="dot">⌂</span> 首页概览</a>
     <div class="nav-divider">客户</div>
-    <a href="/customers" class="nav-item" style="text-decoration:none;color:inherit;"><span class="dot">📋</span> 客户列表</a>
-    <a href="/customers" class="nav-item" style="text-decoration:none;color:inherit;"><span class="dot">➕</span> 新增客户</a>
+    <a href="./#profile" class="nav-item" style="text-decoration:none;color:inherit;"><span class="dot">▤</span> 客户列表</a>
+    <a href="./#profile" class="nav-item" style="text-decoration:none;color:inherit;"><span class="dot">＋</span> 新增客户</a>
     <div class="nav-divider">数据</div>
-    <a href="/dashboard" class="nav-item" style="text-decoration:none;color:inherit;"><span class="dot">📊</span> 每日看板</a>
-    <a href="/promotion" class="nav-item" style="text-decoration:none;color:inherit;"><span class="dot">📈</span> 推广实时</a>
+    <a href="./#daily" class="nav-item" style="text-decoration:none;color:inherit;"><span class="dot">▥</span> 每日看板</a>
+    <a href="./#promotion" class="nav-item" style="text-decoration:none;color:inherit;"><span class="dot">↗</span> 推广实时</a>
     <div class="nav-divider">工具</div>
-    <a href="./评分诊断器.html" class="nav-item" style="text-decoration:none;color:inherit;"><span class="dot">⭐</span> 评分诊断</a>
-    <a href="./菜单定价工作台.html" class="nav-item active" style="text-decoration:none;color:inherit;"><span class="dot">💰</span> 菜单定价</a>
-    <a href="./#internal" class="nav-item" style="text-decoration:none;color:inherit;"><span class="dot">🤖</span> 内部诊断</a>
+    <a href="./评分诊断器.html" class="nav-item" style="text-decoration:none;color:inherit;"><span class="dot">☆</span> 评分诊断</a>
+    <a href="./菜单定价工作台.html" class="nav-item active" style="text-decoration:none;color:inherit;"><span class="dot">¥</span> 菜单定价</a>
+    <a href="./#internal" class="nav-item" style="text-decoration:none;color:inherit;"><span class="dot">◇</span> 内部诊断</a>
     <div class="nav-divider">管理</div>
-    <div class="nav-item"><span class="dot">📚</span> 学习中心 <span class="coming-soon">待开放</span></div>
-    <div class="nav-item"><span class="dot">📊</span> 扣费监控 <span class="coming-soon">待开发</span></div>
-    <div class="nav-item"><span class="dot">⚙️</span> 系统设置 <span class="coming-soon">待开发</span></div>
+    <div class="nav-item"><span class="dot">□</span> 学习中心 <span class="coming-soon">待开放</span></div>
+    <div class="nav-item"><span class="dot">▥</span> 扣费监控 <span class="coming-soon">待开发</span></div>
+    <div class="nav-item"><span class="dot">⚙</span> 系统设置 <span class="coming-soon">待开发</span></div>
   </div>
   <div class="sidebar-footer">
-    <span class="user">👤 炼总</span>
+    <span class="user">炼总</span>
     <span class="logout" onclick="location.href='/logout'">退出</span>
   </div>
 </div>
 
 <!-- ===== 右侧主内容 ===== -->
 <div class="main">
-  <nav class="ym-topnav"><a href="index.html">← 返回辅助驾驶首页</a></nav>
-  <main id="lock" class="lock">
+  <nav class="ym-topnav"><a href="./">首页</a><span>/</span><a href="./#tools">工具中心</a><span>/ 菜单定价</span></nav>
+  <main id="lock" class="lock hidden">
     <section class="lock-box">
       <h1>菜单定价工作台</h1>
       <p>输入激活码后使用。当前版本的使用次数记录在这台电脑的浏览器里。</p>
@@ -487,7 +488,7 @@
     </section>
   </main>
 
-  <main id="app" class="app hidden">
+  <main id="app" class="app">
     <header>
       <div>
         <h1>菜单定价工作台</h1>
@@ -889,7 +890,7 @@ window.PROXY_CITY_NAMES = ["淮南","亳州","池州","宣城","攀枝花","广�
       renderMenuTable();
       recalc();
 
-      if (sessionStorage.getItem(UNLOCK_KEY) === "1") showApp();
+      showApp();
     }
 
     function unlock() {
